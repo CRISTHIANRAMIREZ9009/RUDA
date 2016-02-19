@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+    <head>
+        <title>INSTRUCTOR</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        
+        <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    GESTION DE CONTRATOS
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                    <p:menu>
+                        <p:submenu label="Menu">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Salir" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                        
+                        </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <p:panelGrid columns="4">
+                            <h:outputText value="Número Contrato:"/>
+                            <p:inputText id="txtNumero" binding="#{contratoVista.txtNumeroContrato}" />
+
+                            <p:commandButton value="Registrar" binding="#{contratoVista.btnRegistrar}" action="#{contratoVista.accion_registrar()}" update="formulario"/>
+                            <p:commandButton value="Modificar" binding="#{contratoVista.btnModificar}" disabled="true"/>
+                            <p:commandButton value="Eliminar" binding="#{contratoVista.btnLimpiar}" disabled="true"/>
+                            
+                        </p:panelGrid>
+                        <p:dataTable var="contrato" value="#{contratoVista.listaContratos}" rows="1"
+                                     paginator="true" rowsPerPageTemplate="5,10,15">
+                            <p:column headerText="Número">
+                                <h:outputText value="#{contrato.numerocontrato}" />
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+        
+    </body>
+</html>
