@@ -11,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import logica.SesionLogicaLocal;
+import modelo.Funcionario;
+import modelo.Instructor;
 import modelo.Personal;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
@@ -70,12 +72,12 @@ public class SesionVista {
         
         try {
             
-            urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionFuncionario.xhtml"));
-            urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionInstructor.xhtml"));
+            urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionInstructor.xhtml"));
+            urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionFuncionario.xhtml"));
             Long documento = Long.parseLong(txtUsuario.getValue().toString());
             String clave = txtClave.getValue().toString();
-            Personal instructorLogueado = sesionLogica.iniciarSesionInstructor(documento, clave);
-            Personal funcionarioLogueado = null;
+            Instructor instructorLogueado = sesionLogica.iniciarSesionInstructor(documento, clave);
+            Funcionario funcionarioLogueado = null;
             
             if(instructorLogueado==null){
                 funcionarioLogueado = sesionLogica.iniciarSesionFuncionario(documento, clave);
@@ -83,6 +85,7 @@ public class SesionVista {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "!El usuario no existe¡"));
                 }else{
                     //esta logueado un funcionario
+                    System.out.println("Se loguea el funcionario? "+funcionarioLogueado.getPersonal().getNombrepersonal());
                     extContext.getSessionMap().put("usuario", funcionarioLogueado);
                     extContext.getSessionMap().put("tipo", "funcionario");                    
                     extContext.redirect(urlFuncionario);

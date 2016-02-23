@@ -29,7 +29,7 @@
     
     <filter>
         <filter-name>FiltroContratista</filter-name>
-        <filter-class>co.adsi.filtros.FiltroContratista</filter-class>
+        <filter-class>co.ruda.filtros.FiltroContratista</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroContratista</filter-name>
@@ -38,7 +38,7 @@
     
     <filter>
         <filter-name>FiltroFuncionario</filter-name>
-        <filter-class>co.adsi.filtros.FiltroFuncionario</filter-class>
+        <filter-class>co.ruda.filtros.FiltroFuncionario</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroFuncionario</filter-name>
