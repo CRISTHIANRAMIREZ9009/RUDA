@@ -90,46 +90,62 @@
                                     <f:selectItem itemLabel="EMPLEADO" itemValue="AHORROS" />
                                     <f:selectItem itemLabel="TAB.CUENTA PROPIA" itemValue="CORRIENTE" />
                                     <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="CORRIENTE" />
-                            </p:selectOneMenu>
-                            <h:outputText value="Ingresos Superiores Contrato:"/>
-                            <p:inputText id="txtIngresosSuperioresContrato" binding="#{instructorVista.txtIngresosSuperioresContrato}" />
+                            <p:outputLabel for="txtIngresosSuperioresContrato" value="¿SUS INGRESOS SUPERARON EN EL 2016 $39.591.000?" />
+                                <p:selectOneMenu id="txtIngresosSuperioresContrato" value="#{selectOneMenuView.txtIngresosSuperioresContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
                             
-                            <h:outputText value="Regimen Iva Contrato:"/>
-                            <p:inputText id="txtRegimenIvaContrato" binding="#{instructorVista.txtRegimenIvaContrato}" />
-                            
-                            <h:outputText value="Excluido Iva Contrato:"/>
-                            <p:inputText id="txtExcluidoIvaContrato" binding="#{instructorVista.txtTipoCuentaContrato}" />
-                            
-                            <h:outputText value="Declarante Contrato:"/>
-                            <p:inputText id="txtDeclaranteContrato" binding="#{instructorVista.txtDeclaranteContrato}" />
-                            
-                            <h:outputText value="Pensionado Contrato:"/>
-                            <p:inputText id="txtPensionadoContrato" binding="#{instructorVista.txtPensionadoContrato}" />
-                            
-                            <h:outputText value="Dependientes Contrato:"/>
-                            <p:inputText id="txtDependientesContratp" binding="#{instructorVista.txtDependientesContratp}" />
-                            
-                            <h:outputText value="Embargo Contrato:"/>
-                            <p:inputText id="txtEmbargoContrato" binding="#{instructorVista.txtEmbargoContrato}" />
-                            
+                           <p:outputLabel for="txtRegimenIvaContrato" value="Tipo Regimen de Iva:" />
+                                <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
+                                    <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtExcluidoIvaContrato" value="¿PRESTA SERVICIOS EXCLUIDOS IVA?" />
+                                <p:selectOneMenu id="txtExcluidoIvaContrato" value="#{selectOneMenuView.txtExcluidoIvaContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                              <p:outputLabel for="txtDeclaranteContrato" value="¿ES DECLARANTE DE RENTA?" />
+                                <p:selectOneMenu id="txtDeclaranteContrato" value="#{selectOneMenuView.txtDeclaranteContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtPensionadoContrato" value="¿USTED ES PENSIONADO?" />
+                                <p:selectOneMenu id="txtPensionadoContrato" value="#{selectOneMenuView.txtPensionadoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtDependientesContratp" value="¿DEPENDIENTE?" />
+                                <p:selectOneMenu id="txtDependientesContratp" value="#{selectOneMenuView.txtDependientesContratp}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtEmbargoContrato" value="¿ES OBJETO ACTUAL DE EMBARGO?" />
+                                <p:selectOneMenu id="txtEmbargoContrato" value="#{selectOneMenuView.txtEmbargoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
                             <h:outputText value="Número Contrato:"/>
                             <p:inputText id="txtNumeroContrato" binding="#{instructorVista.txtNumeroContrato}" />
                             
-                            <h:outputText value="Fecha Inicio Contrato:"/>
-                            <p:inputText id="txtFechaInicioContrato" binding="#{instructorVista.txtFechaInicioContrato}" />
-                            
-                            <h:outputText value="Fecha Fin Contrato:"/>
-                            <p:inputText id="txtFechaFinContrato" binding="#{instructorVista.txtFechaFinContrato}" />
+                            <p:outputLabel for="txtFechaInicioContrato" value="Fecha Inicio Contrato:" />
+                            <p:calendar id="txtFechaInicioContrato" value="#{funcionarioVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" />
+                            <p:outputLabel for="txtFechaFinContrato" value="Fecha Fin Contrato:" />
+                            <p:calendar id="txtFechaFinContrato" value="#{funcionarioVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" />
                             
                             <h:outputText value="Valor Total Contrato:"/>
+                            
                             <p:inputText id="txtValorTotalContrato" binding="#{instructorVista.txtValorTotalContrato}" />
                             
-                            <h:outputText value="Numero Compromiso Siif Contrato:"/>
-                            <p:inputText id="txtNumeroCompromisoSiifContrato" binding="#{instructorVista.txtNumeroCompromisoSiifContrato}" />
+                            <p:outputLabel for="txtNumeroCompromisoSiifContrato" value="Numero Compromiso Siif Contrato:"/>
+                            <p:calendar id="txtNumeroCompromisoSiifContrato" value="#{instructorVista.txtNumeroCompromisoSiifContrato}" pattern="yyyy-MM-dd" mask="true" />
                             
-                            <h:outputText value="Forma Pago Contrato:"/>
-                            <p:inputText id="txtFormaPagoContrato" binding="#{instructorVista.txtFormaPagoContrato}" />
-                            
+                            <h:outputLabel for="txtFormaPagoContrato" value="Forma Estimacion de Pago Contrato:"/>
+                            <p:selectOneMenu id="txtFormaPagoContrato" value="#{instructorVista.txtFormaPagoContrato}" style="width:125px ">
+                                
+                                
+                                
                             <h:outputText value="Tipo ARL Contrato:"/>
                             <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" />
                             
