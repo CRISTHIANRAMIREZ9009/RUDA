@@ -26,4 +26,22 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <filter>
+        <filter-name>FiltroContratista</filter-name>
+        <filter-class>co.adsi.filtros.FiltroContratista</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroContratista</filter-name>
+        <url-pattern>/faces/gestionInstructor.xhtml</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>FiltroFuncionario</filter-name>
+        <filter-class>co.adsi.filtros.FiltroFuncionario</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroFuncionario</filter-name>
+        <url-pattern>/faces/gestionFuncionario.xhtml</url-pattern>
+    </filter-mapping>
 </web-app>

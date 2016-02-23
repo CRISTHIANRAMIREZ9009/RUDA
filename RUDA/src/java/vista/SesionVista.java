@@ -80,7 +80,7 @@ public class SesionVista {
             if(instructorLogueado==null){
                 funcionarioLogueado = sesionLogica.iniciarSesionFuncionario(documento, clave);
                 if(funcionarioLogueado==null){
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El usuario no existe"));
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "!El usuario no existe¡"));
                 }else{
                     //esta logueado un funcionario
                     extContext.getSessionMap().put("usuario", funcionarioLogueado);
