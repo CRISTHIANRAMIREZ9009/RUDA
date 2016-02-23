@@ -132,7 +132,7 @@
                             <p:commandButton value="Eliminar" binding="#{funcionarioVista.btnLimpiar}" disabled="true"/>
                             
                         </p:panelGrid>
-                        <p:dataTable var="funcionario" value="#{funcionarioVista.listaContratos}" rows="6"
+                        <p:dataTable var="funcionario" value="#{funcionarioVista.listaContratos}" rows="5"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="5,10,15">
@@ -144,6 +144,9 @@
                             </p:column>
                             <p:column headerText="Documento Personal Contrato">
                                 <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
+                            </p:column>
+                            <p:column headerText="Estado Contrato">
+                                <h:outputText value="#{funcionario.estadocontrato}" />
                             </p:column>
 
                         </p:dataTable>
