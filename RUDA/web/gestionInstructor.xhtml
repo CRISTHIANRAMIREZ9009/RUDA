@@ -44,7 +44,7 @@
                 <p:layoutUnit position="center">
                     <h:form id="formulario">
                         <p:growl id="growl" showDetail="true" sticky="true" />
-                        <p:panelGrid columns="4">
+                        <p:panelGrid columns="6">
                             
                             <h:outputText value="Codigo Regional:"/>
                             <p:inputText id="txtCodigoRegional" binding="#{instructorVista.txtCodigoRegional}" />
@@ -86,10 +86,12 @@
                             <p:inputText id="txtNumeroCuentaContrato" binding="#{instructorVista.txtNumeroCuentaContrato}" />
                             
                             <p:outputLabel for="txtClasePersona" value="Clase Persona:"/>
-                            <p:selectOneMenu id="txtClasePersona" value="#{selectOneMenuView.txtClasePersona}" style="width:125px">
+                                <p:selectOneMenu id="txtClasePersona" value="#{selectOneMenuView.txtClasePersona}" style="width:125px">
                                     <f:selectItem itemLabel="EMPLEADO" itemValue="AHORROS" />
                                     <f:selectItem itemLabel="TAB.CUENTA PROPIA" itemValue="CORRIENTE" />
                                     <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="CORRIENTE" />
+                                 </p:selectOneMenu>
+                            
                             <p:outputLabel for="txtIngresosSuperioresContrato" value="¿SUS INGRESOS SUPERARON EN EL 2016 $39.591.000?" />
                                 <p:selectOneMenu id="txtIngresosSuperioresContrato" value="#{selectOneMenuView.txtIngresosSuperioresContrato}" style="width:125px">
                                     <f:selectItem itemLabel="SI" itemValue="SI" />
@@ -141,27 +143,29 @@
                             <p:outputLabel for="txtNumeroCompromisoSiifContrato" value="Numero Compromiso Siif Contrato:"/>
                             <p:calendar id="txtNumeroCompromisoSiifContrato" value="#{instructorVista.txtNumeroCompromisoSiifContrato}" pattern="yyyy-MM-dd" mask="true" />
                             
-                            <h:outputLabel for="txtFormaPagoContrato" value="Forma Estimacion de Pago Contrato:"/>
-                            <p:selectOneMenu id="txtFormaPagoContrato" value="#{instructorVista.txtFormaPagoContrato}" style="width:125px ">
-                                <f:selectItem itemLabel="POR PERIODO (MES)" itemValue="POR PERIODO"/>
-                                <f:selectItem itemLabel="POR HORA" itemValue="POR HORA"/>
-                            </p:selectOneMenu>
+                            <p:outputLabel for="txtFormaPagoContrato" value="Forma de Pago Contrato:" />
+                                <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="POR PERIODO (MES)" itemValue="POR PERIODO (MES)" />
+                                    <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
+                                </p:selectOneMenu>
                                 
                                 
                             <h:outputText value="Tipo ARL Contrato:"/>
                             <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" />
                             
-
-                            <p:commandButton value="Registrar" binding="#{instructorVista.btnRegistrar}" action="#{contratoVista.accion_registrar()}" update="formulario"/>
+                            
+                            <p:commandButton value="Registrar" binding="#{instructorVista.btnRegistrar}" action="#{instructorVista.accion_registrar()}" update="formulario"/>
                             <p:commandButton value="Modificar" binding="#{instructorVista.btnModificar}" disabled="true"/>
                             <p:commandButton value="Eliminar" binding="#{instructorVista.btnLimpiar}" disabled="true"/>
                             
                             
                             
                         </p:panelGrid>
-                        <p:dataTable var="instructor" value="#{instructorVista.listaInstructor}" rows="1"
-                                     paginator="true" rowsPerPageTemplate="5,10,15">
-                            <p:column headerText="Número">
+                       <p:dataTable var="instructor" value="#{instructorVista.listaContratos}" rows="1"
+                                    paginator="true" 
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="5,10,15">
+                            <p:column headerText="Número Contrato">
                                 <h:outputText value="#{instructor.numeroinstructor}" />
                             </p:column>
 
