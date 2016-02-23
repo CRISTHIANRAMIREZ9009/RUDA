@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>FUNCIONARIO (CONTRATO)</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    GESTION DE CONTRATOS
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                    <p:menu>
+                        <p:submenu label="Menu">
+                            <p:menuitem value="Instructor" url="faces/gestionInstructor.xhtml" />
+                            <p:menuitem value="Personal" url="faces/gestionFuncionarioPersonal.xhtml" />
+                        </p:submenu>
+
+                    </p:menu>
+                        
+                        </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form id="formulario">
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <p:panelGrid columns="6">
+                            <h:outputText value="Número Contrato:"/>
+                            <p:inputText id="txtNumeroContrato" binding="#{funcionarioVista.txtNumeroContrato}" />
+                            <p:outputLabel for="txtFechaInicioContrato" value="Fecha Inicio Contrato:" />
+                            <p:calendar id="txtFechaInicioContrato" value="#{funcionarioVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" />
+                            <p:outputLabel for="txtFechaFinContrato" value="Fecha Fin Contrato:" />
+                            <p:calendar id="txtFechaFinContrato" value="#{funcionarioVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" />
+                            <h:outputText value="Objeto Contrato:"/>
+                            <p:inputText id="txtObjetoContrato" binding="#{funcionarioVista.txtObjetoContrato}" />
+                            <p:outputLabel for="txtEstadoContrato" value="Estado Contrato:" />
+                                <p:selectOneMenu id="txtEstadoContrato" value="#{selectOneMenuView.txtEstadoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
+                                    <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
+                                </p:selectOneMenu>
+                            <h:outputText value="Valor Total Contrato:"/>
+                            <p:inputText id="txtValorTotalContrato" binding="#{funcionarioVista.txtValorTotalContrato}" />
+                            <h:outputText value="Número Compromiso si Contrato:"/>
+                            <p:inputText id="txtNumeroCompromisoSiContrato" binding="#{funcionarioVista.txtNumeroCompromisoSiContrato}" />
+                            <p:outputLabel for="txtFormaPagoContrato" value="Forma de Pago Contrato:" />
+                                <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="POR PERIODO (MES)" itemValue="POR PERIODO (MES)" />
+                                    <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
+                                </p:selectOneMenu>
+                            <h:outputText value="Número Cuenta Contrato:"/>
+                            <p:inputText id="txtNumeroCuentaContrato" binding="#{funcionarioVista.txtNumeroCuentaContrato}" />
+                            <p:outputLabel for="txtTipoCuentaContrato" value="Tipo Cuenta Contrato" />
+                                <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
+                                    <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtClasePersonaContrato" value="Clase de Persona Contrato:" />
+                                <p:selectOneMenu id="txtClasePersonaContrato" value="#{selectOneMenuView.txtClasePersonaContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />
+                                    <f:selectItem itemLabel="TRABAJADOR POR CUENTA PROPIA" itemValue="TRABAJADOR POR CUENTA PROPIA" />
+                                    <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="DEMAS PERSONAS NATURALES" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtIngresosSuperioresContrato" value="¿SUS INGRESOS SUPERARON EN EL 2016 $39.591.000?" />
+                                <p:selectOneMenu id="txtIngresosSuperioresContrato" value="#{selectOneMenuView.txtIngresosSuperioresContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtRegimenIvaContrato" value="Tipo Regimen de Iva:" />
+                                <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
+                                    <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtExcluidoIvaContrato" value="¿PRESTA SERVICIOS EXCLUIDOS DE IVA?" />
+                                <p:selectOneMenu id="txtExcluidoIvaContrato" value="#{selectOneMenuView.txtExcluidoIvaContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtDeclaranteContrato" value="¿ES DECLARANTE DE RENTA?" />
+                                <p:selectOneMenu id="txtDeclaranteContrato" value="#{selectOneMenuView.txtDeclaranteContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtPensionadoContrato" value="¿USTED ES PENSIONADO?" />
+                                <p:selectOneMenu id="txtPensionadoContrato" value="#{selectOneMenuView.txtPensionadoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtDependientesContratp" value="¿DEPENDIENTE?" />
+                                <p:selectOneMenu id="txtDependientesContratp" value="#{selectOneMenuView.txtDependientesContratp}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <p:outputLabel for="txtEmbargoContrato" value="¿ES OBJETO ACTUAL DE EMBARGO?" />
+                                <p:selectOneMenu id="txtEmbargoContrato" value="#{selectOneMenuView.txtEmbargoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneMenu>
+                            <h:outputText value="Valor Embargo Contrato:"/>
+                            <p:inputText id="txtValorEmbargoContrato" binding="#{funcionarioVista.txtValorEmbargoContrato}" />
+                            <h:outputText value="Valor Mensual Contrato:"/>
+                            <p:inputText id="txtValorMensualContrato" binding="#{funcionarioVista.txtValorMensualContrato}" />
+                            <h:outputText value="Valor Hora Embargo Contrato:"/>
+                            <p:inputText id="txtValorHoraContrato" binding="#{funcionarioVista.txtValorHoraContrato}" />
+                            <p:outputLabel for="txtTipoArlContrato" value="Tipo ARL Contrato:" />
+                                <p:selectOneMenu id="txtTipoArlContrato" value="#{selectOneMenuView.txtTipoArlContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="1" itemValue="1" />
+                                    <f:selectItem itemLabel="2" itemValue="2" />
+                                    <f:selectItem itemLabel="3" itemValue="3" />
+                                    <f:selectItem itemLabel="4" itemValue="4" />
+                                    <f:selectItem itemLabel="5" itemValue="5" />                  
+                                </p:selectOneMenu>
+                            
+                            <p:commandButton value="Registrar" binding="#{funcionarioVista.btnRegistrar}" action="#{funcionarioVista.accion_registrar()}" update="formulario"/>
+                            <p:commandButton value="Modificar" binding="#{funcionarioVista.btnModificar}" disabled="true"/>
+                            <p:commandButton value="Eliminar" binding="#{funcionarioVista.btnLimpiar}" disabled="true"/>
+                            
+                        </p:panelGrid>
+                        <p:dataTable var="funcionario" value="#{funcionarioVista.listaContratos}" rows="5"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <p:column headerText="Numero Contrato">
+                                <h:outputText value="#{funcionario.numerocontrato}" />
+                            </p:column>
+                            <p:column headerText="Documento Coordinador Contrato">
+                                <h:outputText value="#{funcionario.documentocoordinadorcontrato.documentocoordinador}" />
+                            </p:column>
+                            <p:column headerText="Documento Personal Contrato">
+                                <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
+                            </p:column>
+                            <p:column headerText="Estado Contrato">
+                                <h:outputText value="#{funcionario.estadocontrato}" />
+                            </p:column>
+
+                        </p:dataTable>
+                        
+                        <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion_action}"/>
+                        
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

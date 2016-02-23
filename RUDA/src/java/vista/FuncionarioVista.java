@@ -11,7 +11,6 @@ import logica.ContratoLogicaLocal;
 import modelo.Banco;
 import modelo.Contrato;
 import modelo.Coordinador;
-import modelo.Instructor;
 import modelo.Lineacentro;
 import modelo.Personal;
 import org.primefaces.component.commandbutton.CommandButton;

@@ -73,7 +73,7 @@ public class SesionVista {
         try {
             
             urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionInstructor.xhtml"));
-            urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionFuncionario.xhtml"));
+            urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionFuncionarioContrato.xhtml"));
             Long documento = Long.parseLong(txtUsuario.getValue().toString());
             String clave = txtClave.getValue().toString();
             Instructor instructorLogueado = sesionLogica.iniciarSesionInstructor(documento, clave);
