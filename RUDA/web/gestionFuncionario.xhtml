@@ -71,10 +71,6 @@
                                     <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
                                     <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
                                 </p:selectOneMenu>
-                            <!--<h:outputText value="Codigo Banco Contrato:"/>
-                            <p:inputText id="selectedCodigoBancoContrato" binding="#{funcionarioVista.selectedCodigoBancoContrato}" />
-                            <h:outputText value="Documento Coordinardor Contrato:"/>
-                            <p:inputText id="selectedDocumentoCoordinadorContrato" binding="#{funcionarioVista.selectedDocumentoCoordinadorContrato}" />-->
                             <p:outputLabel for="txtClasePersonaContrato" value="Clase de Persona Contrato:" />
                                 <p:selectOneMenu id="txtClasePersonaContrato" value="#{selectOneMenuView.txtClasePersonaContrato}" style="width:125px">
                                     <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />
@@ -136,10 +132,18 @@
                             <p:commandButton value="Eliminar" binding="#{funcionarioVista.btnLimpiar}" disabled="true"/>
                             
                         </p:panelGrid>
-                        <p:dataTable var="funcionario" value="#{funcionarioVista.listaContratos}" rows="1"
-                                     paginator="true" rowsPerPageTemplate="5,10,15">
-                            <p:column headerText="Número">
-                                <h:outputText value="#{contrato.numerocontrato}" />
+                        <p:dataTable var="funcionario" value="#{funcionarioVista.listaContratos}" rows="6"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <p:column headerText="Numero Contrato">
+                                <h:outputText value="#{funcionario.numerocontrato}" />
+                            </p:column>
+                            <p:column headerText="Documento Coordinador Contrato">
+                                <h:outputText value="#{funcionario.documentocoordinadorcontrato.documentocoordinador}" />
+                            </p:column>
+                            <p:column headerText="Documento Personal Contrato">
+                                <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
                             </p:column>
 
                         </p:dataTable>
