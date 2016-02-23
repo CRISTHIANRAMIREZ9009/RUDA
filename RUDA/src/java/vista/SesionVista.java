@@ -11,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import logica.SesionLogicaLocal;
+import modelo.Funcionario;
+import modelo.Instructor;
 import modelo.Personal;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
@@ -74,8 +76,8 @@ public class SesionVista {
             urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionInstructor.xhtml"));
             Long documento = Long.parseLong(txtUsuario.getValue().toString());
             String clave = txtClave.getValue().toString();
-            Personal instructorLogueado = sesionLogica.iniciarSesionInstructor(documento, clave);
-            Personal funcionarioLogueado = null;
+            Instructor instructorLogueado = sesionLogica.iniciarSesionInstructor(documento, clave);
+            Funcionario funcionarioLogueado = null;
             
             if(instructorLogueado==null){
                 funcionarioLogueado = sesionLogica.iniciarSesionFuncionario(documento, clave);

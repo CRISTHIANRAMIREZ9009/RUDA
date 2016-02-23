@@ -3,17 +3,24 @@ package logica;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import modelo.Funcionario;
+import modelo.Instructor;
 import modelo.Personal;
+import persistencia.FuncionarioFacadeLocal;
+import persistencia.InstructorFacadeLocal;
 import persistencia.PersonalFacadeLocal;
 
 @Stateless
 public class SesionLogica implements SesionLogicaLocal {
     
     @EJB
-    private PersonalFacadeLocal personalDAO;
+    private InstructorFacadeLocal instructorDAO;
+    
+    @EJB
+    private FuncionarioFacadeLocal funcionarioDAO;
 
     @Override
-    public Personal iniciarSesionInstructor(Long documentopersonal, String clavepersonal) throws Exception {
+    public Instructor iniciarSesionInstructor(Long documentopersonal, String clavepersonal) throws Exception {
     
         if(documentopersonal==null || clavepersonal==null)
         {
@@ -29,12 +36,12 @@ public class SesionLogica implements SesionLogicaLocal {
             
         }
         
-        Personal personal = personalDAO.find(documentopersonal);
+        Instructor instructor = instructorDAO.find(documentopersonal);
         
-        if(personal==null)
+        if(instructor==null)
         {
             
-            if(!personal.getClavepersonal().equals(clavepersonal))
+            if(!instructor.getPersonal().getClavepersonal().equals(clavepersonal))
             {
                 
                 throw new Exception ("!La clave es incorrecta¡");
@@ -43,12 +50,12 @@ public class SesionLogica implements SesionLogicaLocal {
             
         }
         
-        return personal;
+        return instructor;
     
     }
 
     @Override
-    public Personal iniciarSesionFuncionario(Long documentopersonal, String clavepersonal) throws Exception {
+    public Funcionario iniciarSesionFuncionario(Long documentopersonal, String clavepersonal) throws Exception {
         
         if(documentopersonal==null || clavepersonal==null)
         {
@@ -64,12 +71,12 @@ public class SesionLogica implements SesionLogicaLocal {
             
         }
         
-        Personal personal = personalDAO.find(documentopersonal);
+        Funcionario funcionario = funcionarioDAO.find(documentopersonal);
         
-        if(personal==null)
+        if(funcionario==null)
         {
             
-            if(!personal.getClavepersonal().equals(clavepersonal))
+            if(!funcionario.getPersonal().getClavepersonal().equals(clavepersonal))
             {
                 
                 throw new Exception ("!La clave es incorrecta¡");
@@ -78,7 +85,7 @@ public class SesionLogica implements SesionLogicaLocal {
             
         }
         
-        return personal;
+        return funcionario;
         
     }
 

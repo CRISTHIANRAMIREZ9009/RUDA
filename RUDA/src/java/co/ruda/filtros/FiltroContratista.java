@@ -31,20 +31,20 @@ public class FiltroContratista implements Filter{
             if(!tipo.equals("instructor"))
             {
                // Instuctor instructor = (Instuctor) ((HttpServletRequest)request).getSession().getAttribute("usuario");
-                ((HttpServletResponse)response).sendRedirect("faces/SesionInvalida.xhtml");
+                ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
             }else{
                 Instructor instructor =(Instructor)((HttpServletRequest)request).getSession().getAttribute("usuario");
             
                 if(instructor!=null){
                     chain.doFilter(request, response);
                 }else{
-                    ((HttpServletResponse)response).sendRedirect("faces/SesionInvalida.xhtml");
+                    ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
                 }
             
             }
         }
         }catch(NullPointerException e){
-            ((HttpServletResponse)response).sendRedirect("faces/SesionInvalida.xhtml");
+            ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
         }
     }
 
