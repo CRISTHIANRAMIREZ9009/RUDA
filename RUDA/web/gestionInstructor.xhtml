@@ -7,16 +7,20 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
       
+    <f:view contentType="text/html">
     <head>
-        <title>INSTRUCTOR</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+       <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>INSTRUCTOR</title>
+            </f:facet>
     </head>
     <body>
         
         <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    GESTION DE CONTRATOS Cristian Giraldo
+                    GESTION DE INSTRUCTORES
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -43,21 +47,104 @@
                     <h:form id="formulario">
                         <p:growl id="growl" showDetail="true" sticky="true" />
                         <p:panelGrid columns="4">
+                            
+                            <h:outputText value="Codigo Regional:"/>
+                            <p:inputText id="txtCodigoRegional" binding="#{instructorVista.txtCodigoRegional}" />
+                            
+                            <h:outputText value="Codigo Centro:"/>
+                            <p:inputText id="txtCodigoCentro" binding="#{instructorVista.txtCodigoCentro}" />
+                            
+                            <h:outputText value="Fecha Diligenciamiento Plantilla:"/>
+                            <p:inputText id="txtFechaDiligenciamientoPlantilla" binding="#{instructorVista.txtFechaDiligenciamietoPlanilla}" />
+                            
+                            <h:outputText value="Nombre Contratista:"/>
+                            <p:inputText id="txtNombreContratista" binding="#{instructorVista.txtNombreContratista}" />
+                            
+                            <h:outputText value="Apellido Contratista:"/>
+                            <p:inputText id="txtApellidoContratista" binding="#{instructorVista.txtApellidoContratista}" />
+                            
+                            <h:outputText value="Documento Contratista:"/>
+                            <p:inputText id="txtDocumentoContratista" binding="#{instructorVista.txtDocumentoContratista}" />
+                            
+                            <h:outputText value="Teléfono Contratista:"/>
+                            <p:inputText id="txtTelefonoContratista" binding="#{instructorVista.txtTelefonoContratista}" />
+                            
+                            <h:outputText value="Correo Contratista:"/>
+                            <p:inputText id="txtCorreoContratista" binding="#{instructorVista.txtCorreoContratista}" />
+                            
+                            <h:outputText value="Codigo Dependencia:"/>
+                            <p:inputText id="txtCodigoDependencia" binding="#{instructorVista.txtCodigoDependencia}" />
+                            
+                             <h:outputText value="Codigo Banco:"/>
+                            <p:inputText id="txtCodigoBanco" binding="#{instructorVista.txtCodigoBanco}" />
+                            
+                             <h:outputText value="Tipo Cuenta Contrato:"/>
+                            <p:inputText id="txtTipoCuentaContrato" binding="#{instructorVista.txtTipoCuentaContrato}" />
+                            
+                            <h:outputText value="Número Cuenta Contrato:"/>
+                            <p:inputText id="txtNumeroCuentaContrato" binding="#{instructorVista.txtNumeroCuentaContrato}" />
+                            
+                            <h:outputText value="Clase Persona:"/>
+                            <p:inputText id="txtClasePersona" binding="#{instructorVista.txtClasePersona}" />
+                            
+                            <h:outputText value="Ingresos Superiores Contrato:"/>
+                            <p:inputText id="txtIngresosSuperioresContrato" binding="#{instructorVista.txtIngresosSuperioresContrato}" />
+                            
+                            <h:outputText value="Regimen Iva Contrato:"/>
+                            <p:inputText id="txtRegimenIvaContrato" binding="#{instructorVista.txtRegimenIvaContrato}" />
+                            
+                            <h:outputText value="Excluido Iva Contrato:"/>
+                            <p:inputText id="txtExcluidoIvaContrato" binding="#{instructorVista.txtTipoCuentaContrato}" />
+                            
+                            <h:outputText value="Declarante Contrato:"/>
+                            <p:inputText id="txtDeclaranteContrato" binding="#{instructorVista.txtDeclaranteContrato}" />
+                            
+                            <h:outputText value="Pensionado Contrato:"/>
+                            <p:inputText id="txtPensionadoContrato" binding="#{instructorVista.txtPensionadoContrato}" />
+                            
+                            <h:outputText value="Dependientes Contrato:"/>
+                            <p:inputText id="txtDependientesContratp" binding="#{instructorVista.txtDependientesContratp}" />
+                            
+                            <h:outputText value="Embargo Contrato:"/>
+                            <p:inputText id="txtEmbargoContrato" binding="#{instructorVista.txtEmbargoContrato}" />
+                            
                             <h:outputText value="Número Contrato:"/>
-                            <p:inputText id="txtNumero" binding="#{contratoVista.txtNumeroContrato}" />
+                            <p:inputText id="txtNumeroContrato" binding="#{instructorVista.txtNumeroContrato}" />
+                            
+                            <h:outputText value="Fecha Inicio Contrato:"/>
+                            <p:inputText id="txtFechaInicioContrato" binding="#{instructorVista.txtFechaInicioContrato}" />
+                            
+                            <h:outputText value="Fecha Fin Contrato:"/>
+                            <p:inputText id="txtFechaFinContrato" binding="#{instructorVista.txtFechaFinContrato}" />
+                            
+                            <h:outputText value="Valor Total Contrato:"/>
+                            <p:inputText id="txtValorTotalContrato" binding="#{instructorVista.txtValorTotalContrato}" />
+                            
+                            <h:outputText value="Numero Compromiso Siif Contrato:"/>
+                            <p:inputText id="txtNumeroCompromisoSiifContrato" binding="#{instructorVista.txtNumeroCompromisoSiifContrato}" />
+                            
+                            <h:outputText value="Forma Pago Contrato:"/>
+                            <p:inputText id="txtFormaPagoContrato" binding="#{instructorVista.txtFormaPagoContrato}" />
+                            
+                            <h:outputText value="Tipo ARL Contrato:"/>
+                            <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" />
+                            
 
-                            <p:commandButton value="Registrar" binding="#{contratoVista.btnRegistrar}" action="#{contratoVista.accion_registrar()}" update="formulario"/>
-                            <p:commandButton value="Modificar" binding="#{contratoVista.btnModificar}" disabled="true"/>
-                            <p:commandButton value="Eliminar" binding="#{contratoVista.btnLimpiar}" disabled="true"/>
+                            <p:commandButton value="Registrar" binding="#{instructorVista.btnRegistrar}" action="#{contratoVista.accion_registrar()}" update="formulario"/>
+                            <p:commandButton value="Modificar" binding="#{instructorVista.btnModificar}" disabled="true"/>
+                            <p:commandButton value="Eliminar" binding="#{instructorVista.btnLimpiar}" disabled="true"/>
+                            
+                            
                             
                         </p:panelGrid>
-                        <p:dataTable var="contrato" value="#{contratoVista.listaContratos}" rows="1"
+                        <p:dataTable var="instructor" value="#{instructorVista.listaInstructor}" rows="1"
                                      paginator="true" rowsPerPageTemplate="5,10,15">
                             <p:column headerText="Número">
-                                <h:outputText value="#{contrato.numerocontrato}" />
+                                <h:outputText value="#{instructor.numeroinstructor}" />
                             </p:column>
 
                         </p:dataTable>
+                        <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion_action}"/>
                     </h:form>
                 </p:layoutUnit>
 
