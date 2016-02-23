@@ -58,8 +58,11 @@
                             <p:inputText id="txtValorTotalContrato" binding="#{funcionarioVista.txtValorTotalContrato}" />
                             <h:outputText value="Número Compromiso si Contrato:"/>
                             <p:inputText id="txtNumeroCompromisoSiContrato" binding="#{funcionarioVista.txtNumeroCompromisoSiContrato}" />
-                            <h:outputText value="Forma de Pago Contrato:"/>
-                            <p:inputText id="txtFormaPagoContrato" binding="#{funcionarioVista.txtFormaPagoContrato}" />
+                            <p:outputLabel for="txtFormaPagoContrato" value="Forma de Pago Contrato:" />
+                                <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:125px">
+                                    <f:selectItem itemLabel="POR PERIODO (MES)" itemValue="POR PERIODO (MES)" />
+                                    <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
+                                </p:selectOneMenu>
                             <h:outputText value="Número Cuenta Contrato:"/>
                             <p:inputText id="txtNumeroCuentaContrato" binding="#{funcionarioVista.txtNumeroCuentaContrato}" />
                             <p:outputLabel for="txtTipoCuentaContrato" value="Tipo Cuenta Contrato" />
