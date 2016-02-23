@@ -17,9 +17,9 @@ import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.event.SelectEvent;
 
-@ManagedBean (name = "funcionarioVista")
+@ManagedBean (name = "funcionarioContratoVista")
 @RequestScoped
-public class FuncionarioVista {
+public class FuncionarioContratoVista {
 
     private InputText txtNumeroContrato;
     private InputText txtFechaInicioContrato;
@@ -57,7 +57,7 @@ public class FuncionarioVista {
     @EJB
     private ContratoLogicaLocal contratoLogica;
     
-    public FuncionarioVista() {
+    public FuncionarioContratoVista() {
         
     }
 
@@ -326,7 +326,7 @@ public class FuncionarioVista {
             } catch (Exception ex) 
             {
                 
-                Logger.getLogger(FuncionarioVista.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
                 
             }
             

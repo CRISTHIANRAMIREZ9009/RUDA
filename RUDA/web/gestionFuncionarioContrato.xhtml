@@ -43,29 +43,29 @@
                         <p:growl id="growl" showDetail="true" sticky="true" />
                         <p:panelGrid columns="6">
                             <h:outputText value="Número Contrato:"/>
-                            <p:inputText id="txtNumeroContrato" binding="#{funcionarioVista.txtNumeroContrato}" />
+                            <p:inputText id="txtNumeroContrato" binding="#{funcionarioContratoVista.txtNumeroContrato}" />
                             <p:outputLabel for="txtFechaInicioContrato" value="Fecha Inicio Contrato:" />
-                            <p:calendar id="txtFechaInicioContrato" value="#{funcionarioVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" />
+                            <p:calendar id="txtFechaInicioContrato" value="#{funcionarioContratoVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" />
                             <p:outputLabel for="txtFechaFinContrato" value="Fecha Fin Contrato:" />
-                            <p:calendar id="txtFechaFinContrato" value="#{funcionarioVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" />
+                            <p:calendar id="txtFechaFinContrato" value="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" />
                             <h:outputText value="Objeto Contrato:"/>
-                            <p:inputText id="txtObjetoContrato" binding="#{funcionarioVista.txtObjetoContrato}" />
+                            <p:inputText id="txtObjetoContrato" binding="#{funcionarioContratoVista.txtObjetoContrato}" />
                             <p:outputLabel for="txtEstadoContrato" value="Estado Contrato:" />
                                 <p:selectOneMenu id="txtEstadoContrato" value="#{selectOneMenuView.txtEstadoContrato}" style="width:125px">
                                     <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
                                     <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
                                 </p:selectOneMenu>
                             <h:outputText value="Valor Total Contrato:"/>
-                            <p:inputText id="txtValorTotalContrato" binding="#{funcionarioVista.txtValorTotalContrato}" />
+                            <p:inputText id="txtValorTotalContrato" binding="#{funcionarioContratoVista.txtValorTotalContrato}" />
                             <h:outputText value="Número Compromiso si Contrato:"/>
-                            <p:inputText id="txtNumeroCompromisoSiContrato" binding="#{funcionarioVista.txtNumeroCompromisoSiContrato}" />
+                            <p:inputText id="txtNumeroCompromisoSiContrato" binding="#{funcionarioContratoVista.txtNumeroCompromisoSiContrato}" />
                             <p:outputLabel for="txtFormaPagoContrato" value="Forma de Pago Contrato:" />
                                 <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:125px">
                                     <f:selectItem itemLabel="POR PERIODO (MES)" itemValue="POR PERIODO (MES)" />
                                     <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
                                 </p:selectOneMenu>
                             <h:outputText value="Número Cuenta Contrato:"/>
-                            <p:inputText id="txtNumeroCuentaContrato" binding="#{funcionarioVista.txtNumeroCuentaContrato}" />
+                            <p:inputText id="txtNumeroCuentaContrato" binding="#{funcionarioContratoVista.txtNumeroCuentaContrato}" />
                             <p:outputLabel for="txtTipoCuentaContrato" value="Tipo Cuenta Contrato" />
                                 <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:125px">
                                     <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
@@ -113,11 +113,11 @@
                                     <f:selectItem itemLabel="NO" itemValue="NO" />
                                 </p:selectOneMenu>
                             <h:outputText value="Valor Embargo Contrato:"/>
-                            <p:inputText id="txtValorEmbargoContrato" binding="#{funcionarioVista.txtValorEmbargoContrato}" />
+                            <p:inputText id="txtValorEmbargoContrato" binding="#{funcionarioContratoVista.txtValorEmbargoContrato}" />
                             <h:outputText value="Valor Mensual Contrato:"/>
-                            <p:inputText id="txtValorMensualContrato" binding="#{funcionarioVista.txtValorMensualContrato}" />
+                            <p:inputText id="txtValorMensualContrato" binding="#{funcionarioContratoVista.txtValorMensualContrato}" />
                             <h:outputText value="Valor Hora Embargo Contrato:"/>
-                            <p:inputText id="txtValorHoraContrato" binding="#{funcionarioVista.txtValorHoraContrato}" />
+                            <p:inputText id="txtValorHoraContrato" binding="#{funcionarioContratoVista.txtValorHoraContrato}" />
                             <p:outputLabel for="txtTipoArlContrato" value="Tipo ARL Contrato:" />
                                 <p:selectOneMenu id="txtTipoArlContrato" value="#{selectOneMenuView.txtTipoArlContrato}" style="width:125px">
                                     <f:selectItem itemLabel="1" itemValue="1" />
@@ -127,12 +127,12 @@
                                     <f:selectItem itemLabel="5" itemValue="5" />                  
                                 </p:selectOneMenu>
                             
-                            <p:commandButton value="Registrar" binding="#{funcionarioVista.btnRegistrar}" action="#{funcionarioVista.accion_registrar()}" update="formulario"/>
-                            <p:commandButton value="Modificar" binding="#{funcionarioVista.btnModificar}" disabled="true"/>
-                            <p:commandButton value="Eliminar" binding="#{funcionarioVista.btnLimpiar}" disabled="true"/>
+                            <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar()}" update="formulario"/>
+                            <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
+                            <p:commandButton value="Eliminar" binding="#{funcionarioContratoVista.btnLimpiar}" disabled="true"/>
                             
                         </p:panelGrid>
-                        <p:dataTable var="funcionario" value="#{funcionarioVista.listaContratos}" rows="5"
+                        <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="5,10,15">
