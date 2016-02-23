@@ -72,8 +72,8 @@ public class SesionVista {
         
         try {
             
-            urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionFuncionario.xhtml"));
-            urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionInstructor.xhtml"));
+            urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionInstructor.xhtml"));
+            urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/faces/gestionFuncionario.xhtml"));
             Long documento = Long.parseLong(txtUsuario.getValue().toString());
             String clave = txtClave.getValue().toString();
             Instructor instructorLogueado = sesionLogica.iniciarSesionInstructor(documento, clave);
@@ -85,6 +85,7 @@ public class SesionVista {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "!El usuario no existe¡"));
                 }else{
                     //esta logueado un funcionario
+                    System.out.println("Se loguea el funcionario? "+funcionarioLogueado.getPersonal().getNombrepersonal());
                     extContext.getSessionMap().put("usuario", funcionarioLogueado);
                     extContext.getSessionMap().put("tipo", "funcionario");                    
                     extContext.redirect(urlFuncionario);

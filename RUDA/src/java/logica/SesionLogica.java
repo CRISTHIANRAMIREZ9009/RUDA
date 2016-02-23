@@ -38,7 +38,7 @@ public class SesionLogica implements SesionLogicaLocal {
         
         Instructor instructor = instructorDAO.find(documentopersonal);
         
-        if(instructor==null)
+        if(instructor!=null)
         {
             
             if(!instructor.getPersonal().getClavepersonal().equals(clavepersonal))
@@ -73,7 +73,7 @@ public class SesionLogica implements SesionLogicaLocal {
         
         Funcionario funcionario = funcionarioDAO.find(documentopersonal);
         
-        if(funcionario==null)
+        if(funcionario!=null)
         {
             
             if(!funcionario.getPersonal().getClavepersonal().equals(clavepersonal))
