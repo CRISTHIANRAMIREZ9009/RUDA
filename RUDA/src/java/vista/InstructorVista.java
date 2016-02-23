@@ -1,9 +1,12 @@
 package vista;
 
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import logica.ContratoLogicaLocal;
+import modelo.Contrato;
+import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 
 
@@ -40,6 +43,11 @@ public class InstructorVista {
     private InputText txtNumeroCompromisoSiifContrato;
     private InputText txtFormaPagoContrato;
     private InputText txtTipoARLContrato;
+     private CommandButton btnRegistrar;
+    private CommandButton btnModificar;
+    private CommandButton btnLimpiar;
+    private List<Contrato> listaContratos;
+    private Contrato selectedContrato;
     
     @EJB
     private ContratoLogicaLocal contratoLogica;
@@ -270,6 +278,46 @@ public class InstructorVista {
         this.txtTipoARLContrato = txtTipoARLContrato;
     }
 
+    public CommandButton getBtnRegistrar() {
+        return btnRegistrar;
+    }
+
+    public void setBtnRegistrar(CommandButton btnRegistrar) {
+        this.btnRegistrar = btnRegistrar;
+    }
+
+    public CommandButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public void setBtnModificar(CommandButton btnModificar) {
+        this.btnModificar = btnModificar;
+    }
+
+    public CommandButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public void setBtnLimpiar(CommandButton btnLimpiar) {
+        this.btnLimpiar = btnLimpiar;
+    }
+
+    public List<Contrato> getListaContratos() {
+        return listaContratos;
+    }
+
+    public void setListaContratos(List<Contrato> listaContratos) {
+        this.listaContratos = listaContratos;
+    }
+
+    public Contrato getSelectedContrato() {
+        return selectedContrato;
+    }
+
+    public void setSelectedContrato(Contrato selectedContrato) {
+        this.selectedContrato = selectedContrato;
+    }
+
     public ContratoLogicaLocal getContratoLogica() {
         return contratoLogica;
     }
@@ -277,5 +325,6 @@ public class InstructorVista {
     public void setContratoLogica(ContratoLogicaLocal contratoLogica) {
         this.contratoLogica = contratoLogica;
     }
+
     
 }
