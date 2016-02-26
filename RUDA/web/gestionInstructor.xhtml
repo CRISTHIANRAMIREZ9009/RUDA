@@ -6,35 +6,37 @@
       xmlns:p="http://primefaces.org/ui">
 
     <f:view contentType="text/html">
-        <head>
-        <f:facet name="first">
-            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-            <title>INSTRUCTOR</title>
-        </f:facet>
-    </head>
-    <h:body>
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>INSTRUCTOR (CONTRATO)</title>
+            </f:facet>
+            
+        </h:head>
 
-        <p:layout fullPage="true">
+        <h:body>
 
-            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                GESTION DE INSTRUCTORES
-            </p:layoutUnit>
+            <p:layout fullPage="true">
 
-            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
-            </p:layoutUnit>
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    GESTION INSTRUCTOR
+                </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                <h:form>
-                    <p:menu>
-                        <p:submenu label="Menu">
-                            <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
-                        </p:submenu>
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
+                </p:layoutUnit>
 
-                    </p:menu>
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Menu">
+                                <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
+                            </p:submenu>
 
-                </h:form>
-            </p:layoutUnit>
+                        </p:menu>
+
+                    </h:form>
+                </p:layoutUnit>
 
             <p:layoutUnit position="center">
                 <h:form id="formulario">
@@ -166,12 +168,14 @@
 
                     </p:dataTable>
                     <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion_action}"/>
-                </h:form>
-            </p:layoutUnit>
 
-        </p:layout>
+                    </h:form>
 
-    </h:body>
+                </p:layoutUnit>
 
-</f:view>
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
 </html>
