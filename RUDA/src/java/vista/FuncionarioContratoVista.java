@@ -1,12 +1,16 @@
 
 package vista;
 
+import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import logica.ContratoLogicaLocal;
 import modelo.Banco;
 import modelo.Contrato;
@@ -342,27 +346,28 @@ public class FuncionarioContratoVista {
         txtFechaInicioContrato.setValue(contratoSeleccionado.getFechainiciocontrato());
         txtFechaFinContrato.setValue(contratoSeleccionado.getFechafincontrato());
         txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());
+        txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato()+"");
+        txtNumeroCompromisoSiContrato.setValue(contratoSeleccionado.getNumerocompromisosiifcontrato()+"");
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
     }
-    /*
+    
     public void modificar(){
     try {
-        Docente nuevoDocente = new Docente();
-        nuevoDocente.setDocumentodocente(Long.parseLong(txtdocumentoDocente.getValue().toString()));
-        nuevoDocente.setNombredocente(txtNombreDocente.getValue().toString());
-        nuevoDocente.setApellidodocente(txtApellidoDocente.getValue().toString());
-        nuevoDocente.setCorreodocente(txtCorreoDocente.getValue().toString());
-        nuevoDocente.setTelefonodocente(txtTlelefonodocente.getValue().toString());
-        nuevoDocente.setProfesiondocente(txtProfesionDocente.getValue().toString());
-        nuevoDocente.setClavedocente(txtClaveDocente.getValue().toString());
-        nuevoDocente.setMateriaList(listaMateriasSeleccionadas);
-        docentelogica.edit(nuevoDocente);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "El docente se  modifico correctamente"));
-        listaDocente = null;
+        Contrato objetoContrato = new Contrato();
+        objetoContrato.setNumerocontrato(Integer.parseInt(txtNumeroContrato.getValue()+""));
+        objetoContrato.setObjetocontrato(txtObjetoContrato.getValue()+"");
+        objetoContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(txtValorTotalContrato.getValue().toString())));
+        objetoContrato.setNumerocompromisosiifcontrato(Integer.parseInt(txtNumeroCompromisoSiContrato.getValue()+""));
+        objetoContrato.setValorembargocontrato(Integer.parseInt(txtValorEmbargoContrato.getValue()+""));
+        objetoContrato.setValormensualcontrato(BigInteger.valueOf(Long.parseLong(txtValorMensualContrato.getValue().toString())));
+        objetoContrato.setValorhoracontrato(Integer.parseInt(txtValorHoraContrato.getValue()+""));
+        contratoLogica.edit(objetoContrato);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificacion", "!El contrato se  modifico correctamente¡"));
+        listaContratos = null;
     } catch (Exception ex) {
-        Logger.getLogger(DocenteVista.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
     }
-    }*/
+    }
     
 }
