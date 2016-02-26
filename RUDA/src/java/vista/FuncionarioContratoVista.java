@@ -370,4 +370,15 @@ public class FuncionarioContratoVista {
     }
     }
     
+    public void limpiar() {
+        txtNumeroContrato.setValue("");
+        txtFechaInicioContrato.setValue("");
+        txtFechaFinContrato.setValue("");
+        txtObjetoContrato.setValue("");
+        txtValorTotalContrato.setValue("");
+        txtNumeroCompromisoSiContrato.setValue("");
+        btnRegistrar.setDisabled(true);
+        btnModificar.setDisabled(true);
+    }
+    
 }
