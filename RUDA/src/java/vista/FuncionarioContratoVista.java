@@ -336,14 +336,16 @@ public class FuncionarioContratoVista {
         
     }
     
-    /*public void seleccionar(SelectEvent e){
+    public void seleccionar(SelectEvent e){
         Contrato contratoSeleccionado = selectedContrato;
-        txtdocumentoDocente.setValue(d.getDocumentodocente()+"");
-        txtNombreDocente.setValue(d.getNombredocente());
+        txtNumeroContrato.setValue(contratoSeleccionado.getNumerocontrato()+"");
+        txtFechaInicioContrato.setValue(contratoSeleccionado.getFechainiciocontrato());
+        txtFechaFinContrato.setValue(contratoSeleccionado.getFechafincontrato());
+        txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
     }
-    
+    /*
     public void modificar(){
     try {
         Docente nuevoDocente = new Docente();

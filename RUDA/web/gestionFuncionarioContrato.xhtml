@@ -134,7 +134,11 @@
                         <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15">
+                                     rowsPerPageTemplate="5,10,15"
+                                     selectionMode="single"
+                                     selection="#{funcionarioContratoVista.selectedContrato}"
+                                     rowKey="#{funcionario.numerocontrato}">
+                            <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
                             <p:column headerText="Numero Contrato">
                                 <h:outputText value="#{funcionario.numerocontrato}" />
                             </p:column>
