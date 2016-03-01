@@ -350,6 +350,7 @@ public class FuncionarioContratoVista {
         txtNumeroCompromisoSiContrato.setValue(contratoSeleccionado.getNumerocompromisosiifcontrato()+"");
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
+        btnLimpiar.setDisabled(true);
     }
     
     public void modificar(){

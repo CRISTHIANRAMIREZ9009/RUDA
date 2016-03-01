@@ -57,9 +57,18 @@
                             <h:outputText value="Lugar de Nacimiento Personal:"/>
                             <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}">                          </p:inputText>
                                                       
-                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" validateClient="true" action="#{funcionarioVista.accion_registrar()}" update="formulario"/>
+                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" validateClient="true" action="#{funcionarioPersonalVista.accion_registrar()}" update="formulario"/>
                             <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" disabled="true"/>
                             <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" disabled="true"/>
+                            
+                            <h:form id="forma">
+                                <p:growl id="growl" showDetail="true" sticky="true"/>
+                                <p:panel id="panelUpload" header="Cargar Personal desde archivo:">
+                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                    <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                </p:panel>
+                                <br />                    
+                            </h:form>
 
                         </p:panelGrid>
                         <p:dataTable var="funcionario" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
