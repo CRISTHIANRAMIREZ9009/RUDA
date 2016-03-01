@@ -2,12 +2,25 @@
 package logica;
 
 import java.io.File;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import jxl.Sheet;
+import jxl.Workbook;
 import modelo.Personal;
+import persistencia.PersonalFacadeLocal;
 
 @Stateless
 public class PersonalLogica implements PersonalLogicaLocal {
+    
+    @EJB
+    
+    private PersonalFacadeLocal personalDAO;
+    
+    private int personalInsertado;
+    private int personalExistente;
 
     @Override
     public void create(Personal personal) throws Exception {
@@ -26,7 +39,21 @@ public class PersonalLogica implements PersonalLogicaLocal {
 
     @Override
     public Personal find(Long documentopersonal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if(documentopersonal!=null)
+        {
+            
+            return personalDAO.find(documentopersonal);
+            
+        }
+        
+        else
+        {
+            
+            throw new Exception ("!El documento personal es obligatorio para la busqueda¡");
+            
+        }
+        
     }
 
     @Override
@@ -41,28 +68,32 @@ public class PersonalLogica implements PersonalLogicaLocal {
         Sheet hoja = archivoExcel.getSheet(0);
         int numFilas = hoja.getRows();
 
-        docentesInsertados = 0;
-        docentesExistentes = 0;
+        personalInsertado = 0;
+        personalExistente = 0;
 
         for (int fila = 1; fila < numFilas; fila++) { // Recorre cada 
-            Docente nuevoDocente = new Docente();
+            Personal nuevoPersonal = new Personal();
 
-            nuevoDocente.setDocumentodocente(Long.parseLong(hoja.getCell(0, fila).getContents()));
-            nuevoDocente.setNombredocente(hoja.getCell(1, fila).getContents());
-            nuevoDocente.setApellidodocente(hoja.getCell(2, fila).getContents());
-            nuevoDocente.setCorreodocente(hoja.getCell(3, fila).getContents());
-            nuevoDocente.setTelefonodocente(hoja.getCell(4, fila).getContents());
-            nuevoDocente.setProfesiondocente(hoja.getCell(5, fila).getContents());
-            nuevoDocente.setClavedocente(hoja.getCell(0, fila).getContents());
+            nuevoPersonal.setDocumentopersonal(Long.parseLong(hoja.getCell(0, fila).getContents()));
+            nuevoPersonal.setNombrepersonal(hoja.getCell(1, fila).getContents());
+            nuevoPersonal.setApellidopersonal(hoja.getCell(2, fila).getContents());
+            nuevoPersonal.setDireccionpersonal(hoja.getCell(3, fila).getContents());
+            nuevoPersonal.setCorreopersonal(hoja.getCell(4, fila).getContents());
+            nuevoPersonal.setTelefonopersonal(hoja.getCell(5, fila).getContents());
+            nuevoPersonal.setClavepersonal(hoja.getCell(0, fila).getContents());
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
+            nuevoPersonal.setFechanacimientopersonal(formatoFecha.parse(hoja.getCell(7, fila).getContents()));
+            nuevoPersonal.setLugarnacimientopersonal(hoja.getCell(8, fila).getContents());
+            nuevoPersonal.setFotopersonal(hoja.getCell(9, fila).getContents());
 
-            Docente d = docenteDAO.find(nuevoDocente.getDocumentodocente());
-            if (d == null) {
-                docenteDAO.create(nuevoDocente);
-                docentesInsertados++;
+            Personal personal = personalDAO.find(nuevoPersonal.getDocumentopersonal());
+            if (personal == null) {
+                personalDAO.create(nuevoPersonal);
+                personalInsertado++;
             } else {
-                docentesExistentes++;
+                personalExistente++;
             }
         }
-        return "Se registraron " + docentesInsertados + " docentes. Ya existían " + docentesExistentes;
+        return "!Se registraron " + personalInsertado + " personas. Ya existían " + personalExistente + ".";
     }
 }

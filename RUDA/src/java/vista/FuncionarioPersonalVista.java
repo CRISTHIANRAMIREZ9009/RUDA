@@ -201,18 +201,18 @@ public class FuncionarioPersonalVista {
 
         //System.out.println("Ruta Server: " + rutaDestino);
         try {
-            copyFile(rutaDestino, event.getFile().getFileName(), event.getFile().getInputstream());
-            String resultado = docentelogica.importarDatosInstructor(rutaDestino + "\\" + event.getFile().getFileName());
+            copiarArchivo(rutaDestino, event.getFile().getFileName(), event.getFile().getInputstream());
+            String resultado = personalLogica.importarDatosPersonal(rutaDestino + "\\" + event.getFile().getFileName());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ok: ", resultado));
            
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception ex) {
-            Logger.getLogger(DocenteVista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioPersonalVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void copyFile(String rutaDestino, String fileName, InputStream in) {
+    public void copiarArchivo(String rutaDestino, String fileName, InputStream in) {
         try {
             OutputStream out = new FileOutputStream(new File(rutaDestino + "\\" + fileName));
             System.out.println("Ruta Archivo: " + rutaDestino + "\\" +fileName);
