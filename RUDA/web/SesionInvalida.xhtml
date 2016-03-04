@@ -9,9 +9,10 @@
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
+                <title>SESION INVALIDA</title>
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>RUDA 2016</title>
-                <link rel="shortcut icon" href="favicon.ico"/>
+                <link rel="StyleSheet" href="css/style.css" type="text/css"></link>
+                <link rel="shortcut icon" href="images/iconoRUDA.ico"/>
             </f:facet>
 
             <script>
@@ -50,7 +51,7 @@
                 <div align="center">
                     <h:outputText value="!Usted no ha Iniciado Sesión o esta ya ha Caducado¡"/>
                     <br/>
-                    <h:graphicImage url="/images/advertencia.png" alt="Atención"  />
+                    <h:graphicImage url="/images/advertencia.png" width="60%" height="75%" alt="Atención"  />
                     <br/>
                     <h:outputText value="!Será redireccionado a la página principal en "/><b><font color="#ff0000"><span id="tiempo"></span></font></b>                
                 </div>

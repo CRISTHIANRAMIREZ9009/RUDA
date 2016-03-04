@@ -64,7 +64,6 @@ public class PersonalLogica implements PersonalLogicaLocal {
     @Override
     public String importarDatosPersonal(String archivo) throws Exception {
         Workbook archivoExcel = Workbook.getWorkbook(new File(archivo));
-        //Recorrer las filas de la primera hoja
         Sheet hoja = archivoExcel.getSheet(0);
         int numFilas = hoja.getRows();
 

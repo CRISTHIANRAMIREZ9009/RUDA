@@ -197,7 +197,7 @@ public class FuncionarioPersonalVista {
         //System.out.println("Evento File upload!!!");
 
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String rutaDestino = (String) servletContext.getRealPath("/excel"); // Sustituye "/" por el directorio ej: "/upload"
+        String rutaDestino = (String) servletContext.getRealPath("/excel");
 
         //System.out.println("Ruta Server: " + rutaDestino);
         try {

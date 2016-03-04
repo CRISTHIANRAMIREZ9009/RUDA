@@ -8,8 +8,10 @@
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>FUNCIONARIO (CONTRATO)</title>
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <link rel="StyleSheet" href="css/style.css" type="text/css"></link>
+                <link rel="shortcut icon" href="images/iconoRUDA.ico"/>
             </f:facet>
         </h:head>
 
@@ -18,7 +20,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    <h:graphicImage url="images/LogoRUDA.png" width="80%" height="95%" alt="LogoRUDA"  />
+                    <h:graphicImage url="images/LogoRUDA.png" width="60%" height="95%" alt="LogoRUDA"  />
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -129,6 +131,15 @@
                             <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar()}" update="formulario"/>
                             <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
                             <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" disabled="true"/>
+                            
+                            <h:form id="forma">
+                                <p:growl id="growl" showDetail="true" sticky="true"/>
+                                <p:panel id="panelUpload" header="Cargar Contrato desde archivo:">
+                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                    <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                </p:panel>
+                                <br />                    
+                            </h:form>
                             
                         </p:panelGrid>
                         <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
