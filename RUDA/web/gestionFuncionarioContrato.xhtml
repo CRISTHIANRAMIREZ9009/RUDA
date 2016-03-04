@@ -72,6 +72,10 @@
                                     <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
                                     <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
                                 </p:selectOneMenu>
+                            <p:outputLabel for="txtCodigoBancoContrato" value="Codigo Banco Contrato:" />
+                                <p:selectOneMenu id="txtCodigoBancoContrato" value="#{funcionarioContratoVista.txtCodigoBancoContrato}" style="width:125px">
+                                    <f:selectItems value="#{funcionarioContratoVista.seleccionarBanco}" />                                    
+                                </p:selectOneMenu>    
                             <p:outputLabel for="txtClasePersonaContrato" value="Clase de Persona Contrato:" />
                                 <p:selectOneMenu id="txtClasePersonaContrato" value="#{selectOneMenuView.txtClasePersonaContrato}" style="width:125px">
                                     <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.ServletContext;
 import logica.ContratoLogicaLocal;
 import modelo.Banco;
@@ -27,6 +29,7 @@ import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
+import persistencia.BancoFacadeLocal;
 
 @ManagedBean (name = "funcionarioContratoVista")
 @RequestScoped
@@ -42,6 +45,7 @@ public class FuncionarioContratoVista {
     private InputText txtFormaPagoContrato;
     private InputText txtNumeroCuentaContrato;
     private InputText txtTipoCuentaContrato;
+    private InputText txtCodigoBancoContrato;
     private Banco selectedCodigoBancoContrato;
     private Coordinador selectedDocumentoCoordinadorContrato;
     private Personal selectedDocumentoPersonalContrato;
@@ -64,9 +68,13 @@ public class FuncionarioContratoVista {
     private CommandButton btnLimpiar;
     private List<Contrato> listaContratos;
     private Contrato selectedContrato;
+    private List<SelectItem> seleccionarBanco;
     
     @EJB
     private ContratoLogicaLocal contratoLogica;
+    
+    @EJB
+    private BancoFacadeLocal bancoDAO;
     
     public FuncionarioContratoVista() {
         
@@ -237,6 +245,14 @@ public class FuncionarioContratoVista {
         this.txtTipoCuentaContrato = txtTipoCuentaContrato;
     }
 
+    public InputText getTxtCodigoBancoContrato() {
+        return txtCodigoBancoContrato;
+    }
+
+    public void setTxtCodigoBancoContrato(InputText txtCodigoBancoContrato) {
+        this.txtCodigoBancoContrato = txtCodigoBancoContrato;
+    }
+
     public Banco getSelectedCodigoBancoContrato() {
         return selectedCodigoBancoContrato;
     }
@@ -346,6 +362,19 @@ public class FuncionarioContratoVista {
         return listaContratos;
         
     }
+
+    public List<SelectItem> getSeleccionarBanco() {
+        List<Banco> listaBancos = bancoDAO.findAll();
+        seleccionarBanco = new ArrayList<>();
+        for (int i = 0; i < listaBancos.size(); i++) {
+            seleccionarBanco.add(new SelectItem(listaBancos.get(i).getCodigobanco(), listaBancos.get(i).getNombrebanco()));
+        }
+        return seleccionarBanco;
+    }
+
+    public void setSeleccionarBanco(List<SelectItem> seleccionarBanco) {
+        this.seleccionarBanco = seleccionarBanco;
+    }
     
     public void seleccionar(SelectEvent e){
         Contrato contratoSeleccionado = selectedContrato;
@@ -428,3 +457,4 @@ public class FuncionarioContratoVista {
     }
     
 }
+    
