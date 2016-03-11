@@ -5,10 +5,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import modelo.Funcionario;
 import modelo.Instructor;
-import modelo.Personal;
 import persistencia.FuncionarioFacadeLocal;
 import persistencia.InstructorFacadeLocal;
-import persistencia.PersonalFacadeLocal;
 
 @Stateless
 public class SesionLogica implements SesionLogicaLocal {

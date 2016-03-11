@@ -378,7 +378,7 @@ public class FuncionarioContratoVista {
     
     public void seleccionar(SelectEvent e){
         Contrato contratoSeleccionado = selectedContrato;
-        txtNumeroContrato.setValue(contratoSeleccionado.getNumerocontrato()+"");
+        txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato()+"");
         txtFechaInicioContrato.setValue(contratoSeleccionado.getFechainiciocontrato());
         txtFechaFinContrato.setValue(contratoSeleccionado.getFechafincontrato());
         txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());

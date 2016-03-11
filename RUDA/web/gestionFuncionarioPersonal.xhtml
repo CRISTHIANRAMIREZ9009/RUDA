@@ -54,13 +54,13 @@
                             <h:outputText value="Direccion Personal:"/>
                             <p:inputText id="txtDireccionPersonal" binding="#{funcionarioPersonalVista.txtDireccionPersonal}" />
                             <h:outputText value="Correo Personal:"/>
-                            <p:inputText id="txtCorreoPersonal" binding="#{funcionarioPersonalVista.txtCorreoPersonal}">                          </p:inputText>
+                            <p:inputText id="txtCorreoPersonal" binding="#{funcionarioPersonalVista.txtCorreoPersonal}" />                          
                             <p:outputLabel for="txtFechaNacimientoPersonal" value="Fecha Nacimiento Personal:" />                            
                             <p:calendar id="txtFechaNacimientoPersonal" value="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" />
                             <h:outputText value="Lugar de Nacimiento Personal:"/>
-                            <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}">                          </p:inputText>
+                            <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}" />    
                                                       
-                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" validateClient="true" action="#{funcionarioPersonalVista.accion_registrar()}" update="formulario"/>
+                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar()}" update="formulario"/>
                             <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" disabled="true"/>
                             <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" disabled="true"/>
                             
@@ -77,18 +77,45 @@
                         <p:dataTable var="funcionario" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15">
-                            <p:column headerText="Documento Personal">
+                                     rowsPerPageTemplate="5,10,15"
+                                     selectionMode="single"
+                                     selection="#{funcionarioPersonalVista.selectedPersonal}"
+                                     rowKey="#{funcionario.documentopersonal}">
+                            <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
+                            <p:column headerText="Documento:">
                                 <h:outputText value="#{funcionario.documentopersonal}" />
                             </p:column>
-                            <p:column headerText="Clave Personal:">
-                                <h:outputText value="#{funcionario.clavepersonal}" />
-                            </p:column>      
-
+                            <p:column headerText="Nombre:">
+                                <h:outputText value="#{funcionario.nombrepersonal}" />
+                            </p:column>
+                            <p:column headerText="Apellido:">
+                                <h:outputText value="#{funcionario.apellidopersonal}" />
+                            </p:column> 
+                            <p:column headerText="Direccion:">
+                                <h:outputText value="#{funcionario.direccionpersonal}" />
+                            </p:column>
+                            <p:column headerText="Correo:">
+                                <h:outputText value="#{funcionario.correopersonal}" />
+                            </p:column>
+                            <p:column headerText="Telefono:">
+                                <h:outputText value="#{funcionario.telefonopersonal}" />
+                            </p:column>
+                            <p:column headerText="Clave:">
+                                <h:outputText value="#{funcionario.documentopersonal}" />
+                            </p:column> 
+                            <p:column headerText="Fecha Nacimiento:">
+                                <h:outputText value="#{funcionario.fechanacimientopersonal}" />
+                            </p:column>
+                            <p:column headerText="Lugar Nacimiento:">
+                                <h:outputText value="#{funcionario.lugarnacimientopersonal}" />
+                            </p:column>
+                            <p:column headerText="Foto:">
+                                <h:outputText value="#{funcionario.fotopersonal}" />
+                            </p:column>
+                            
                         </p:dataTable>
 
                     </h:form>
-
                 </p:layoutUnit>
 
             </p:layout>

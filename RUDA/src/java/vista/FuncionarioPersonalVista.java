@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import modelo.Personal;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.SelectEvent;
 
 @ManagedBean (name = "funcionarioPersonalVista")
 @RequestScoped
@@ -151,6 +153,10 @@ public class FuncionarioPersonalVista {
     public void setBtnLimpiar(CommandButton btnLimpiar) {
         this.btnLimpiar = btnLimpiar;
     }
+    
+    public void setListaPersonal(List<Personal> listaPersonal) {
+        this.listaPersonal = listaPersonal;
+    }
 
     public List<Personal> getListaPersonal() {
         
@@ -171,10 +177,7 @@ public class FuncionarioPersonalVista {
         }
         
         return listaPersonal;
-    }
-
-    public void setListaPersonal(List<Personal> listaPersonal) {
-        this.listaPersonal = listaPersonal;
+        
     }
 
     public Personal getSelectedPersonal() {
@@ -191,6 +194,71 @@ public class FuncionarioPersonalVista {
 
     public void setPersonalLogica(PersonalLogicaLocal personalLogica) {
         this.personalLogica = personalLogica;
+    }
+    
+    public void accion_registrar() {
+        try {
+            Personal nuevaPersonal = new Personal();
+            nuevaPersonal.setDocumentopersonal(Long.parseLong(txtDocumentoPersonal.getValue().toString()));
+            nuevaPersonal.setNombrepersonal(txtNombrePersonal.getValue().toString());
+            nuevaPersonal.setApellidopersonal(txtApellidoPersonal.getValue().toString());
+            nuevaPersonal.setDireccionpersonal(txtDireccionPersonal.getValue().toString());
+            nuevaPersonal.setCorreopersonal(txtCorreoPersonal.getValue().toString());
+            nuevaPersonal.setTelefonopersonal(txtTelefonoPersonal.getValue().toString()); 
+            nuevaPersonal.setClavepersonal(txtDocumentoPersonal.getValue().toString());
+            String fecha = "1990-02-20";
+            nuevaPersonal.setFechanacimientopersonal(Date.valueOf(fecha)); 
+            nuevaPersonal.setLugarnacimientopersonal(txtLugarNacimientoPersonal.getValue().toString());
+            nuevaPersonal.setFotopersonal(txtNombrePersonal.getValue().toString() + txtApellidoPersonal.getValue().toString());
+            personalLogica.create(nuevaPersonal);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El personal se  registro correctamente¡"));
+            listaPersonal = null;
+        } catch (NumberFormatException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
+        }
+    }
+    
+    public void seleccionar(SelectEvent e){
+        Personal personalSeleccionado = selectedPersonal;
+        txtDocumentoPersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");
+        txtNombrePersonal.setValue(personalSeleccionado.getNombrepersonal());
+        txtApellidoPersonal.setValue(personalSeleccionado.getApellidopersonal());
+        txtDireccionPersonal.setValue(personalSeleccionado.getDireccionpersonal());
+        txtCorreoPersonal.setValue(personalSeleccionado.getCorreopersonal());
+        txtTelefonoPersonal.setValue(personalSeleccionado.getTelefonopersonal());
+        txtClavePersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");
+        txtFechaNacimientoPersonal.setValue(personalSeleccionado.getFechanacimientopersonal());
+        txtLugarNacimientoPersonal.setValue(personalSeleccionado.getLugarnacimientopersonal());
+        txtFotoPersonal.setValue(personalSeleccionado.getFotopersonal());
+        btnModificar.setDisabled(false);
+        btnRegistrar.setDisabled(true);
+        btnLimpiar.setDisabled(true);
+    }
+    
+    public void modificar(){
+        try {
+            Personal nuevaPersonal = new Personal();
+            nuevaPersonal.setDocumentopersonal(Long.parseLong(txtDocumentoPersonal.getValue().toString()));
+            nuevaPersonal.setNombrepersonal(txtNombrePersonal.getValue().toString());
+            nuevaPersonal.setApellidopersonal(txtApellidoPersonal.getValue().toString());
+            nuevaPersonal.setDireccionpersonal(txtDireccionPersonal.getValue().toString());
+            nuevaPersonal.setCorreopersonal(txtCorreoPersonal.getValue().toString());
+            nuevaPersonal.setTelefonopersonal(txtTelefonoPersonal.getValue().toString()); 
+            nuevaPersonal.setClavepersonal(txtDocumentoPersonal.getValue().toString());
+            String fecha = "1990-02-20";
+            nuevaPersonal.setFechanacimientopersonal(Date.valueOf(fecha)); 
+            nuevaPersonal.setLugarnacimientopersonal(txtLugarNacimientoPersonal.getValue().toString());
+            nuevaPersonal.setFotopersonal(txtNombrePersonal.getValue().toString() + txtApellidoPersonal.getValue().toString());
+            personalLogica.edit(nuevaPersonal);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El personal se modifico correctamente¡"));
+            listaPersonal = null;
+        } catch (NumberFormatException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
+        }
     }
     
     public void cargarPersonal(FileUploadEvent event) {

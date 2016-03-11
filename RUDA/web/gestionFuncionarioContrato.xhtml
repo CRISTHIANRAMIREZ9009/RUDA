@@ -155,16 +155,16 @@
                                      selection="#{funcionarioContratoVista.selectedContrato}"
                                      rowKey="#{funcionario.numerocontrato}">
                             <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
-                            <p:column headerText="Numero Contrato">
+                            <p:column headerText="Numero Contrato:">
                                 <h:outputText value="#{funcionario.numerocontrato}" />
                             </p:column>
-                            <p:column headerText="Documento Coordinador Contrato">
+                            <p:column headerText="Documento Coordinador:">
                                 <h:outputText value="#{funcionario.documentocoordinadorcontrato.documentocoordinador}" />
                             </p:column>
-                            <p:column headerText="Documento Personal Contrato">
+                            <p:column headerText="Documento Personal:">
                                 <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
                             </p:column>
-                            <p:column headerText="Estado Contrato">
+                            <p:column headerText="Estado:">
                                 <h:outputText value="#{funcionario.estadocontrato}" />
                             </p:column>
 
