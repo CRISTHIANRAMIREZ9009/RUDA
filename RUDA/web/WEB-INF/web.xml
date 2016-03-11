@@ -39,6 +39,6 @@
     </filter>
     <filter-mapping>
         <filter-name>FiltroFuncionario</filter-name>
-        <url-pattern>/faces/gestionFuncionario.xhtml</url-pattern>
+        <url-pattern>/faces/gestionFuncionarioContrato.xhtml</url-pattern>
     </filter-mapping>
 </web-app>

@@ -33,6 +33,7 @@
                         <p:menu>
                             <p:submenu label="Menu">
                                 <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
+                                <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
                             </p:submenu>
 
                         </p:menu>
@@ -85,8 +86,6 @@
                             </p:column>      
 
                         </p:dataTable>
-
-                        <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion_action}"/>
 
                     </h:form>
 
