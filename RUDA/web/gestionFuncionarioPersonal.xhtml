@@ -44,6 +44,9 @@
                 <p:layoutUnit position="center">
                     <h:form id="formulario">
                         <p:growl id="growl" showDetail="true" sticky="true" />
+                        <f:facet name="actions">
+                            <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
+                        </f:facet>
                         <p:panelGrid columns="6">
                             <h:outputText value="Documento Personal:"/>
                             <p:inputText id="txtDocumentoPersonal" binding="#{funcionarioPersonalVista.txtDocumentoPersonal}" />
@@ -114,6 +117,18 @@
                             </p:column>
                             
                         </p:dataTable>
+                        
+                        <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                            <p align="justify">                       
+                                En esta página usted podrá:<br/><br/>
+                                <b>-Registrar los datos básicos del Personal</b>
+                                Cuando inicia esta página aparece la información del Personal, aqui podrá modificar los datos que se neseciten del Personal, una vez haga los cambios pertinentes de click en el botón modificar.
+                                <br/><br/>
+                                <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción.
+                                Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
+                                seguridad.                     
+                            </p>
+                        </p:dialog>
 
                     </h:form>
                 </p:layoutUnit>

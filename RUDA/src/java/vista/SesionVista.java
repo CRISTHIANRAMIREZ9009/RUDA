@@ -28,6 +28,9 @@ public class SesionVista {
     private InputText txtUsuario;
     private Password txtClave;
     private CommandButton btnIngresar;
+    private Password passClaveVieja;
+    private Password passClaveNueva;
+    private Password passClaveNueva2;
     
     public SesionVista() {
     }
@@ -62,6 +65,30 @@ public class SesionVista {
 
     public void setBtnIngresar(CommandButton btnIngresar) {
         this.btnIngresar = btnIngresar;
+    }
+
+    public Password getPassClaveVieja() {
+        return passClaveVieja;
+    }
+
+    public void setPassClaveVieja(Password passClaveVieja) {
+        this.passClaveVieja = passClaveVieja;
+    }
+
+    public Password getPassClaveNueva() {
+        return passClaveNueva;
+    }
+
+    public void setPassClaveNueva(Password passClaveNueva) {
+        this.passClaveNueva = passClaveNueva;
+    }
+
+    public Password getPassClaveNueva2() {
+        return passClaveNueva2;
+    }
+
+    public void setPassClaveNueva2(Password passClaveNueva2) {
+        this.passClaveNueva2 = passClaveNueva2;
     }
     
     public void funcion_ingresar(){
@@ -114,6 +141,42 @@ public class SesionVista {
         } catch (IOException ex) {
             Logger.getLogger(SesionVista.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void cambiarPassword_action() {
+        //System.out.println("Cambiar Pass");
+
+        if (sesionLogica.validarSesion()) {
+            try {
+                String user = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+                String tipo = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("tipo");
+                System.out.println("usuario: " + user + " tipo: " + tipo);
+
+                sesionLogica.cambiarContraseña(user, passClaveVieja.getValue().toString(),
+                        passClaveNueva.getValue().toString(), passClaveNueva2.getValue().toString());
+
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje: ", "!La Contraseña Ha Sido Actualizada con Exito¡"));
+            } catch (Exception ex) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡: ", ex.getMessage()));
+            }
+
+        } else {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/SesionInvalida.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(SesionVista.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    public void limpiarPassword_action() {
+        //System.out.println("Limpiar Pass");
+
+        passClaveNueva.setValue("");
+        passClaveNueva2.setValue("");
+        passClaveVieja.setValue("");
+
     }
     
 }
