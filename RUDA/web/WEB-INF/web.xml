@@ -4,11 +4,10 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
-    <context-param>  
-        <param-name>primefaces.THEME</param-name>  
-        <param-value>south-street</param-value>  
-    </context-param>  
-
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>south-street</param-value>
+    </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -26,16 +25,14 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
-    
     <filter>
-        <filter-name>FiltroContratista</filter-name>
-        <filter-class>co.ruda.filtros.FiltroContratista</filter-class>
+        <filter-name>FiltroInstructor</filter-name>
+        <filter-class>co.ruda.filtros.FiltroInstructor</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>FiltroContratista</filter-name>
+        <filter-name>FiltroInstructor</filter-name>
         <url-pattern>/faces/gestionInstructor.xhtml</url-pattern>
     </filter-mapping>
-    
     <filter>
         <filter-name>FiltroFuncionario</filter-name>
         <filter-class>co.ruda.filtros.FiltroFuncionario</filter-class>

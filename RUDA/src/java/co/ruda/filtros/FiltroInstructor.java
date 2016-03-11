@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Instructor;
 
-public class FiltroContratista implements Filter{
+public class FiltroInstructor implements Filter{
 
     private FilterConfig configuration;
 
@@ -30,7 +30,7 @@ public class FiltroContratista implements Filter{
         {
             if(!tipo.equals("instructor"))
             {
-               // Instuctor instructor = (Instuctor) ((HttpServletRequest)request).getSession().getAttribute("usuario");
+               // Funcionario funcionario = (Funcionario) ((HttpServletRequest)request).getSession().getAttribute("usuario");
                 ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
             }else{
                 Instructor instructor =(Instructor)((HttpServletRequest)request).getSession().getAttribute("usuario");

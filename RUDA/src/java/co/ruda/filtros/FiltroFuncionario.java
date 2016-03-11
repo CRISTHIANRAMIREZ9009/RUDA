@@ -30,21 +30,21 @@ public class FiltroFuncionario implements Filter{
         {
             if(!tipo.equals("funcionario"))
             {
-               // Funcionario funcionario = (funcionario) ((HttpServletRequest)request).getSession().getAttribute("usuario");
-                ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
+               // Instructor instructor = (Instructor) ((HttpServletRequest)request).getSession().getAttribute("usuario");
+                ((HttpServletResponse)response).sendRedirect("faces/SesionInvalida.xhtml");
             }else{
                 Funcionario funcionario =(Funcionario)((HttpServletRequest)request).getSession().getAttribute("usuario");
             
                 if(funcionario!=null){
                     chain.doFilter(request, response);
                 }else{
-                    ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
+                    ((HttpServletResponse)response).sendRedirect("faces/SesionInvalida.xhtml");
                 }
             
             }
         }
         }catch(NullPointerException e){
-            ((HttpServletResponse)response).sendRedirect("../faces/SesionInvalida.xhtml");
+            ((HttpServletResponse)response).sendRedirect("faces/SesionInvalida.xhtml");
         }
     }
 
