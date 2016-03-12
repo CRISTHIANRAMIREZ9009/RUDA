@@ -197,6 +197,9 @@ public class FuncionarioPersonalVista {
     }
     
     public void accion_registrar() {
+        
+        txtClavePersonal.setDisabled(true);
+
         try {
             Personal nuevaPersonal = new Personal();
             nuevaPersonal.setDocumentopersonal(Long.parseLong(txtDocumentoPersonal.getValue().toString()));
@@ -213,10 +216,10 @@ public class FuncionarioPersonalVista {
             personalLogica.create(nuevaPersonal);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El personal se  registro correctamente¡"));
             listaPersonal = null;
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex1) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"));
         } catch (Exception ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡",ex.getMessage()));
         }
     }
     
@@ -259,6 +262,21 @@ public class FuncionarioPersonalVista {
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
         }
+    }
+    
+    public void limpiar() {
+        txtDocumentoPersonal.setValue("");
+        txtNombrePersonal.setValue("");
+        txtApellidoPersonal.setValue("");
+        txtDireccionPersonal.setValue("");
+        txtCorreoPersonal.setValue("");
+        txtTelefonoPersonal.setValue("");
+        txtClavePersonal.setValue("");
+        txtFechaNacimientoPersonal.setValue("");
+        txtLugarNacimientoPersonal.setValue("");
+        txtFotoPersonal.setValue("");
+        btnRegistrar.setDisabled(true);
+        btnModificar.setDisabled(true);
     }
     
     public void cargarPersonal(FileUploadEvent event) {

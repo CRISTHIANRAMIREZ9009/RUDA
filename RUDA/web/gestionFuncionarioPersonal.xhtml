@@ -42,83 +42,81 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    <h:form id="formulario">
+                    <h:form id="formulario2">
                         <p:growl id="growl" showDetail="true" sticky="true" />
-                        <f:facet name="actions">
+                        <!--<f:facet name="actions">
                             <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
-                        </f:facet>
-                        <p:panelGrid columns="6">
-                            <h:outputText value="Documento Personal:"/>
+                        </f:facet>-->
+                        <p:panelGrid columns="2">
+                            <h:outputText value="Documento:"/>
                             <p:inputText id="txtDocumentoPersonal" binding="#{funcionarioPersonalVista.txtDocumentoPersonal}" />
-                            <h:outputText value="Nombre Personal:" />
+                            <h:outputText value="Nombre:" />
                             <p:inputText id="txtNombrePersonal" binding="#{funcionarioPersonalVista.txtNombrePersonal}" />
-                            <h:outputText value="Apellido Personal:" />
+                            <h:outputText value="Apellido:" />
                             <p:inputText id="txtApellidoPersonal" binding="#{funcionarioPersonalVista.txtApellidoPersonal}" />
-                            <h:outputText value="Direccion Personal:"/>
+                            <h:outputText value="Direccion:"/>
                             <p:inputText id="txtDireccionPersonal" binding="#{funcionarioPersonalVista.txtDireccionPersonal}" />
-                            <h:outputText value="Correo Personal:"/>
+                            <h:outputText value="Correo:"/>
                             <p:inputText id="txtCorreoPersonal" binding="#{funcionarioPersonalVista.txtCorreoPersonal}" />                          
-                            <p:outputLabel for="txtFechaNacimientoPersonal" value="Fecha Nacimiento Personal:" />                            
+                            <h:outputText value="Telefono:"/>
+                            <p:inputText id="txtTelefonoPersonal" binding="#{funcionarioPersonalVista.txtTelefonoPersonal}" />
+                            <h:outputText value="Clave:"/>
+                            <p:inputText id="txtClavePersonal" binding="#{funcionarioPersonalVista.txtClavePersonal}" disabled="true" />
+                            <p:outputLabel for="txtFechaNacimientoPersonal" value="Fecha Nacimiento:" />                            
                             <p:calendar id="txtFechaNacimientoPersonal" value="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" />
                             <h:outputText value="Lugar de Nacimiento Personal:"/>
                             <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}" />    
-                                                      
-                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar()}" update="formulario"/>
+                            <h:outputText value="Foto:"/>
+                            <p:inputText id="txtFotoPersonal" binding="#{funcionarioPersonalVista.txtFotoPersonal}" />    
+                                                       
+                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar()}" update="formulario2"/>
                             <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" disabled="true"/>
-                            <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" disabled="true"/>
-                            
-                            <h:form id="forma">
-                                <p:growl id="growl" showDetail="true" sticky="true"/>
-                                <p:panel id="panelUpload" header="Cargar Personal desde archivo:">
-                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
-                                    <p:messages id="mensajeArchivo" showDetail="true" /> 
-                                </p:panel>
-                                <br />                    
-                            </h:form>
+                            <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" action="#{funcionarioPersonalVista.limpiar()}" update="formulario2"/>
+                           
 
                         </p:panelGrid>
-                        <p:dataTable var="funcionario" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
+                        <p:dataTable var="personal" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="5,10,15"
                                      selectionMode="single"
                                      selection="#{funcionarioPersonalVista.selectedPersonal}"
-                                     rowKey="#{funcionario.documentopersonal}">
-                            <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
+                                     rowKey="#{personal.documentopersonal}">
+                            <p:ajax event="rowSelect" listener="#{funcionarioPersonalVista.seleccionar}" update=":formulario2" />
                             <p:column headerText="Documento:">
-                                <h:outputText value="#{funcionario.documentopersonal}" />
+                                <h:outputText value="#{personal.documentopersonal}" />
                             </p:column>
                             <p:column headerText="Nombre:">
-                                <h:outputText value="#{funcionario.nombrepersonal}" />
+                                <h:outputText value="#{personal.nombrepersonal}" />
                             </p:column>
                             <p:column headerText="Apellido:">
-                                <h:outputText value="#{funcionario.apellidopersonal}" />
+                                <h:outputText value="#{personal.apellidopersonal}" />
                             </p:column> 
                             <p:column headerText="Direccion:">
-                                <h:outputText value="#{funcionario.direccionpersonal}" />
+                                <h:outputText value="#{personal.direccionpersonal}" />
                             </p:column>
                             <p:column headerText="Correo:">
-                                <h:outputText value="#{funcionario.correopersonal}" />
+                                <h:outputText value="#{personal.correopersonal}" />
                             </p:column>
                             <p:column headerText="Telefono:">
-                                <h:outputText value="#{funcionario.telefonopersonal}" />
+                                <h:outputText value="#{personal.telefonopersonal}" />
                             </p:column>
                             <p:column headerText="Clave:">
-                                <h:outputText value="#{funcionario.documentopersonal}" />
+                                <h:outputText value="#{personal.documentopersonal}" />
                             </p:column> 
                             <p:column headerText="Fecha Nacimiento:">
-                                <h:outputText value="#{funcionario.fechanacimientopersonal}" />
+                                <h:outputText value="#{personal.fechanacimientopersonal}" />
                             </p:column>
                             <p:column headerText="Lugar Nacimiento:">
-                                <h:outputText value="#{funcionario.lugarnacimientopersonal}" />
+                                <h:outputText value="#{personal.lugarnacimientopersonal}" />
                             </p:column>
                             <p:column headerText="Foto:">
-                                <h:outputText value="#{funcionario.fotopersonal}" />
+                                <h:outputText value="#{personal.fotopersonal}" />
                             </p:column>
                             
                         </p:dataTable>
                         
-                        <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                        <!--<p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
                             <p align="justify">                       
                                 En esta página usted podrá:<br/><br/>
                                 <b>-Registrar los datos básicos del Personal</b>
@@ -128,7 +126,7 @@
                                 Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
                                 seguridad.                     
                             </p>
-                        </p:dialog>
+                        </p:dialog>-->
 
                     </h:form>
                 </p:layoutUnit>
