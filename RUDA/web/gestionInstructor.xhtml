@@ -45,11 +45,11 @@
                     <p:growl id="growl" showDetail="true" sticky="true" />
                     <p:panelGrid columns="6">
 
-                        <h:outputText value="Codigo Regional:"/>
+                        <h:outputText value="Codigo Regional:" />
                         <p:inputText id="txtCodigoRegional" binding="#{instructorVista.txtCodigoRegional}" />
 
                         <h:outputText value="Codigo Centro:"/>
-                        <p:inputText id="txtCodigoCentro" binding="#{instructorVista.txtCodigoCentro}" />
+                        <p:inputText id="txtCodigoCentro" binding="#{instructorVista.txtCodigoCentro}"/>
 
                         <p:outputLabel for="txtFechaDiligenciamientoPlantilla" value="Fecha Diligenciamiento Plantilla:"/>
                         <p:calendar id="txtFechaDiligenciamientoPlantilla" value="#{instructorVista.txtFechaDiligenciamietoPlanilla}" pattern="yyyy-MM-dd" mask="true" />
