@@ -32,7 +32,8 @@
                     <h:form>
                         <p:menu>
                             <p:submenu label="Menu">
-                                <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
+                                <p:menuitem value="Cambiar clave" url="faces/CambiarPasswordInstructor.xhtml" />
+                                <p:menuitem value="Información Basica" url="faces/gestionInstructor.xhtml" />
                             </p:submenu>
 
                         </p:menu>
@@ -46,7 +47,7 @@
                     <p:panelGrid columns="6">
 
                         <h:outputText value="Codigo Regional:"/>
-                        <p:inputText id="txtCodigoRegional" binding="#{instructorVista.txtCodigoRegional}" />
+                        <p:inputText id="txtCodigoRegional"  binding="#{instructorVista.txtCodigoRegional}"/>
 
                         <h:outputText value="Codigo Centro:"/>
                         <p:inputText id="txtCodigoCentro" binding="#{instructorVista.txtCodigoCentro}" />
@@ -153,6 +154,15 @@
                         <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" />
 
                         <p:commandButton value="Modificar" binding="#{instructorVista.btnModificar}" disabled="true"/>
+                        
+                         <h:form id="forma">
+                                <p:growl id="growl" showDetail="true" sticky="true"/>
+                                <p:panel id="panelUpload" header="Cargar Evidencia desde archivo:">
+                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .DOC o .DOCX¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(doc)$/"/> 
+                                    <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                </p:panel>
+                                <br />                    
+                            </h:form>
                        
 
 
