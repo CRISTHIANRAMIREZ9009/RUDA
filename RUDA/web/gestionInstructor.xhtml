@@ -32,7 +32,7 @@
                     <h:form>
                         <p:menu>
                             <p:submenu label="Menu">
-                                <p:menuitem value="Subir Evidencia" url="faces/gestionInstructorEvidencia.xhtml" />
+                               
                                 <p:menuitem value="Cambiar clave" url="faces/CambiarPasswordInstructor.xhtml" />
                             </p:submenu>
 
@@ -46,11 +46,11 @@
                     <p:growl id="growl" showDetail="true" sticky="true" />
                     <p:panelGrid columns="6">
 
-                        <h:outputText value="Codigo Regional:" />
-                        <p:inputText id="txtCodigoRegional" binding="#{instructorVista.txtCodigoRegional}" />
+                        <h:outputText value="Codigo Regional:"/>
+                        <p:inputText id="txtCodigoRegional" binding="#{instructorVista.txtCodigoRegional}" disabled="true" />
 
                         <h:outputText value="Codigo Centro:"/>
-                        <p:inputText id="txtCodigoCentro" binding="#{instructorVista.txtCodigoCentro}"/>
+                        <p:inputText id="txtCodigoCentro" binding="#{instructorVista.txtCodigoCentro}" disabled="true"/>
 
                         <p:outputLabel for="txtFechaDiligenciamientoPlantilla" value="Fecha Diligenciamiento Plantilla:"/>
                         <p:calendar id="txtFechaDiligenciamientoPlantilla" value="#{instructorVista.txtFechaDiligenciamietoPlanilla}" pattern="yyyy-MM-dd" mask="true" />
@@ -154,6 +154,15 @@
                         <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" />
 
                         <p:commandButton value="Modificar" binding="#{instructorVista.btnModificar}" disabled="true"/>
+                        
+                          <h:form id="forma">
+                                <p:growl id="growl" showDetail="true" sticky="true"/>
+                                <p:panel id="panelUpload" header="Cargar Evidencia desde archivo:">
+                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .DOC o .DOCX¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(doc)$/"/> 
+                                    <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                </p:panel>
+                                <br />                    
+                            </h:form>
                        
 
 
