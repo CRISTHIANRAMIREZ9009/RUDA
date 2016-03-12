@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
     <f:view contentType="text/html">
@@ -17,121 +17,221 @@
         </h:head>
 
         <h:body>
+            
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <h:graphicImage url="images/LogoRUDA.png" width="60%" height="95%" alt="LogoRUDA"  />
+            </p:layoutUnit>            
 
-            <p:layout fullPage="true">
+            <p:panel>                
+                <p:panelGrid style="width: 100%;"> 
+                    <p:row>
+                        <p:column style="vertical-align: top; width: 10%;">
+                            <h:form>
+                                <p:menu>
+                                    <p:submenu label="Menú">                                
+                                        <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
+                                        <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
+                                    </p:submenu>                    
+                                </p:menu>
+                            </h:form>
+                        </p:column>
+                        <p:column>
+                            <h:form id="formulario" enctype="multipart/form-data" acceptcharset="UTF-8"> 
+                                <p:panel id="panelPersonal" header="Personal">
+                                    <p:messages id="mensajes" showDetail="true" />
+                                    <f:facet name="actions">
+                                        <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
+                                    </f:facet>
+                                    <p:panelGrid>
+                                        <p:row>
+                                            
+                                            <p:column>
+                                                <h:outputText value="Documento:"/> 
+                                            </p:column>
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    <h:graphicImage url="images/LogoRUDA.png" width="60%" height="95%" alt="LogoRUDA"  />
-                </p:layoutUnit>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtDocumentoPersonal" binding="#{funcionarioPersonalVista.txtDocumentoPersonal}" size="30" />
+                                                </div>
+                                            </p:column>                                        
+                                            <p:column>
+                                                <h:outputText value="Nombre:"/>
+                                            </p:column>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
-                </p:layoutUnit>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNombrePersonal" binding="#{funcionarioPersonalVista.txtNombrePersonal}" size="30"/>
+                                                </div>                                      
+                                            </p:column>                                                                                
+                                        </p:row>  
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputText value="Apellido:"/>
+                                            </p:column>
 
-                <p:layoutUnit position="west" size="175" header="Personal" collapsible="true">
-                    <h:form>
-                        <p:menu>
-                            <p:submenu label="Menu">
-                                <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
-                                <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
-                            </p:submenu>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtApellidoPersonal" binding="#{funcionarioPersonalVista.txtApellidoPersonal}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
 
-                        </p:menu>
+                                            <p:column>
+                                                <h:outputText value="Direccion:"/>
+                                            </p:column>
 
-                    </h:form>
-                </p:layoutUnit>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtDireccionPersonal" binding="#{funcionarioPersonalVista.txtDireccionPersonal}" size="30"/>
+                                                </div>                                      
+                                            </p:column>                                        
 
-                <p:layoutUnit position="center">
-                    <h:form id="formulario2">
-                        <p:growl id="growl" showDetail="true" sticky="true" />
-                        <!--<f:facet name="actions">
-                            <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
-                        </f:facet>-->
-                        <p:panelGrid columns="2">
-                            <h:outputText value="Documento:"/>
-                            <p:inputText id="txtDocumentoPersonal" binding="#{funcionarioPersonalVista.txtDocumentoPersonal}" />
-                            <h:outputText value="Nombre:" />
-                            <p:inputText id="txtNombrePersonal" binding="#{funcionarioPersonalVista.txtNombrePersonal}" />
-                            <h:outputText value="Apellido:" />
-                            <p:inputText id="txtApellidoPersonal" binding="#{funcionarioPersonalVista.txtApellidoPersonal}" />
-                            <h:outputText value="Direccion:"/>
-                            <p:inputText id="txtDireccionPersonal" binding="#{funcionarioPersonalVista.txtDireccionPersonal}" />
-                            <h:outputText value="Correo:"/>
-                            <p:inputText id="txtCorreoPersonal" binding="#{funcionarioPersonalVista.txtCorreoPersonal}" />                          
-                            <h:outputText value="Telefono:"/>
-                            <p:inputText id="txtTelefonoPersonal" binding="#{funcionarioPersonalVista.txtTelefonoPersonal}" />
-                            <h:outputText value="Clave:"/>
-                            <p:inputText id="txtClavePersonal" binding="#{funcionarioPersonalVista.txtClavePersonal}" disabled="true" />
-                            <p:outputLabel for="txtFechaNacimientoPersonal" value="Fecha Nacimiento:" />                            
-                            <p:calendar id="txtFechaNacimientoPersonal" value="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" />
-                            <h:outputText value="Lugar de Nacimiento Personal:"/>
-                            <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}" />    
-                            <h:outputText value="Foto:"/>
-                            <p:inputText id="txtFotoPersonal" binding="#{funcionarioPersonalVista.txtFotoPersonal}" />    
-                                                       
-                            <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar()}" update="formulario2"/>
-                            <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" disabled="true"/>
-                            <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" action="#{funcionarioPersonalVista.limpiar()}" update="formulario2"/>
-                           
+                                        </p:row>
+                                        <p:row>
+                                            
+                                            <p:column>
+                                                <h:outputText value="Correo:"/>
+                                            </p:column>
 
-                        </p:panelGrid>
-                        <p:dataTable var="personal" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
-                                     paginator="true"
-                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15"
-                                     selectionMode="single"
-                                     selection="#{funcionarioPersonalVista.selectedPersonal}"
-                                     rowKey="#{personal.documentopersonal}">
-                            <p:ajax event="rowSelect" listener="#{funcionarioPersonalVista.seleccionar}" update=":formulario2" />
-                            <p:column headerText="Documento:">
-                                <h:outputText value="#{personal.documentopersonal}" />
-                            </p:column>
-                            <p:column headerText="Nombre:">
-                                <h:outputText value="#{personal.nombrepersonal}" />
-                            </p:column>
-                            <p:column headerText="Apellido:">
-                                <h:outputText value="#{personal.apellidopersonal}" />
-                            </p:column> 
-                            <p:column headerText="Direccion:">
-                                <h:outputText value="#{personal.direccionpersonal}" />
-                            </p:column>
-                            <p:column headerText="Correo:">
-                                <h:outputText value="#{personal.correopersonal}" />
-                            </p:column>
-                            <p:column headerText="Telefono:">
-                                <h:outputText value="#{personal.telefonopersonal}" />
-                            </p:column>
-                            <p:column headerText="Clave:">
-                                <h:outputText value="#{personal.documentopersonal}" />
-                            </p:column> 
-                            <p:column headerText="Fecha Nacimiento:">
-                                <h:outputText value="#{personal.fechanacimientopersonal}" />
-                            </p:column>
-                            <p:column headerText="Lugar Nacimiento:">
-                                <h:outputText value="#{personal.lugarnacimientopersonal}" />
-                            </p:column>
-                            <p:column headerText="Foto:">
-                                <h:outputText value="#{personal.fotopersonal}" />
-                            </p:column>
+                                            <p:column>
+                                                <div align="left">                                                    
+                                                    <p:inputText id="txtCorreoPersonal" binding="#{funcionarioPersonalVista.txtCorreoPersonal}"  size="30"/>                                                    
+                                                </div>                                      
+                                            </p:column>
+                                            
+                                            <p:column>
+                                                <h:outputText value="Teléfono:"/>
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txttelefono" value="#{instructorDatosVistaH.txtTelefono}" size="30"/>
+                                                </div>                                      
+                                            </p:column> 
+                                            
+                                        </p:row> 
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputText value="Clave:"/>
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtClavePersonal" binding="#{funcionarioPersonalVista.txtClavePersonal}" disabled="true" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            
+                                            <p:column>
+                                                <h:outputText value="Fecha de Nacimiento (yyyy-MM-dd):"/>
+                                            </p:column>
+
+                                            <p:column colspan="3">
+                                                <div align="left">
+                                                    <p:calendar id="txtFechaNacimientoPersonal" value="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row> 
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputText value="Lugar Nacimiento:"/>
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}" size="30"/>
+                                                </div>                                      
+                                            </p:column> 
+                                            
+                                            <p:column>
+                                                <h:outputText value="Foto:"/>
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtFotoPersonal" binding="#{funcionarioPersonalVista.txtFotoPersonal}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row> 
+                                                                               
+                                        <p:row>
+                                            <p:column colspan="4">
+                                                <div align="center">                                           
+                                                    <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar}" update="formulario"/>
+                                                    <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" disabled="true"/>
+                                                    <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" action="#{funcionarioPersonalVista.limpiar()}" update="formulario"/>
+                                                </div>
+                                            </p:column>
+                                        </p:row>
+                                    </p:panelGrid>
+                                    
+                                    <p:dataTable var="personal" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 selectionMode="single"
+                                                 selection="#{funcionarioPersonalVista.selectedPersonal}"
+                                                 rowKey="#{personal.documentopersonal}">
+                                        <p:ajax event="rowSelect" listener="#{funcionarioPersonalVista.seleccionar}" update=":formulario" />
+                                        <p:column headerText="Documento:">
+                                            <h:outputText value="#{personal.documentopersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Nombre:">
+                                            <h:outputText value="#{personal.nombrepersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Apellido:">
+                                            <h:outputText value="#{personal.apellidopersonal}" />
+                                        </p:column> 
+                                        <p:column headerText="Direccion:">
+                                            <h:outputText value="#{personal.direccionpersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Correo:">
+                                            <h:outputText value="#{personal.correopersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Telefono:">
+                                            <h:outputText value="#{personal.telefonopersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Clave:">
+                                            <h:outputText value="#{personal.documentopersonal}" />
+                                        </p:column> 
+                                        <p:column headerText="Fecha Nacimiento:">
+                                            <h:outputText value="#{personal.fechanacimientopersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Lugar Nacimiento:">
+                                            <h:outputText value="#{personal.lugarnacimientopersonal}" />
+                                        </p:column>
+                                        <p:column headerText="Foto:">
+                                            <h:outputText value="#{personal.fotopersonal}" />
+                                        </p:column>
+
+                                    </p:dataTable>
+                                    
+                                </p:panel>
+          
+                                <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                    <p align="justify">                       
+                                        En esta página usted podrá:<br/><br/>
+                                        <b>-Modificar sus datos básicos</b>
+                                        Cuando inicia esta página aparece su información personal, aqui podrá modificar su nombre, apellidos, correo y/o teléfono, una vez haga los cambios pertinente de click en el botón modificar.
+                                        <br/><br/>
+                                        <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
+                                            Contraseña</u> del menú principal. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal que corresponde a su documento de identificación.
+                                        Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
+                                        seguridad.                     
+                                    </p>
+                                </p:dialog>
+                                
+                            </h:form>
                             
-                        </p:dataTable>
+                        </p:column>
                         
-                        <!--<p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                            <p align="justify">                       
-                                En esta página usted podrá:<br/><br/>
-                                <b>-Registrar los datos básicos del Personal</b>
-                                Cuando inicia esta página aparece la información del Personal, aqui podrá modificar los datos que se neseciten del Personal, una vez haga los cambios pertinentes de click en el botón modificar.
-                                <br/><br/>
-                                <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción.
-                                Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
-                                seguridad.                     
-                            </p>
-                        </p:dialog>-->
-
-                    </h:form>
-                </p:layoutUnit>
-
-            </p:layout>
+                    </p:row>
+                    
+                </p:panelGrid>
+                
+            </p:panel>
+            
+            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
+            </p:layoutUnit>
 
         </h:body>
 
