@@ -19,7 +19,7 @@
         <h:body>
             
             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                <h:graphicImage url="images/LogoRUDA.png" width="60%" height="95%" alt="LogoRUDA"  />
+                <h:graphicImage url="images/LogoRUDA.png" width="60%" height="90%" alt="LogoRUDA"  />
             </p:layoutUnit>            
 
             <p:panel>                
@@ -53,7 +53,8 @@
                                                 <div align="left">
                                                     <p:inputText id="txtDocumentoPersonal" binding="#{funcionarioPersonalVista.txtDocumentoPersonal}" size="30" />
                                                 </div>
-                                            </p:column>                                        
+                                            </p:column>
+                                            
                                             <p:column>
                                                 <h:outputText value="Nombre:"/>
                                             </p:column>
@@ -62,9 +63,8 @@
                                                 <div align="left">
                                                     <p:inputText id="txtNombrePersonal" binding="#{funcionarioPersonalVista.txtNombrePersonal}" size="30"/>
                                                 </div>                                      
-                                            </p:column>                                                                                
-                                        </p:row>  
-                                        <p:row>
+                                            </p:column>
+                                            
                                             <p:column>
                                                 <h:outputText value="Apellido:"/>
                                             </p:column>
@@ -74,6 +74,9 @@
                                                     <p:inputText id="txtApellidoPersonal" binding="#{funcionarioPersonalVista.txtApellidoPersonal}" size="30"/>
                                                 </div>                                      
                                             </p:column>
+                                            
+                                        </p:row>  
+                                        <p:row>                                            
 
                                             <p:column>
                                                 <h:outputText value="Direccion:"/>
@@ -83,10 +86,7 @@
                                                 <div align="left">
                                                     <p:inputText id="txtDireccionPersonal" binding="#{funcionarioPersonalVista.txtDireccionPersonal}" size="30"/>
                                                 </div>                                      
-                                            </p:column>                                        
-
-                                        </p:row>
-                                        <p:row>
+                                            </p:column>
                                             
                                             <p:column>
                                                 <h:outputText value="Correo:"/>
@@ -107,9 +107,10 @@
                                                     <p:inputText id="txttelefono" value="#{instructorDatosVistaH.txtTelefono}" size="30"/>
                                                 </div>                                      
                                             </p:column> 
-                                            
-                                        </p:row> 
+
+                                        </p:row>
                                         <p:row>
+                                            
                                             <p:column>
                                                 <h:outputText value="Clave:"/>
                                             </p:column>
@@ -124,13 +125,12 @@
                                                 <h:outputText value="Fecha de Nacimiento (yyyy-MM-dd):"/>
                                             </p:column>
 
-                                            <p:column colspan="3">
+                                            <p:column>
                                                 <div align="left">
                                                     <p:calendar id="txtFechaNacimientoPersonal" value="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
                                                 </div>                                      
                                             </p:column>
-                                        </p:row> 
-                                        <p:row>
+                                            
                                             <p:column>
                                                 <h:outputText value="Lugar Nacimiento:"/>
                                             </p:column>
@@ -139,7 +139,10 @@
                                                 <div align="left">
                                                     <p:inputText id="txtLugarNacimientoPersonal" binding="#{funcionarioPersonalVista.txtLugarNacimientoPersonal}" size="30"/>
                                                 </div>                                      
-                                            </p:column> 
+                                            </p:column>
+                                            
+                                        </p:row> 
+                                        <p:row>                                             
                                             
                                             <p:column>
                                                 <h:outputText value="Foto:"/>
@@ -150,6 +153,7 @@
                                                     <p:inputText id="txtFotoPersonal" binding="#{funcionarioPersonalVista.txtFotoPersonal}" size="30"/>
                                                 </div>                                      
                                             </p:column>
+                                            
                                         </p:row> 
                                                                                
                                         <p:row>
@@ -162,6 +166,15 @@
                                             </p:column>
                                         </p:row>
                                     </p:panelGrid>
+                                    
+                                    <h:form id="forma">
+                                        <p:growl id="growl" showDetail="true" sticky="true"/>
+                                        <p:panel id="panelUpload" header="Cargar Personal desde archivo:">
+                                            <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioContratoVista.cargarContrato}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                            <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                        </p:panel>
+                                        <br />                    
+                                    </h:form>
                                     
                                     <p:dataTable var="personal" value="#{funcionarioPersonalVista.listaPersonal}" rows="5"
                                                  paginator="true"
