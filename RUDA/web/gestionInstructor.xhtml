@@ -56,13 +56,13 @@
                         <p:calendar id="txtFechaDiligenciamientoPlantilla" value="#{instructorVista.txtFechaDiligenciamietoPlanilla}" pattern="yyyy-MM-dd" mask="true" />
 
                         <h:outputText value="Nombre Contratista:"/>
-                        <p:inputText id="txtNombreContratista" binding="#{instructorVista.txtNombreContratista}" />
+                        <p:inputText id="txtNombreContratista" binding="#{instructorVista.txtNombreContratista}" disabled="true" />
 
                         <h:outputText value="Apellido Contratista:"/>
-                        <p:inputText id="txtApellidoContratista" binding="#{instructorVista.txtApellidoContratista}" />
+                        <p:inputText id="txtApellidoContratista" binding="#{instructorVista.txtApellidoContratista}" disabled="true" />
 
                         <h:outputText value="Documento Contratista:"/>
-                        <p:inputText id="txtDocumentoContratista" binding="#{instructorVista.txtDocumentoContratista}" />
+                        <p:inputText id="txtDocumentoContratista" binding="#{instructorVista.txtDocumentoContratista}" disabled="true"/>
 
                         <h:outputText value="Teléfono Contratista:"/>
                         <p:inputText id="txtTelefonoContratista" binding="#{instructorVista.txtTelefonoContratista}" />
@@ -71,10 +71,10 @@
                         <p:inputText id="txtCorreoContratista" binding="#{instructorVista.txtCorreoContratista}" />
 
                         <h:outputText value="Codigo Dependencia:"/>
-                        <p:inputText id="txtCodigoDependencia" binding="#{instructorVista.txtCodigoDependencia}" />
+                        <p:inputText id="txtCodigoDependencia" binding="#{instructorVista.txtCodigoDependencia}" disabled="true" />
 
                         <h:outputText value="Codigo Banco:"/>
-                        <p:inputText id="txtCodigoBanco" binding="#{instructorVista.txtCodigoBanco}" />
+                        <p:inputText id="txtCodigoBanco" binding="#{instructorVista.txtCodigoBanco}" disabled="true" />
 
                         <p:outputLabel for="txtTipoCuentaContrato" value="Tipo Cuenta Contrato" />
                         <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:125px">
