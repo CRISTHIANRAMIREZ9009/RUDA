@@ -38,7 +38,7 @@
                             </p:column>                        
                             <p:column>
                                 <h:form id="formulario" enctype="multipart/form-data" acceptcharset="UTF-8"> 
-                                    <p:panel id="panelPersonal" header="Personal">
+                                    <p:panel id="panelContrato" header="CONTRATO">
                                         <p:messages id="mensajes" showDetail="true" />
                                         <f:facet name="actions">
                                             <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
@@ -81,7 +81,7 @@
                                             <p:row>
                                                 
                                                 <p:column>
-                                                    <h:outputText value="Numero:"/> 
+                                                    <h:outputText value="Objeto:"/> 
                                                 </p:column>
 
                                                 <p:column>
@@ -96,7 +96,7 @@
 
                                                 <p:column>
                                                     <div align="left">
-                                                        <p:selectOneMenu id="txtEstadoContrato" value="#{selectOneMenuView.txtEstadoContrato}" style="width:125px">
+                                                        <p:selectOneMenu id="txtEstadoContrato" value="#{selectOneMenuView.txtEstadoContrato}" style="width:200px">
                                                             <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
                                                             <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
                                                         </p:selectOneMenu>
@@ -132,8 +132,8 @@
 
                                                 <p:column>
                                                     <div align="left">
-                                                        <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="POR PERIODO (MES)" itemValue="POR PERIODO (MES)" />
+                                                        <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:200px">
+                                                            <f:selectItem itemLabel="MES" itemValue="MES" />
                                                             <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
                                                         </p:selectOneMenu>
                                                     </div>
@@ -159,7 +159,7 @@
 
                                                 <p:column>
                                                     <div align="left">
-                                                        <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:125px">
+                                                        <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:200px">
                                                             <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
                                                             <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
                                                         </p:selectOneMenu>
@@ -176,29 +176,199 @@
                                                     </div>
                                                 </p:column>
                                                 
+                                                <p:column>
+                                                    <h:outputText value="Clase Persona:"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtClasePersonaContrato" value="#{selectOneMenuView.txtClasePersonaContrato}" style="width:200px">
+                                                            <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />
+                                                            <f:selectItem itemLabel="TRABAJADOR POR CUENTA PROPIA" itemValue="TRABAJADOR POR CUENTA PROPIA" />
+                                                            <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="DEMAS PERSONAS NATURALES" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
                                             </p:row>
                                             
                                             <p:row>
                                                 
-                                                <p:column colspan="4">
-                                                    <div align="center">
+                                                <p:column>
+                                                    <h:outputText value="¿Sus ingresos superaron en el 2016  los $39.591.000?"/> 
+                                                </p:column>
 
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtIngresosSuperioresContrato" value="#{selectOneMenuView.txtIngresosSuperioresContrato}" style="width:125px">
+                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="Tipo Regimen de Iva:"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:200px">
+                                                            <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
+                                                            <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="¿Presta servicios excluidos de IVA?"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtExcluidoIvaContrato" value="#{selectOneMenuView.txtExcluidoIvaContrato}" style="width:125px">
+                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                            </p:row>
+                                            
+                                            <p:row>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="¿Es declarante de Renta?"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtDeclaranteContrato" value="#{selectOneMenuView.txtDeclaranteContrato}" style="width:125px">
+                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="¿Usted es Pensionad@"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtPensionadoContrato" value="#{selectOneMenuView.txtPensionadoContrato}" style="width:125px">
+                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="¿Es Dependiente?"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtDependientesContratp" value="#{selectOneMenuView.txtDependientesContratp}" style="width:125px">
+                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                            </p:row>
+                                            
+                                            <p:row>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="¿Es objeto actual de Embargo?"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtEmbargoContrato" value="#{selectOneMenuView.txtEmbargoContrato}" style="width:125px">
+                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="Valor Embargo Contrato:"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:inputText id="txtValorEmbargoContrato" binding="#{funcionarioContratoVista.txtValorEmbargoContrato}" size="30" />
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="Valor Mensual Contrato:"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:inputText id="txtValorMensualContrato" binding="#{funcionarioContratoVista.txtValorMensualContrato}" size="30" />
+                                                    </div>
+                                                </p:column>
+                                                
+                                            </p:row>
+                                            
+                                            <p:row>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="Valor Hora Contrato:"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:inputText id="txtValorHoraContrato" binding="#{funcionarioContratoVista.txtValorHoraContrato}" size="30" />
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column>
+                                                    <h:outputText value="Tipo ARL Contrato:"/> 
+                                                </p:column>
+
+                                                <p:column>
+                                                    <div align="left">
+                                                        <p:selectOneMenu id="txtTipoArlContrato" value="#{selectOneMenuView.txtTipoArlContrato}" style="width:125px">
+                                                            <f:selectItem itemLabel="1" itemValue="1" />
+                                                            <f:selectItem itemLabel="2" itemValue="2" />
+                                                            <f:selectItem itemLabel="3" itemValue="3" />
+                                                            <f:selectItem itemLabel="4" itemValue="4" />
+                                                            <f:selectItem itemLabel="5" itemValue="5" />                  
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </p:column>
+                                                
+                                            </p:row>
+                                                                                        
+                                            <p:row>
+                                                
+                                                <p:column colspan="8">
+                                                    <div align="center">
+                                                        
+                                                        <br/> 
                                                         <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar()}" update="formulario"/>
                                                         <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
                                                         <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" disabled="true"/>
-
+                                                        <br/> 
+                                                        
                                                     </div>
                                                 </p:column>
                                             </p:row>
                                         </p:panelGrid>
                             
                             <h:form id="forma">
+                                <br/> 
                                 <p:growl id="growl" showDetail="true" sticky="true"/>
                                 <p:panel id="panelUpload" header="Cargar Contrato desde archivo:">
                                     <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
                                     <p:messages id="mensajeArchivo" showDetail="true" /> 
                                 </p:panel>
-                                <br />                    
+                                <br/>                    
                             </h:form>
                                         
                         <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
