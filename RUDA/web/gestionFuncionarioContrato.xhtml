@@ -74,7 +74,11 @@
                                                     <div align="left">
                                                         <p:calendar id="txtFechaFinContrato" value="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
                                                     </div>
-                                                </p:column>
+                                                </p:column>                                              
+                                                                            
+                                            </p:row>
+                                            
+                                            <p:row>
                                                 
                                                 <p:column>
                                                     <h:outputText value="Numero:"/> 
@@ -85,10 +89,6 @@
                                                         <p:inputText id="txtObjetoContrato" binding="#{funcionarioContratoVista.txtObjetoContrato}" size="30" />
                                                     </div>
                                                 </p:column>
-                            
-                                            </p:row>
-                                            
-                                            <p:row>
                                                 
                                                 <p:column>
                                                     <h:outputText value="Estado:"/> 
@@ -111,7 +111,10 @@
                                                     <div align="left">
                                                         <p:inputText id="txtValorTotalContrato" value="#{funcionarioContratoVista.txtValorTotalContrato}" size="30" />
                                                     </div>
-                                                </p:column>
+                                                </p:column>                                               
+                                                                            
+                                            </p:row>
+                                            <p:row>
                                                 
                                                 <p:column>
                                                     <h:outputText value="Numero Compromiso:"/> 
@@ -135,9 +138,6 @@
                                                         </p:selectOneMenu>
                                                     </div>
                                                 </p:column>
-                            
-                                            </p:row>
-                                            <p:row>
                                                 
                                                 <p:column>
                                                     <h:outputText value="Numero Cuenta:"/> 
@@ -147,7 +147,11 @@
                                                     <div align="left">
                                                         <p:inputText id="txtNumeroCuentaContrato" value="#{funcionarioContratoVista.txtNumeroCuentaContrato}" size="30" />
                                                     </div>
-                                                </p:column>
+                                                </p:column>                                               
+                                                                                                
+                                            </p:row>
+
+                                            <p:row>
                                                 
                                                 <p:column>
                                                     <h:outputText value="Tipo Cuenta:"/> 
@@ -173,8 +177,9 @@
                                                 </p:column>
                                                 
                                             </p:row>
-
+                                            
                                             <p:row>
+                                                
                                                 <p:column colspan="4">
                                                     <div align="center">
 
