@@ -4,7 +4,8 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from personal]]>
+		<![CDATA[select personal.documentopersonal,
+personal.nombrepersonal, personal.apellidopersonal, personal.direccionpersonal, personal.correopersonal, personal.telefonopersonal from personal]]>
 	</queryString>
 	<field name="documentopersonal" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -22,18 +23,6 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="telefonopersonal" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="clavepersonal" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="fechanacimientopersonal" class="java.sql.Date">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="lugarnacimientopersonal" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="fotopersonal" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -80,14 +69,10 @@
 				<reportElement x="500" y="0" width="100" height="20" uuid="9d81e257-fffd-4f39-923c-ce091d993fbf"/>
 				<text><![CDATA[telefonopersonal]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="600" y="0" width="100" height="20" uuid="f999a2fb-eb68-4565-b00b-7b6404bd6e15"/>
-				<text><![CDATA[lugarnacimientopersonal]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="124" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="fbda5382-15b1-4305-a7d0-36bf12fe29b8"/>
 				<textFieldExpression><![CDATA[$F{documentopersonal}]]></textFieldExpression>
@@ -111,10 +96,6 @@
 			<textField>
 				<reportElement x="500" y="0" width="100" height="20" uuid="0e0ecff6-2cbc-44e9-aa6c-6c056a82e1e1"/>
 				<textFieldExpression><![CDATA[$F{telefonopersonal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="600" y="0" width="100" height="20" uuid="389e5483-44cc-4233-87ed-d523698cf9c8"/>
-				<textFieldExpression><![CDATA[$F{lugarnacimientopersonal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
