@@ -14,5 +14,6 @@ public interface ContratoLogicaLocal {
     Contrato find (Integer numerocontrato) throws Exception;
     List<Contrato> findAll() throws Exception;
     public String importarDatosContrato(String archivo) throws Exception;
+    public void generarReporteContrato(String url) throws Exception;
     
 }

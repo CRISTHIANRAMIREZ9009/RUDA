@@ -38,7 +38,7 @@
                                 </h:form> 
                             </p:column>                        
                             <p:column>
-                                <h:form id="formulario" enctype="multipart/form-data" acceptcharset="UTF-8"> 
+                                <h:form id="formulario" acceptcharset="UTF-8"> 
                                     <p:panel id="panelContrato" header="CONTRATO">
                                         <p:messages id="mensajes" showDetail="true" />
                                         <f:facet name="actions">
@@ -354,7 +354,8 @@
                                                         <br/> 
                                                         <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar}" update="formulario"/>
                                                         <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
-                                                        <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" disabled="true"/>
+                                                        <p:commandButton value="Generar Reporte" binding="#{funcionarioContratoVista.btnReporte}" action="#{funcionarioContratoVista.generarReporte}" update="formulario"/>
+                                                        <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" disabled="true"/>                                                        
                                                         <br/> 
                                                         
                                                     </div>

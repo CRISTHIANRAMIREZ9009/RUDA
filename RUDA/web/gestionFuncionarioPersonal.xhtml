@@ -36,7 +36,7 @@
                             </h:form>
                         </p:column>
                         <p:column>                           
-                                <p:panel id="panelPersonal" header="Personal">                                    
+                                <p:panel id="panelPersonal" header="PERSONAL">                                    
                                      <h:form id="formulario" acceptcharset="UTF-8"> 
                                          <p:messages id="mensajes" showDetail="true" />
                                     <f:facet name="actions">
@@ -104,7 +104,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:inputText id="txttelefono" binding="#{funcionarioPersonalVista.txtTelefonoPersonal}" size="30"/>
+                                                    <p:inputText id="txtTelefonoPersonal" binding="#{funcionarioPersonalVista.txtTelefonoPersonal}"  size="30"/>                                                  
                                                 </div>                                      
                                             </p:column> 
 
@@ -142,30 +142,32 @@
                                             </p:column>
                                             
                                         </p:row> 
-                                        <p:row>                                             
-                                            
-                                            <p:column>
-                                                <h:outputText value="Foto:"/>
-                                            </p:column>
-
-                                            <p:column>
-                                                <div align="left">
-                                                    <p:inputText id="txtFotoPersonal" binding="#{funcionarioPersonalVista.txtFotoPersonal}" size="30"/>
-                                                </div>                                      
-                                            </p:column>
-                                            
-                                        </p:row> 
                                                                                
                                         <p:row>
-                                            <p:column colspan="4">
+                                            <p:column colspan="6">
                                                 <div align="center">                                           
                                                     <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar}" update="formulario"/>
                                                     <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" disabled="true"/>
-                                                    <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" action="#{funcionarioPersonalVista.limpiar()}" update="formulario"/>
+                                                    <p:commandButton value="Generar Reporte" binding="#{funcionarioPersonalVista.btnReporte}" action="#{funcionarioPersonalVista.generarReporte}" update="formulario"/>
+                                                    <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" action="#{funcionarioPersonalVista.limpiar}" update="formulario"/>
                                                 </div>
                                             </p:column>
                                         </p:row>
                                     </p:panelGrid>
+                                         
+                                         <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                             <p align="justify">                       
+                                                 En esta página usted podrá:<br/><br/>
+                                                 <b>-Modificar sus datos básicos</b>
+                                                 Cuando inicia esta página aparece su información personal, aqui podrá modificar su nombre, apellidos, correo y/o teléfono, una vez haga los cambios pertinente de click en el botón modificar.
+                                                 <br/><br/>
+                                                 <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
+                                                     Contraseña</u> del menú principal. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal que corresponde a su documento de identificación.
+                                                 Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
+                                                 seguridad.                     
+                                             </p>
+                                         </p:dialog>     
+                                         
                                     </h:form>
                                     <h:form id="forma" enctype="multipart/form-data">
                                         <p:growl id="growl" showDetail="true" sticky="true"/>
@@ -211,29 +213,11 @@
                                         <p:column headerText="Lugar Nacimiento:">
                                             <h:outputText value="#{personal.lugarnacimientopersonal}" />
                                         </p:column>
-                                        <p:column headerText="Foto:">
-                                            <h:outputText value="#{personal.fotopersonal}" />
-                                        </p:column>
 
                                     </p:dataTable>
                                     
-                                </p:panel>
-          
-                                <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                                    <p align="justify">                       
-                                        En esta página usted podrá:<br/><br/>
-                                        <b>-Modificar sus datos básicos</b>
-                                        Cuando inicia esta página aparece su información personal, aqui podrá modificar su nombre, apellidos, correo y/o teléfono, una vez haga los cambios pertinente de click en el botón modificar.
-                                        <br/><br/>
-                                        <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
-                                            Contraseña</u> del menú principal. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal que corresponde a su documento de identificación.
-                                        Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
-                                        seguridad.                     
-                                    </p>
-                                </p:dialog>
-                                
-                            
-                            
+                                </p:panel>       
+                                                                     
                         </p:column>
                         
                     </p:row>

@@ -237,7 +237,6 @@ public class FuncionarioPersonalVista {
         txtClavePersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");
         txtFechaNacimientoPersonal.setValue(personalSeleccionado.getFechanacimientopersonal());
         txtLugarNacimientoPersonal.setValue(personalSeleccionado.getLugarnacimientopersonal());
-        txtFotoPersonal.setValue(personalSeleccionado.getFotopersonal());
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
         btnLimpiar.setDisabled(true);
@@ -277,9 +276,6 @@ public class FuncionarioPersonalVista {
         txtClavePersonal.setValue("");
         txtFechaNacimientoPersonal.setValue("");
         txtLugarNacimientoPersonal.setValue("");
-        txtFotoPersonal.setValue("");
-        btnRegistrar.setDisabled(true);
-        btnModificar.setDisabled(true);
     }
     
     public void cargarPersonal(FileUploadEvent event) {

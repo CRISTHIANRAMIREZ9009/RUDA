@@ -23,4 +23,5 @@ public interface ClausulaLogicaLocal {
     List<Clausula> findAll () throws Exception;
     public String importarDatosClausula (String archivo) throws Exception;
     Clausula find (Integer numeroclausula) throws Exception;
+    public void generarReporteClausula(String url) throws Exception;
 }

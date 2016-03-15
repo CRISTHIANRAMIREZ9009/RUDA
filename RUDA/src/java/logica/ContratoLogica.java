@@ -14,6 +14,7 @@ import modelo.Contrato;
 import modelo.Coordinador;
 import modelo.Lineacentro;
 import modelo.Personal;
+import org.primefaces.context.RequestContext;
 import persistencia.ContratoFacadeLocal;
 
 @Stateless
@@ -211,6 +212,28 @@ public class ContratoLogica implements ContratoLogicaLocal {
         }
         
         return "!Se registraron " + contratoInsertado + " contrato. Ya existían " + contratoExistente + ".";
+        
+    }
+
+    @Override
+    public void generarReporteContrato(String url) throws Exception {
+        
+        String params = "'"
+                + url + "/reporteContrato.do',"
+                + "'reportWindow', "
+                + "'"
+                + "width=1024"
+                + ",height=768"
+                + ",status=no"
+                + ",toolbar=no"
+                + ",menubar=no"
+                + ",location=no"
+                + ",scrollbars=yes"
+                + "'";
+
+        System.out.println(params);
+
+        RequestContext.getCurrentInstance().execute("location.href=" + params + ";");
         
     }
    

@@ -12,8 +12,7 @@
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <link rel="StyleSheet" href="css/style.css" type="text/css"></link>
                 <link rel="shortcut icon" href="images/iconoRUDA.ico"/>
-            </f:facet>
-            
+            </f:facet>            
         </h:head>
 
         <h:body>
@@ -31,13 +30,12 @@
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
                     <h:form>
                         <p:menu>
-                            <p:submenu label="Menu">
-                               
+                            <p:submenu label="Menu">                               
                                 <p:menuitem value="Cambiar clave" url="faces/CambiarPasswordInstructor.xhtml" />
+                                <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
                             </p:submenu>
 
                         </p:menu>
-
                     </h:form>
                 </p:layoutUnit>
 

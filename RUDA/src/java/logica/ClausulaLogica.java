@@ -12,6 +12,7 @@ import javax.ejb.Stateless;
 import jxl.Sheet;
 import jxl.Workbook;
 import modelo.Clausula;
+import org.primefaces.context.RequestContext;
 import persistencia.ClausulaFacadeLocal;
 
 /**
@@ -197,5 +198,27 @@ public class ClausulaLogica implements ClausulaLogicaLocal {
             throw new Exception ("!El codigo de la clausula es obligatorio para la busqueda¡");
             
         }
+    }
+
+    @Override
+    public void generarReporteClausula(String url) throws Exception {
+        
+        String params = "'"
+                + url + "/reporteClausula.do',"
+                + "'reportWindow', "
+                + "'"
+                + "width=1024"
+                + ",height=768"
+                + ",status=no"
+                + ",toolbar=no"
+                + ",menubar=no"
+                + ",location=no"
+                + ",scrollbars=yes"
+                + "'";
+
+        System.out.println(params);
+
+        RequestContext.getCurrentInstance().execute("location.href=" + params + ";");
+        
     }
 }

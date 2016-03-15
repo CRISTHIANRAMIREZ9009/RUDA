@@ -81,6 +81,21 @@
                      <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion_action}"/>
 
                     </h:form>
+                    
+                    <h:form id="formulario2" acceptcharset="UTF-8">
+                        <p:messages id="mensajes" showDetail="true" />
+                        
+                        <p:row>
+                            <p:column colspan="6">
+                                <div align="center">                                           
+                                    
+                                    <p:commandButton value="Generar Reporte" binding="#{ClausulaVista.btnReporte}" action="#{ClausulaVista.generarReporte}" update="formulario2"/>
+                                    
+                                </div>
+                            </p:column>
+                        </p:row>
+
+                    </h:form> 
 
                 </p:layoutUnit>
 

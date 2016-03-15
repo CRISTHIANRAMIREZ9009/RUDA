@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c9e622c-ace2-40f6-aff5-6a79fb5b678c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="263"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from contrato]]>
+	</queryString>
+	<field name="numerocontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechainiciocontrato" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechafincontrato" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="objetocontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadocontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotalcontrato" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numerocompromisosiifcontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formapagocontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numerocuentacontrato" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipocuentacontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigobancocontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentocoordinadorcontrato" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentopersonalcontrato" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigolineacontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clasepersonacontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ingresossuperiorescontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="regimenivacontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="excluidoivacontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="declarantecontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pensionadocontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dependientescontratp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="embargocontrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorembargocontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormensualcontrato" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorhoracontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoarlcontrato" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="180" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="10" width="460" height="156" uuid="f085ee36-0551-4b33-ad6b-3d08e1673112"/>
+				<imageExpression><![CDATA["D:\\Nueva carpeta (3)\\NetBeansProjects\\RUDA\\RUDA\\RUDA\\web\\images\\informes.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="0cb7daee-6eed-47cf-a8cd-44bd1c7e4456"/>
+				<text><![CDATA[numerocontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="07582800-50ce-44ae-9b7c-1c9e7e443e47"/>
+				<text><![CDATA[fechainiciocontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="26b53368-64a1-4782-a9fb-a5fc44d45742"/>
+				<text><![CDATA[fechafincontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="5ec5f569-256c-403f-b01a-4008a539b196"/>
+				<text><![CDATA[objetocontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="db2f06ee-af85-4dcd-9409-615b2b0eda32"/>
+				<text><![CDATA[estadocontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="20" uuid="3071ddab-915e-436c-adae-ad955e2d7221"/>
+				<text><![CDATA[valortotalcontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="20" uuid="4b612fd5-afd9-4e05-a61f-b3a05ee6ed1a"/>
+				<text><![CDATA[numerocompromisosiifcontrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="0" width="100" height="20" uuid="074d8211-d7a1-4bbe-b7ee-2dd7ccc3413a"/>
+				<text><![CDATA[formapagocontrato]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f94c30b2-1473-46f0-a75a-a32b8faff3c2"/>
+				<textFieldExpression><![CDATA[$F{numerocontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="230df283-4bfd-4148-be7d-9f492fdb57e7"/>
+				<textFieldExpression><![CDATA[$F{fechainiciocontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="b25aedb6-980e-4281-b8d7-89d2f46debe2"/>
+				<textFieldExpression><![CDATA[$F{fechafincontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="ab05a832-2dac-4cf7-bad9-96fdca8e40ec"/>
+				<textFieldExpression><![CDATA[$F{objetocontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="056c9155-3b94-45a2-8c39-df379b46c299"/>
+				<textFieldExpression><![CDATA[$F{estadocontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="20" uuid="52a6a01c-867e-4783-8709-04ae10ea8c6f"/>
+				<textFieldExpression><![CDATA[$F{valortotalcontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="20" uuid="0081c935-2ba2-4d01-a2be-f76ba1816c7c"/>
+				<textFieldExpression><![CDATA[$F{numerocompromisosiifcontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="0" width="100" height="20" uuid="216cfbbd-653a-44be-860a-b9e79245289c"/>
+				<textFieldExpression><![CDATA[$F{formapagocontrato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39378f73-7e70-4c0c-b464-b422644d2ae4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from personal]]>
+	</queryString>
+	<field name="documentopersonal" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrepersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidopersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccionpersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correopersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonopersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clavepersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechanacimientopersonal" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lugarnacimientopersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fotopersonal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="100" height="105" uuid="aa35b768-2196-44da-897f-81013933502e"/>
+				<imageExpression><![CDATA["D:\\Nueva carpeta (3)\\NetBeansProjects\\RUDA\\RUDA\\RUDA\\web\\images\\LogoSena.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="156" y="32" width="100" height="20" uuid="9bd4b6df-998e-477e-a86e-4a005e7518ab"/>
+				<text><![CDATA[PERSONAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f0405a37-8bab-4033-9e04-7fde03c9b381"/>
+				<text><![CDATA[documentopersonal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="ae11b171-7d18-400f-84a9-6b532f27717a"/>
+				<text><![CDATA[nombrepersonal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="f2d6f0cc-d105-4fbd-a6d5-dffdfc71eb37"/>
+				<text><![CDATA[apellidopersonal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="f62c3e63-b2eb-4d00-8f19-cd6127c2f8a6"/>
+				<text><![CDATA[direccionpersonal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="0162d7b1-5226-4f15-9022-56bcf0aacc93"/>
+				<text><![CDATA[correopersonal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="20" uuid="9d81e257-fffd-4f39-923c-ce091d993fbf"/>
+				<text><![CDATA[telefonopersonal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="20" uuid="f999a2fb-eb68-4565-b00b-7b6404bd6e15"/>
+				<text><![CDATA[lugarnacimientopersonal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="124" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="fbda5382-15b1-4305-a7d0-36bf12fe29b8"/>
+				<textFieldExpression><![CDATA[$F{documentopersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="fdac1368-d2c3-4aa0-9f33-24a5617f02df"/>
+				<textFieldExpression><![CDATA[$F{nombrepersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="32a39c1d-c4ed-4595-b908-f927bb0b28ab"/>
+				<textFieldExpression><![CDATA[$F{apellidopersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="3580a067-f729-490a-b18c-dbffafd71f2b"/>
+				<textFieldExpression><![CDATA[$F{direccionpersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="723a0a92-762f-4439-9e46-867704ee591c"/>
+				<textFieldExpression><![CDATA[$F{correopersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="20" uuid="0e0ecff6-2cbc-44e9-aa6c-6c056a82e1e1"/>
+				<textFieldExpression><![CDATA[$F{telefonopersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="20" uuid="389e5483-44cc-4233-87ed-d523698cf9c8"/>
+				<textFieldExpression><![CDATA[$F{lugarnacimientopersonal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
