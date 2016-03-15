@@ -27,7 +27,7 @@
                     <p:row>                        
                         <p:column>
                             <h:form id="formulario" enctype="multipart/form-data" acceptcharset="UTF-8"> 
-                                <p:panel id="panelContrato" header="Loguearse">
+                                <p:panel id="panelLogueo" header="Loguearse">
                                     <p:messages id="mensajes" showDetail="true" />
                                     <f:facet name="actions">
                                         <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
@@ -44,7 +44,7 @@
                                                 <h:outputText value="Contraseña:"/>
                                             </p:column>
                                             <p:column colspan="2">
-                                                <p:password id="txtClave" binding="#{sesionVista.txtClave}" feedback="true"/>
+                                                <p:password id="txtClave" binding="#{sesionVista.txtClave}"/>
                                             </p:column>
                                     
                                 </p:row>
@@ -63,12 +63,12 @@
                                 <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
                                     <p align="justify">                       
                                         En esta página usted podrá:<br/><br/>
-                                        <b>-Modificar sus datos básicos</b>
-                                        Cuando inicia esta página aparece su información personal, aqui podrá modificar su nombre, apellidos, correo y/o teléfono, una vez haga los cambios pertinente de click en el botón modificar.
+                                        <b>-Ingresar al sistema RUDA:</b>
+                                        Cuando inicia esta página aparece un formulario para el ingreso a la plataforma llenando los campos solicitados, haga click en el botón ingresar.
                                         <br/><br/>
-                                        <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
-                                            Contraseña</u> del menú principal. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal que corresponde a su documento de identificación.
-                                        Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
+                                        <u>Nota:</u> La clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
+                                            Contraseña</u> del menú principal despues de ingresar al aplicativo. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal.
+                                        Se recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
                                         seguridad.                     
                                     </p>
                                 </p:dialog>

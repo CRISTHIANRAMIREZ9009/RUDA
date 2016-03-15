@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import logica.PersonalLogicaLocal;
 import modelo.Personal;
+import org.primefaces.component.calendar.Calendar;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.event.FileUploadEvent;
@@ -34,7 +36,7 @@ public class FuncionarioPersonalVista {
     private InputText txtCorreoPersonal;
     private InputText txtTelefonoPersonal;
     private InputText txtClavePersonal;
-    private InputText txtFechaNacimientoPersonal;
+    private Calendar txtFechaNacimientoPersonal;
     private InputText txtLugarNacimientoPersonal;
     private InputText txtFotoPersonal;
     
@@ -106,11 +108,11 @@ public class FuncionarioPersonalVista {
         this.txtClavePersonal = txtClavePersonal;
     }
 
-    public InputText getTxtFechaNacimientoPersonal() {
+    public Calendar getTxtFechaNacimientoPersonal() {
         return txtFechaNacimientoPersonal;
     }
 
-    public void setTxtFechaNacimientoPersonal(InputText txtFechaNacimientoPersonal) {
+    public void setTxtFechaNacimientoPersonal(Calendar txtFechaNacimientoPersonal) {
         this.txtFechaNacimientoPersonal = txtFechaNacimientoPersonal;
     }
 
@@ -209,8 +211,9 @@ public class FuncionarioPersonalVista {
             nuevaPersonal.setCorreopersonal(txtCorreoPersonal.getValue().toString());
             nuevaPersonal.setTelefonopersonal(txtTelefonoPersonal.getValue().toString()); 
             nuevaPersonal.setClavepersonal(txtDocumentoPersonal.getValue().toString());
-            String fecha = "1990-02-20";
-            nuevaPersonal.setFechanacimientopersonal(Date.valueOf(fecha)); 
+            String fecha = txtFechaNacimientoPersonal.getValue().toString();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            nuevaPersonal.setFechanacimientopersonal(formato.parse(fecha)); 
             nuevaPersonal.setLugarnacimientopersonal(txtLugarNacimientoPersonal.getValue().toString());
             nuevaPersonal.setFotopersonal(txtNombrePersonal.getValue().toString() + txtApellidoPersonal.getValue().toString());
             personalLogica.create(nuevaPersonal);

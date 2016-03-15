@@ -24,17 +24,122 @@ public class PersonalLogica implements PersonalLogicaLocal {
 
     @Override
     public void create(Personal personal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Personal nuevoPersonal = personalDAO.find(personal.getDocumentopersonal());
+        
+        if(personal!=null)
+        {
+            
+            if(personal.getDocumentopersonal() == null)
+            {
+                
+                throw new Exception ("!El documento del personal es obligatorio¡");
+                
+            }
+            
+        }
+        
+        else
+        {
+            
+            throw new Exception ("!El personal no contiene informacion¡");
+            
+        }
+        
+        if(nuevoPersonal == null)
+        {
+            
+            personalDAO.create(personal);
+            
+        }
+        
+        else
+        {
+            
+            throw new Exception ("!El personal ya esta creado¡");
+            
+        }
+        
     }
 
     @Override
     public void edit(Personal personal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Personal nuevoPersonal = personalDAO.find(personal.getDocumentopersonal());
+        
+        if(personal!=null)
+        {
+            
+            if(personal.getDocumentopersonal() == null)
+            {
+                
+                throw new Exception ("!El documento del personal es obligatorio¡");
+                
+            }
+            
+        }
+        
+        else
+        {
+            
+            throw new Exception ("!El personal no contiene informacion¡");
+            
+        }
+        
+        if(nuevoPersonal == null)
+        {
+            
+            throw new Exception ("!El personal no existe y no puede ser modificado¡");
+            
+        }
+        
+        else
+        {
+            
+            personalDAO.edit(personal);            
+            
+        }
+        
     }
 
     @Override
     public void remove(Personal personal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Personal nuevoPersonal = personalDAO.find(personal.getDocumentopersonal());
+        
+        if(personal!=null)
+        {
+            
+            if(personal.getDocumentopersonal() == null)
+            {
+                
+                throw new Exception ("!El documento del personal es obligatorio¡");
+                
+            }
+            
+        }
+        
+        else
+        {
+            
+            throw new Exception ("!El personal no contiene informacion¡");
+            
+        }
+        
+        if(nuevoPersonal == null)
+        {
+            
+            throw new Exception ("!El personal no exite y no se puede eliminar¡");
+            
+        }
+        
+        else
+        {
+            
+            personalDAO.remove(personal);
+            
+        }
+        
     }
 
     @Override
@@ -58,7 +163,7 @@ public class PersonalLogica implements PersonalLogicaLocal {
 
     @Override
     public List<Personal> findAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return personalDAO.findAll();
     }
 
     @Override
