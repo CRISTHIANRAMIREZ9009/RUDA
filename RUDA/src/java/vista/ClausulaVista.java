@@ -24,6 +24,7 @@ import org.primefaces.component.inputtext.InputText;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -111,7 +112,7 @@ public class ClausulaVista {
         return listaClausula;
     }
     
-    public void setListaPersonal(List<Clausula> listaClausula) {
+    public void setListaClausula(List<Clausula> listaClausula) {
         this.listaClausula = listaClausula;
     }
 
@@ -123,15 +124,59 @@ public class ClausulaVista {
         this.selectedClausula = selectedClausula;
     }
 
-    public ClausulaLogicaLocal getPersonalLogica() {
+    public ClausulaLogicaLocal getClausulaLogica() {
         return clausulaLogica;
     }
 
-    public void setPersonalLogica(ClausulaLogicaLocal clausulaLogica) {
+    public void setClausulaLogica(ClausulaLogicaLocal clausulaLogica) {
         this.clausulaLogica = clausulaLogica;
     }
     
-    public void cargarClausula(FileUploadEvent event) {
+   
+    
+    public void accion_registrar(){
+        try{
+           Clausula nuevaClausula = new Clausula();
+           nuevaClausula.setCodigoclausula(Integer.parseInt(txtCodigoClausula.getValue().toString()));
+           nuevaClausula.setDescripcionclausula(txtDescripcionClausula.getValue().toString());
+           clausulaLogica.create(nuevaClausula);
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!La Clausula se  registro correctamente¡"));
+           listaClausula = null;
+        }catch(Exception ex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡",ex.getMessage()));
+        }
+     }
+       
+    public void seleccionar(SelectEvent e){
+        Clausula clausulaSeleccionada = selectedClausula;
+        txtCodigoClausula.setValue(clausulaSeleccionada.getCodigoclausula()+"");
+        txtDescripcionClausula.setValue(clausulaSeleccionada.getDescripcionclausula());
+        btnModificar.setDisabled(false);
+        btnRegistrar.setDisabled(true);
+        btnLimpiar.setDisabled(true);
+    }
+    
+    public void modificar(){
+        try{
+            Clausula nuevaClausula = new Clausula();
+            nuevaClausula.setDescripcionclausula(txtDescripcionClausula.getValue().toString());
+            clausulaLogica.edit(nuevaClausula);
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!La Clausula se modifico correctamente¡"));
+             listaClausula=null;
+        }catch(Exception ex){
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
+        }
+        
+    }
+    
+    public void limpiar(){
+        txtCodigoClausula.setValue("");
+        txtDescripcionClausula.setValue("");
+        btnRegistrar.setDisabled(true);
+        btnModificar.setDisabled(true);
+    }
+    
+     public void cargarClausula(FileUploadEvent event) {
         //System.out.println("Evento File upload!!!");
 
         ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
@@ -149,8 +194,8 @@ public class ClausulaVista {
             Logger.getLogger(FuncionarioPersonalVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void copiarArchivo(String rutaDestino, String fileName, InputStream in) {
+     
+     public void copiarArchivo(String rutaDestino, String fileName, InputStream in) {
         try {
             OutputStream out = new FileOutputStream(new File(rutaDestino + "\\" + fileName));
             System.out.println("Ruta Archivo: " + rutaDestino + "\\" +fileName);
@@ -169,6 +214,5 @@ public class ClausulaVista {
         }
     }
     
-        
 
 }

@@ -50,7 +50,7 @@
                             <p:inputText id="txtDescripcionClausula" binding="#{ClausulaVista.txtDescripcionClausula}" />
                                                    
                                                       
-                            <p:commandButton value="Registrar" binding="#{ClausulaVista.btnRegistrar}" validateClient="true" action="#{ClausulaVista.accion_registrar}"  update="formulario"/>
+                            <p:commandButton value="Registrar" binding="#{ClausulaVista.btnRegistrar}" validateClient="true" action="#{ClausulaVista.accion_registrar()}"  update="formulario"/>
                             <p:commandButton value="Modificar" binding="#{ClausulaVista.btnModificar}" disabled="true"/>
                             <p:commandButton value="Limpiar" binding="#{ClausulaVista.btnLimpiar}" disabled="true"/>
                             
