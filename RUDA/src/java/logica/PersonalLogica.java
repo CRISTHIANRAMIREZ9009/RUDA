@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import jxl.Sheet;
 import jxl.Workbook;
 import modelo.Personal;
+import org.primefaces.context.RequestContext;
 import persistencia.PersonalFacadeLocal;
 
 @Stateless
@@ -199,5 +200,27 @@ public class PersonalLogica implements PersonalLogicaLocal {
             }
         }
         return "!Se registraron " + personalInsertado + " personas. Ya existían " + personalExistente + ".";
+    }
+
+    @Override
+    public void generarReportePersonal(String url) throws Exception {
+        
+        String params = "'"
+                + url + "/reportePersonal.do',"
+                + "'reportWindow', "
+                + "'"
+                + "width=1024"
+                + ",height=768"
+                + ",status=no"
+                + ",toolbar=no"
+                + ",menubar=no"
+                + ",location=no"
+                + ",scrollbars=yes"
+                + "'";
+
+        System.out.println(params);
+
+        RequestContext.getCurrentInstance().execute("location.href=" + params + ";");
+            
     }
 }

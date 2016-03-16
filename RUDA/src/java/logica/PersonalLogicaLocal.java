@@ -14,5 +14,6 @@ public interface PersonalLogicaLocal {
     Personal find (Long documentopersonal) throws Exception;
     List<Personal> findAll() throws Exception;
     public String importarDatosPersonal(String archivo) throws Exception;
+    public void generarReportePersonal(String url) throws Exception;
     
 }

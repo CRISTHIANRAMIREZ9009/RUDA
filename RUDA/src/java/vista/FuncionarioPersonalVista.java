@@ -15,8 +15,10 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import logica.PersonalLogicaLocal;
 import modelo.Personal;
 import org.primefaces.component.calendar.Calendar;
@@ -42,6 +44,7 @@ public class FuncionarioPersonalVista {
     
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
+    private CommandButton btnReporte;
     private CommandButton btnLimpiar;
     private List<Personal> listaPersonal;
     private Personal selectedPersonal;
@@ -146,6 +149,14 @@ public class FuncionarioPersonalVista {
 
     public void setBtnModificar(CommandButton btnModificar) {
         this.btnModificar = btnModificar;
+    }
+
+    public CommandButton getBtnReporte() {
+        return btnReporte;
+    }
+
+    public void setBtnReporte(CommandButton btnReporte) {
+        this.btnReporte = btnReporte;
     }
 
     public CommandButton getBtnLimpiar() {
@@ -315,5 +326,26 @@ public class FuncionarioPersonalVista {
             //System.out.println(e.getMessage());
         }
     }
+    
+    public void generarReporte (){
+        
+        try {
+
+                FacesContext fc = FacesContext.getCurrentInstance();
+                ExternalContext ec = fc.getExternalContext();
+                HttpServletRequest sr = ((HttpServletRequest) ec.getRequest());
+                String scheme = sr.getScheme();
+                String serverName = sr.getServerName();
+                int port = sr.getServerPort();
+                String contextPath = sr.getContextPath();
+                String url = scheme + "://" + serverName + ":" + port + contextPath;
+                System.out.println("Entro aqui reporte");
+                personalLogica.generarReportePersonal(url);
+
+            } catch (Exception ex) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
+            }
+        
+    }  
     
 }
