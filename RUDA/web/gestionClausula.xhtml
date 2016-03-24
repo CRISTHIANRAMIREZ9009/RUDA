@@ -39,6 +39,54 @@
 
                     </h:form>
                 </p:layoutUnit>
+                
+                <p:column>
+                                    <p:panel id="panelClausula" header="Clausula">
+                        <h:form id="formulario" acceptcharset="UTF-8">
+                            <p:messages id="mensajes" showDetail="true"/> 
+                                <f:facet name="actions">
+                                    <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help"/> </p:commandLink>
+                                </f:facet>
+                            
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    
+                                    <p:column>
+                                        <h:outputText value="Codigo Clausula"/>
+                                    </p:column>
+                                    <p:column>
+                                        <div align="left">
+                                            <h:inputText id="txtCodigoClausula" binding="#{ClausulaVista.txtCodigoClausula}" size="10"/>
+                                        </div>
+                                    </p:column>
+                                    
+                                    <p:column>
+                                        <h:outputText value="Descripcion Clausula"/>
+                                    </p:column>
+                                    <p:column>
+                                        <div>
+                                            <h:inputText id="txtDescripcionClausula" binding="#{ClausulaVista.txtDescripcionClausula} "/>
+                                        </div>
+                                    </p:column>
+                                    
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="4">
+                                        <div align="center">
+                                            <p:commandButton value="Registrar" binding="#{Clau}"
+                                        </div>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+                        </h:form>
+                        
+                    </p:panel> 
+                    
+                    
+                </p:column>
 
                 <p:layoutUnit position="center">
                     <h:form id="formulario">
