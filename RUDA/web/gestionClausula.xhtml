@@ -79,7 +79,11 @@
                         <p:dataTable var="clausula" value="#{ClausulaVista.listaClausula}" rows="5"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15">
+                                     rowsPerPageTemplate="5,10,15"
+                                     selectionMode="single"
+                                     selection="#{ClausulaVista.selectedClausula}"
+                                     rowKey="#{clausula.codigoclausula}">
+                            <p:ajax event="rowSelect" listener="#{ClausulaVista.seleccionar}" update=":formulario"/>      
                             <p:column headerText="Codigo Clausula">
                                 <h:outputText value="#{clausula.codigoclausula}" />
                             </p:column>
