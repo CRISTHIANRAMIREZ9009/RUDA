@@ -32,7 +32,7 @@
                     <h:form>
                         <p:menu>
                             <p:submenu label="Menu">
-                                <p:menuitem value="Clausula" url="faces/gestionFuncionarioContrato.xhtml" />
+                                <p:menuitem value="Contrato" url="faces/gestionFuncionarioContrato.xhtml" />
                             </p:submenu>
 
                         </p:menu>
@@ -41,55 +41,18 @@
                 </p:layoutUnit>
                 
                 <p:column>
-                                    <p:panel id="panelClausula" header="Clausula">
-                        <h:form id="formulario" acceptcharset="UTF-8">
+                    <h:form>
+                      <p:panel id="panelClausula" header="Clausula"/>
                             <p:messages id="mensajes" showDetail="true"/> 
                                 <f:facet name="actions">
                                     <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help"/> </p:commandLink>
                                 </f:facet>
-                            
-                            
-                            <p:panelGrid>
-                                <p:row>
-                                    
-                                    <p:column>
-                                        <h:outputText value="Codigo Clausula"/>
-                                    </p:column>
-                                    <p:column>
-                                        <div align="left">
-                                            <h:inputText id="txtCodigoClausula" binding="#{ClausulaVista.txtCodigoClausula}" size="10"/>
-                                        </div>
-                                    </p:column>
-                                    
-                                    <p:column>
-                                        <h:outputText value="Descripcion Clausula"/>
-                                    </p:column>
-                                    <p:column>
-                                        <div>
-                                            <h:inputText id="txtDescripcionClausula" binding="#{ClausulaVista.txtDescripcionClausula} "/>
-                                        </div>
-                                    </p:column>
-                                    
-                                </p:row>
-                                
-                                <p:row>
-                                    <p:column colspan="4">
-                                        <div align="center">
-                                            <p:commandButton value="Registrar" binding="#{Clau}"
-                                        </div>
-                                    </p:column>
-                                </p:row>
-                            </p:panelGrid>
-                            
-                        </h:form>
-                        
-                    </p:panel> 
-                    
-                    
-                </p:column>
+                    </h:form>       
+                </p:column>            
+                           
 
-                <p:layoutUnit position="center">
-                    <h:form id="formulario">
+                <p:layoutUnit position="center" >
+                    <h:form id="formulario" acceptcharset="UTF-8">
                         <p:growl id="growl" showDetail="true" sticky="true" />
                         <p:panelGrid columns="6">
                             <h:outputText value="Codigo Clausula:"/>
