@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,7 @@ import modelo.Lineacentro;
 import modelo.Personal;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import persistencia.BancoFacadeLocal;
@@ -48,9 +50,9 @@ public class FuncionarioContratoVista {
     private InputText txtNumeroCuentaContrato;
     private InputText txtTipoCuentaContrato;
     private InputText txtCodigoBancoContrato;
-    private Banco selectedCodigoBancoContrato;
-    private Coordinador selectedDocumentoCoordinadorContrato;
-    private Personal selectedDocumentoPersonalContrato;
+    private InputText txtDocumentoCoordinadorContrato;
+    private InputText txtDocumentoPersonalContrato;
+    private SelectOneMenu cmbLineaContrato;
     private Lineacentro selectedCodigoLineaCentro;
     private InputText txtClasePersonaContrato;
     private InputText txtIngresosSuperioresContrato;
@@ -272,28 +274,28 @@ public class FuncionarioContratoVista {
         this.txtCodigoBancoContrato = txtCodigoBancoContrato;
     }
 
-    public Banco getSelectedCodigoBancoContrato() {
-        return selectedCodigoBancoContrato;
+    public InputText getTxtDocumentoCoordinadorContrato() {
+        return txtDocumentoCoordinadorContrato;
     }
 
-    public void setSelectedCodigoBancoContrato(Banco selectedCodigoBancoContrato) {
-        this.selectedCodigoBancoContrato = selectedCodigoBancoContrato;
+    public void setTxtDocumentoCoordinadorContrato(InputText txtDocumentoCoordinadorContrato) {
+        this.txtDocumentoCoordinadorContrato = txtDocumentoCoordinadorContrato;
     }
 
-    public Coordinador getSelectedDocumentoCoordinadorContrato() {
-        return selectedDocumentoCoordinadorContrato;
+    public InputText getTxtDocumentoPersonalContrato() {
+        return txtDocumentoPersonalContrato;
     }
 
-    public void setSelectedDocumentoCoordinadorContrato(Coordinador selectedDocumentoCoordinadorContrato) {
-        this.selectedDocumentoCoordinadorContrato = selectedDocumentoCoordinadorContrato;
+    public void setTxtDocumentoPersonalContrato(InputText txtDocumentoPersonalContrato) {
+        this.txtDocumentoPersonalContrato = txtDocumentoPersonalContrato;
     }
 
-    public Personal getSelectedDocumentoPersonalContrato() {
-        return selectedDocumentoPersonalContrato;
+    public SelectOneMenu getCmbLineaContrato() {
+        return cmbLineaContrato;
     }
 
-    public void setSelectedDocumentoPersonalContrato(Personal selectedDocumentoPersonalContrato) {
-        this.selectedDocumentoPersonalContrato = selectedDocumentoPersonalContrato;
+    public void setCmbLineaContrato(SelectOneMenu cmbLineaContrato) {
+        this.cmbLineaContrato = cmbLineaContrato;
     }
 
     public Lineacentro getSelectedCodigoLineaCentro() {
@@ -395,6 +397,46 @@ public class FuncionarioContratoVista {
         this.seleccionarBanco = seleccionarBanco;
     }
     
+    public void accion_registrar() {
+
+        try {
+            Contrato nuevaContrato = new Contrato();
+            nuevaContrato.setNumerocontrato(Integer.parseInt(txtNumeroContrato.getValue().toString()));
+            String fecha = txtFechaInicioContrato.getValue().toString();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            nuevaContrato.setFechainiciocontrato(formato.parse(fecha));
+            String fecha2 = txtFechaFinContrato.getValue().toString();
+            SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
+            nuevaContrato.setFechafincontrato(formato2.parse(fecha2));
+            nuevaContrato.setObjetocontrato(txtObjetoContrato.getValue().toString());
+            nuevaContrato.setEstadocontrato(txtEstadoContrato.getValue().toString());
+            nuevaContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(txtValorTotalContrato.getValue().toString())));
+            nuevaContrato.setNumerocompromisosiifcontrato(Integer.parseInt(txtNumeroCompromisoSiContrato.getValue().toString()));
+            nuevaContrato.setFormapagocontrato(txtFormaPagoContrato.getValue().toString()); 
+            nuevaContrato.setNumerocuentacontrato(BigInteger.valueOf(Long.parseLong(txtNumeroCuentaContrato.getValue().toString())));            
+            nuevaContrato.setTipocuentacontrato(txtTipoCuentaContrato.getValue().toString());
+            Banco nuevoBanco = new Banco();
+            nuevoBanco.setCodigobanco(Integer.parseInt(txtCodigoBancoContrato.getValue().toString()));
+            nuevaContrato.setCodigobancocontrato(nuevoBanco);
+            Coordinador nuevoCoordinador = new Coordinador();
+            nuevoCoordinador.setDocumentocoordinador(Long.parseLong(txtDocumentoCoordinadorContrato.getValue().toString()));
+            nuevaContrato.setDocumentocoordinadorcontrato(nuevoCoordinador);
+            Personal nuevoPersonal = new Personal();
+            nuevoPersonal.setDocumentopersonal(Long.parseLong(txtDocumentoPersonalContrato.getValue().toString()));
+            nuevaContrato.setDocumentopersonalcontrato(nuevoPersonal);
+            Lineacentro nuevoLineacentro = new Lineacentro();
+            nuevoLineacentro.setCodigolinea(Integer.parseInt(cmbLineaContrato.getValue().toString()));
+            nuevaContrato.setCodigolineacontrato(nuevoLineacentro);
+            contratoLogica.create(nuevaContrato);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El contrato se  registro correctamente¡"));
+            listaContratos = null;
+        } catch (NumberFormatException ex1) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del contrato debe ser un numero y no letras¡"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡",ex.getMessage()));
+        }
+    }
+    
     public void seleccionar(SelectEvent e){
         Contrato contratoSeleccionado = selectedContrato;
         txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato()+"");
@@ -431,8 +473,11 @@ public class FuncionarioContratoVista {
         txtFechaInicioContrato.setValue("");
         txtFechaFinContrato.setValue("");
         txtObjetoContrato.setValue("");
+        txtEstadoContrato.setValue("");
         txtValorTotalContrato.setValue("");
         txtNumeroCompromisoSiContrato.setValue("");
+        txtFormaPagoContrato.setValue("");
+        txtNumeroCuentaContrato.setValue("");
         btnRegistrar.setDisabled(true);
         btnModificar.setDisabled(true);
     }

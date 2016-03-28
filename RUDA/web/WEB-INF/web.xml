@@ -47,7 +47,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ReporteContrato</servlet-name>
-        <url-pattern>/reporteContrato.do</url-pattern>
+        <url-pattern>/ReporteContrato.do</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ReportePersonal</servlet-name>
@@ -55,6 +55,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ReportePersonal</servlet-name>
-        <url-pattern>/reportePersonal.do</url-pattern>
+        <url-pattern>/ReportePersonal.do</url-pattern>
     </servlet-mapping>
 </web-app>

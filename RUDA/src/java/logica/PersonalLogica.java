@@ -206,7 +206,7 @@ public class PersonalLogica implements PersonalLogicaLocal {
     public void generarReportePersonal(String url) throws Exception {
         
         String params = "'"
-                + url + "/reportePersonal.do',"
+                + url + "/ReportePersonal.do',"
                 + "'reportWindow', "
                 + "'"
                 + "width=1024"

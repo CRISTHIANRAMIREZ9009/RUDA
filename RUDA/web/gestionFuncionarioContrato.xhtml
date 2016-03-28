@@ -35,390 +35,391 @@
                                         <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
                                     </p:submenu>
                                 </p:menu>
-                                </h:form> 
-                            </p:column>                        
-                            <p:column>
-                                <h:form id="formulario" acceptcharset="UTF-8"> 
-                                    <p:panel id="panelContrato" header="CONTRATO">
-                                        <p:messages id="mensajes" showDetail="true" />
-                                        <f:facet name="actions">
-                                            <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
-                                        </f:facet>
-                                        <p:panelGrid>
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Numero:"/> 
-                                                </p:column>
+                            </h:form> 
+                        </p:column>                        
+                        <p:column>
+                            <p:panel id="panelContrato" header="CONTRATO">
+                                <h:form id="formulario" acceptcharset="UTF-8">
+                                    <p:messages id="mensajes" showDetail="true" />
+                                    <f:facet name="actions">
+                                        <p:commandLink onclick="PF('helpDialog').show();" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></p:commandLink>
+                                    </f:facet>
+                                    <p:panelGrid>
+                                        <p:row>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtNumeroContrato" binding="#{funcionarioContratoVista.txtNumeroContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Fecha Inicio:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Numero:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:calendar id="txtFechaInicioContrato" value="#{funcionarioContratoVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Fecha Fin:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNumeroContrato" binding="#{funcionarioContratoVista.txtNumeroContrato}" size="30" />
+                                                </div>
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:calendar id="txtFechaFinContrato" value="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
-                                                    </div>
-                                                </p:column>                                              
-                                                                            
-                                            </p:row>
-                                            
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Objeto:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Fecha Inicio:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtObjetoContrato" binding="#{funcionarioContratoVista.txtObjetoContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Estado:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:calendar id="txtFechaInicioContrato" value="#{funcionarioContratoVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                </div>
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtEstadoContrato" value="#{selectOneMenuView.txtEstadoContrato}" style="width:200px">
-                                                            <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
-                                                            <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Valor Total:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Fecha Fin:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtValorTotalContrato" value="#{funcionarioContratoVista.txtValorTotalContrato}" size="30" />
-                                                    </div>
-                                                </p:column>                                               
-                                                                            
-                                            </p:row>
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Numero Compromiso:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:calendar id="txtFechaFinContrato" value="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                </div>
+                                            </p:column>                                              
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtNumeroCompromisoSiContrato" value="#{funcionarioContratoVista.txtNumeroCompromisoSiContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Forma Pago:"/> 
-                                                </p:column>
+                                        </p:row>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:200px">
-                                                            <f:selectItem itemLabel="MES" itemValue="MES" />
-                                                            <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Numero Cuenta:"/> 
-                                                </p:column>
+                                        <p:row>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtNumeroCuentaContrato" value="#{funcionarioContratoVista.txtNumeroCuentaContrato}" size="30" />
-                                                    </div>
-                                                </p:column>                                               
-                                                                                                
-                                            </p:row>
+                                            <p:column>
+                                                <h:outputText value="Objeto:"/> 
+                                            </p:column>
 
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Tipo Cuenta:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtObjetoContrato" binding="#{funcionarioContratoVista.txtObjetoContrato}" size="30" />
+                                                </div>
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:200px">
-                                                            <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
-                                                            <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Codigo Banco:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Estado:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtCodigoBancoContrato" value="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Clase Persona:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtEstadoContrato" value="#{selectOneMenuView.txtEstadoContrato}" style="width:200px">
+                                                        <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
+                                                        <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtClasePersonaContrato" value="#{selectOneMenuView.txtClasePersonaContrato}" style="width:200px">
-                                                            <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />
-                                                            <f:selectItem itemLabel="TRABAJADOR POR CUENTA PROPIA" itemValue="TRABAJADOR POR CUENTA PROPIA" />
-                                                            <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="DEMAS PERSONAS NATURALES" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                            </p:row>
-                                            
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="¿Sus ingresos superaron en el 2016  los $39.591.000?"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Valor Total:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtIngresosSuperioresContrato" value="#{selectOneMenuView.txtIngresosSuperioresContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
-                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Tipo Regimen de Iva:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtValorTotalContrato" value="#{funcionarioContratoVista.txtValorTotalContrato}" size="30" />
+                                                </div>
+                                            </p:column>                                               
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:200px">
-                                                            <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
-                                                            <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="¿Presta servicios excluidos de IVA?"/> 
-                                                </p:column>
+                                        </p:row>
+                                        <p:row>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtExcluidoIvaContrato" value="#{selectOneMenuView.txtExcluidoIvaContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
-                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                            </p:row>
-                                            
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="¿Es declarante de Renta?"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Numero Compromiso:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtDeclaranteContrato" value="#{selectOneMenuView.txtDeclaranteContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
-                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="¿Usted es Pensionad@"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNumeroCompromisoSiContrato" value="#{funcionarioContratoVista.txtNumeroCompromisoSiContrato}" size="30" />
+                                                </div>
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtPensionadoContrato" value="#{selectOneMenuView.txtPensionadoContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
-                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="¿Es Dependiente?"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Forma Pago:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtDependientesContratp" value="#{selectOneMenuView.txtDependientesContratp}" style="width:125px">
-                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
-                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                            </p:row>
-                                            
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="¿Es objeto actual de Embargo?"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtFormaPagoContrato" value="#{selectOneMenuView.txtFormaPagoContrato}" style="width:200px">
+                                                        <f:selectItem itemLabel="MES" itemValue="MES" />
+                                                        <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtEmbargoContrato" value="#{selectOneMenuView.txtEmbargoContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="SI" itemValue="SI" />
-                                                            <f:selectItem itemLabel="NO" itemValue="NO" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Valor Embargo Contrato:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <h:outputText value="Numero Cuenta:"/> 
+                                            </p:column>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtValorEmbargoContrato" binding="#{funcionarioContratoVista.txtValorEmbargoContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Valor Mensual Contrato:"/> 
-                                                </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNumeroCuentaContrato" value="#{funcionarioContratoVista.txtNumeroCuentaContrato}" size="30" />
+                                                </div>
+                                            </p:column>                                               
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtValorMensualContrato" binding="#{funcionarioContratoVista.txtValorMensualContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                            </p:row>
-                                            
-                                            <p:row>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Valor Hora Contrato:"/> 
-                                                </p:column>
+                                        </p:row>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:inputText id="txtValorHoraContrato" binding="#{funcionarioContratoVista.txtValorHoraContrato}" size="30" />
-                                                    </div>
-                                                </p:column>
-                                                
-                                                <p:column>
-                                                    <h:outputText value="Tipo ARL Contrato:"/> 
-                                                </p:column>
+                                        <p:row>
 
-                                                <p:column>
-                                                    <div align="left">
-                                                        <p:selectOneMenu id="txtTipoArlContrato" value="#{selectOneMenuView.txtTipoArlContrato}" style="width:125px">
-                                                            <f:selectItem itemLabel="1" itemValue="1" />
-                                                            <f:selectItem itemLabel="2" itemValue="2" />
-                                                            <f:selectItem itemLabel="3" itemValue="3" />
-                                                            <f:selectItem itemLabel="4" itemValue="4" />
-                                                            <f:selectItem itemLabel="5" itemValue="5" />                  
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </p:column>
-                                                
-                                            </p:row>
-                                                                                        
-                                            <p:row>
-                                                
-                                                <p:column colspan="8">
-                                                    <div align="center">
-                                                        
-                                                        <br/> 
-                                                        <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar}" update="formulario"/>
-                                                        <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
-                                                        <p:commandButton value="Generar Reporte" binding="#{funcionarioContratoVista.btnReporte}" action="#{funcionarioContratoVista.generarReporte}" update="formulario"/>
-                                                        <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" disabled="true"/>                                                        
-                                                        <br/> 
-                                                        
-                                                    </div>
-                                                </p:column>
-                                            </p:row>
-                                        </p:panelGrid>
-                            
-                            <h:form id="forma">
-                                <br/> 
-                                <p:growl id="growl" showDetail="true" sticky="true"/>
-                                <p:panel id="panelUpload" header="Cargar Contrato desde archivo:">
-                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
-                                    <p:messages id="mensajeArchivo" showDetail="true" /> 
-                                </p:panel>
-                                <br/>                    
-                            </h:form>
-                                        
-                        <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
-                                     paginator="true"
-                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15"
-                                     selectionMode="single"
-                                     selection="#{funcionarioContratoVista.selectedContrato}"
-                                     rowKey="#{funcionario.numerocontrato}">
-                            <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
-                            <p:column headerText="Numero Contrato:">
-                                <h:outputText value="#{funcionario.numerocontrato}" />
-                            </p:column>
-                            <p:column headerText="Documento Coordinador:">
-                                <h:outputText value="#{funcionario.documentocoordinadorcontrato.documentocoordinador}" />
-                            </p:column>
-                            <p:column headerText="Documento Personal:">
-                                <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
-                            </p:column>
-                            <p:column headerText="Estado:">
-                                <h:outputText value="#{funcionario.estadocontrato}" />
-                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Tipo Cuenta:"/> 
+                                            </p:column>
 
-                        </p:dataTable>
-                        
-                    </p:panel>
-          
-                                <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
-                                    <p align="justify">                       
-                                        En esta página usted podrá:<br/><br/>
-                                        <b>-Modificar sus datos básicos</b>
-                                        Cuando inicia esta página aparece su información personal, aqui podrá modificar su nombre, apellidos, correo y/o teléfono, una vez haga los cambios pertinente de click en el botón modificar.
-                                        <br/><br/>
-                                        <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
-                                            Contraseña</u> del menú principal. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal que corresponde a su documento de identificación.
-                                        Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
-                                        seguridad.                     
-                                    </p>
-                                </p:dialog>
-                                
-                            </h:form>
-                            
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtTipoCuentaContrato" value="#{selectOneMenuView.txtTipoCuentaContrato}" style="width:200px">
+                                                        <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
+                                                        <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="Codigo Banco:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtCodigoBancoContrato" value="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="30" />
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="Clase Persona:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtClasePersonaContrato" value="#{selectOneMenuView.txtClasePersonaContrato}" style="width:200px">
+                                                        <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />
+                                                        <f:selectItem itemLabel="TRABAJADOR POR CUENTA PROPIA" itemValue="TRABAJADOR POR CUENTA PROPIA" />
+                                                        <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="DEMAS PERSONAS NATURALES" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                        </p:row>
+
+                                        <p:row>
+
+                                            <p:column>
+                                                <h:outputText value="¿Sus ingresos superaron en el 2016  los $39.591.000?"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtIngresosSuperioresContrato" value="#{selectOneMenuView.txtIngresosSuperioresContrato}" style="width:125px">
+                                                        <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                        <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="Tipo Regimen de Iva:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:200px">
+                                                        <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
+                                                        <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="¿Presta servicios excluidos de IVA?"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtExcluidoIvaContrato" value="#{selectOneMenuView.txtExcluidoIvaContrato}" style="width:125px">
+                                                        <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                        <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                        </p:row>
+
+                                        <p:row>
+
+                                            <p:column>
+                                                <h:outputText value="¿Es declarante de Renta?"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtDeclaranteContrato" value="#{selectOneMenuView.txtDeclaranteContrato}" style="width:125px">
+                                                        <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                        <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="¿Usted es Pensionad@"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtPensionadoContrato" value="#{selectOneMenuView.txtPensionadoContrato}" style="width:125px">
+                                                        <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                        <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="¿Es Dependiente?"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtDependientesContratp" value="#{selectOneMenuView.txtDependientesContratp}" style="width:125px">
+                                                        <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                        <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                        </p:row>
+
+                                        <p:row>
+
+                                            <p:column>
+                                                <h:outputText value="¿Es objeto actual de Embargo?"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtEmbargoContrato" value="#{selectOneMenuView.txtEmbargoContrato}" style="width:125px">
+                                                        <f:selectItem itemLabel="SI" itemValue="SI" />
+                                                        <f:selectItem itemLabel="NO" itemValue="NO" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="Valor Embargo Contrato:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtValorEmbargoContrato" binding="#{funcionarioContratoVista.txtValorEmbargoContrato}" size="30" />
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="Valor Mensual Contrato:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtValorMensualContrato" binding="#{funcionarioContratoVista.txtValorMensualContrato}" size="30" />
+                                                </div>
+                                            </p:column>
+
+                                        </p:row>
+
+                                        <p:row>
+
+                                            <p:column>
+                                                <h:outputText value="Valor Hora Contrato:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtValorHoraContrato" binding="#{funcionarioContratoVista.txtValorHoraContrato}" size="30" />
+                                                </div>
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="Tipo ARL Contrato:"/> 
+                                            </p:column>
+
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:selectOneMenu id="txtTipoArlContrato" value="#{selectOneMenuView.txtTipoArlContrato}" style="width:125px">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />                  
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </p:column>
+
+                                        </p:row>
+
+                                        <p:row>
+
+                                            <p:column colspan="8">
+                                                <div align="center">
+
+                                                    <br/> 
+                                                    <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar}" update="formulario"/>
+                                                    <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
+                                                    <p:commandButton value="Generar Reporte" binding="#{funcionarioContratoVista.btnReporte}" action="#{funcionarioContratoVista.generarReporte}" update="formulario"/>
+                                                    <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" action="#{funcionarioContratoVista.limpiar}" update="formulario"/>                                                        
+                                                    <br/> 
+
+                                                </div>
+                                            </p:column>
+                                        </p:row>
+                                    </p:panelGrid>
+
+                                    <p:dialog id="modalDialog" header="Ayuda" widgetVar="helpDialog" showEffect="fade" hideEffect="bounce" modal="true" dynamic="true">  
+                                        <p align="justify">                       
+                                            En esta página usted podrá:<br/><br/>
+                                            <b>-Modificar sus datos básicos</b>
+                                            Cuando inicia esta página aparece su información personal, aqui podrá modificar su nombre, apellidos, correo y/o teléfono, una vez haga los cambios pertinente de click en el botón modificar.
+                                            <br/><br/>
+                                            <u>Nota:</u> la clave de acceso no se podrá modificar en ésta página por razones de seguridad sino en la opción <u>Cambio 
+                                                Contraseña</u> del menú principal. El coordinador, al momento de registrarlo le asignará una clave de acceso temporal que corresponde a su documento de identificación.
+                                            Se le recomienda que luego de ingresar por primera vez al Sistema realice el cambio de contraseña por razones de
+                                            seguridad.                     
+                                        </p>
+                                    </p:dialog>
+
+                                </h:form>                                        
+
+                                <h:form id="forma" enctype="multipart/form-data">
+                                    <br/> 
+                                    <p:growl id="growl" showDetail="true" sticky="true"/>
+                                    <p:panel id="panelUpload" header="Cargar Contrato desde archivo:">
+                                        <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                        <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                    </p:panel>
+                                    <br/>
+
+                                </h:form>                            
+
+                                <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             selectionMode="single"
+                                             selection="#{funcionarioContratoVista.selectedContrato}"
+                                             rowKey="#{funcionario.numerocontrato}">
+                                    <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
+                                    <p:column headerText="Numero Contrato:">
+                                        <h:outputText value="#{funcionario.numerocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Documento Coordinador:">
+                                        <h:outputText value="#{funcionario.documentocoordinadorcontrato.documentocoordinador}" />
+                                    </p:column>
+                                    <p:column headerText="Documento Personal:">
+                                        <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
+                                    </p:column>
+                                    <p:column headerText="Estado:">
+                                        <h:outputText value="#{funcionario.estadocontrato}" />
+                                    </p:column>
+
+                                </p:dataTable>
+
+                            </p:panel>          
+
                         </p:column>
-                        
+
                     </p:row>
-                    
+
                 </p:panelGrid>
-                
+
             </p:panel>
             
             <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
