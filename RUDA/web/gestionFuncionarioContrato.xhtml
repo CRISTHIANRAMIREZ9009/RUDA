@@ -389,25 +389,82 @@
 
                                 </h:form>                            
 
-                                <p:dataTable var="funcionario" value="#{funcionarioContratoVista.listaContratos}" rows="5"
+                                <p:dataTable var="contrato" value="#{funcionarioContratoVista.listaContratos}" rows="5"
                                              paginator="true"
                                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                              rowsPerPageTemplate="5,10,15"
                                              selectionMode="single"
                                              selection="#{funcionarioContratoVista.selectedContrato}"
-                                             rowKey="#{funcionario.numerocontrato}">
+                                             rowKey="#{contrato.numerocontrato}">
                                     <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar}" update=":formulario" />
-                                    <p:column headerText="Numero Contrato:">
-                                        <h:outputText value="#{funcionario.numerocontrato}" />
+                                    <p:column headerText="Numero:">
+                                        <h:outputText value="#{contrato.numerocontrato}" />
                                     </p:column>
-                                    <p:column headerText="Documento Coordinador:">
-                                        <h:outputText value="#{funcionario.documentocoordinadorcontrato.documentocoordinador}" />
+                                    <p:column headerText="Fecha Inicio:">
+                                        <h:outputText value="#{contrato.fechainiciocontrato}" />
                                     </p:column>
-                                    <p:column headerText="Documento Personal:">
-                                        <h:outputText value="#{funcionario.documentopersonalcontrato.documentopersonal}" />
+                                    <p:column headerText="Fecha Fin:">
+                                        <h:outputText value="#{contrato.fechafincontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Obejto:">
+                                        <h:outputText value="#{contrato.objetocontrato}" />
                                     </p:column>
                                     <p:column headerText="Estado:">
-                                        <h:outputText value="#{funcionario.estadocontrato}" />
+                                        <h:outputText value="#{contrato.estadocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Valor Total:">
+                                        <h:outputText value="#{contrato.valortotalcontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Compromiso:">
+                                        <h:outputText value="#{contrato.numerocompromisosiifcontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Forma Pago:">
+                                        <h:outputText value="#{contrato.formapagocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Cuenta:">
+                                        <h:outputText value="#{contrato.numerocuentacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Tipo Cuenta:">
+                                        <h:outputText value="#{contrato.tipocuentacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Codigo Banco:">
+                                        <h:outputText value="#{contrato.codigobancocontrato.codigobanco}" />
+                                    </p:column>
+                                    <p:column headerText="Documento Coordinador:">
+                                        <h:outputText value="#{contrato.documentocoordinadorcontrato.documentocoordinador}" />
+                                    </p:column>
+                                    <p:column headerText="Documento Personal:">
+                                        <h:outputText value="#{contrato.documentopersonalcontrato.documentopersonal}" />
+                                    </p:column>
+                                    <p:column headerText="Linea Centro:">
+                                        <h:outputText value="#{contrato.codigolineacontrato.codigolinea}" />
+                                    </p:column>
+                                    <p:column headerText="Clase Persona:">
+                                        <h:outputText value="#{contrato.clasepersonacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Ingresos Superiores:">
+                                        <h:outputText value="#{contrato.ingresossuperiorescontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Regimen Iva:">
+                                        <h:outputText value="#{contrato.regimenivacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Excluido Iva:">
+                                        <h:outputText value="#{contrato.excluidoivacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Declarante:">
+                                        <h:outputText value="#{contrato.declarantecontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Pensionado:">
+                                        <h:outputText value="#{contrato.pensionadocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Dependiente:">
+                                        <h:outputText value="#{contrato.dependientescontratp}" />
+                                    </p:column>
+                                    <p:column headerText="Embargo:">
+                                        <h:outputText value="#{contrato.embargocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Valor Embargo:">
+                                        <h:outputText value="#{contrato.valorembargocontrato}" />
                                     </p:column>
 
                                 </p:dataTable>

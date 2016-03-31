@@ -41,7 +41,6 @@ public class FuncionarioPersonalVista {
     private Calendar txtFechaNacimientoPersonal;
     private InputText txtLugarNacimientoPersonal;
     private InputText txtFotoPersonal;
-    
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
     private CommandButton btnReporte;
@@ -237,9 +236,9 @@ public class FuncionarioPersonalVista {
         }
     }
     
-    public void seleccionar(SelectEvent e){
-        Personal personalSeleccionado = selectedPersonal;
-        txtDocumentoPersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");
+    public void seleccionar(SelectEvent event){
+        Personal personalSeleccionado = (Personal) event.getObject();
+        txtDocumentoPersonal.setValue(personalSeleccionado.getDocumentopersonal().toString());
         txtNombrePersonal.setValue(personalSeleccionado.getNombrepersonal());
         txtApellidoPersonal.setValue(personalSeleccionado.getApellidopersonal());
         txtDireccionPersonal.setValue(personalSeleccionado.getDireccionpersonal());
@@ -250,7 +249,7 @@ public class FuncionarioPersonalVista {
         txtLugarNacimientoPersonal.setValue(personalSeleccionado.getLugarnacimientopersonal());
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
-        btnLimpiar.setDisabled(true);
+        btnLimpiar.setDisabled(false);
     }
     
     public void modificar(){
@@ -271,7 +270,8 @@ public class FuncionarioPersonalVista {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El personal se modifico correctamente¡"));
             listaPersonal = null;
         } catch (NumberFormatException ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"));
+            String fecha = txtFechaNacimientoPersonal.getValue().toString();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"+fecha));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
         }
@@ -285,8 +285,10 @@ public class FuncionarioPersonalVista {
         txtCorreoPersonal.setValue("");
         txtTelefonoPersonal.setValue("");
         txtClavePersonal.setValue("");
-        txtFechaNacimientoPersonal.setValue("");
+        txtFechaNacimientoPersonal.clearInitialState();
         txtLugarNacimientoPersonal.setValue("");
+        btnRegistrar.setDisabled(false);
+        btnModificar.setDisabled(true);
     }
     
     public void cargarPersonal(FileUploadEvent event) {

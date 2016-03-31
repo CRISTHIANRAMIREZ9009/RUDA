@@ -437,14 +437,18 @@ public class FuncionarioContratoVista {
         }
     }
     
-    public void seleccionar(SelectEvent e){
-        Contrato contratoSeleccionado = selectedContrato;
+    public void seleccionar(SelectEvent event){
+        Contrato contratoSeleccionado = (Contrato) event.getObject();
         txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato()+"");
         txtFechaInicioContrato.setValue(contratoSeleccionado.getFechainiciocontrato());
         txtFechaFinContrato.setValue(contratoSeleccionado.getFechafincontrato());
         txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());
-        txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato()+"");
-        txtNumeroCompromisoSiContrato.setValue(contratoSeleccionado.getNumerocompromisosiifcontrato()+"");
+        txtEstadoContrato.setValue(contratoSeleccionado.getEstadocontrato());
+        txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato()+"");        
+        txtNumeroCompromisoSiContrato.setValue(contratoSeleccionado.getNumerocompromisosiifcontrato());
+        txtFormaPagoContrato.setValue(contratoSeleccionado.getFormapagocontrato());
+        txtNumeroCuentaContrato.setValue(contratoSeleccionado.getNumerocuentacontrato());
+        
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
         btnLimpiar.setDisabled(true);
