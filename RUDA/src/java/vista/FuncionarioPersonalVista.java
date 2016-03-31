@@ -244,7 +244,7 @@ public class FuncionarioPersonalVista {
         txtDireccionPersonal.setValue(personalSeleccionado.getDireccionpersonal());
         txtCorreoPersonal.setValue(personalSeleccionado.getCorreopersonal());
         txtTelefonoPersonal.setValue(personalSeleccionado.getTelefonopersonal());
-        txtClavePersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");
+        txtClavePersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");        
         txtFechaNacimientoPersonal.setValue(personalSeleccionado.getFechanacimientopersonal());
         txtLugarNacimientoPersonal.setValue(personalSeleccionado.getLugarnacimientopersonal());
         btnModificar.setDisabled(false);

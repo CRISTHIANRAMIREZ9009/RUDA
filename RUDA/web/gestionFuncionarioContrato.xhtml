@@ -63,7 +63,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:calendar id="txtFechaInicioContrato" value="#{funcionarioContratoVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                    <p:calendar id="txtFechaInicioContrato" binding="#{funcionarioContratoVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
                                                 </div>
                                             </p:column>
 
@@ -73,7 +73,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:calendar id="txtFechaFinContrato" value="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                    <p:calendar id="txtFechaFinContrato" binding="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
                                                 </div>
                                             </p:column>                                              
 
@@ -110,7 +110,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:inputText id="txtValorTotalContrato" value="#{funcionarioContratoVista.txtValorTotalContrato}" size="30" />
+                                                    <p:inputText id="txtValorTotalContrato" binding="#{funcionarioContratoVista.txtValorTotalContrato}" size="30" />
                                                 </div>
                                             </p:column>                                               
 
@@ -123,7 +123,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:inputText id="txtNumeroCompromisoSiContrato" value="#{funcionarioContratoVista.txtNumeroCompromisoSiContrato}" size="30" />
+                                                    <p:inputText id="txtNumeroCompromisoSiContrato" binding="#{funcionarioContratoVista.txtNumeroCompromisoSiContrato}" size="30" />
                                                 </div>
                                             </p:column>
 
@@ -146,7 +146,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:inputText id="txtNumeroCuentaContrato" value="#{funcionarioContratoVista.txtNumeroCuentaContrato}" size="30" />
+                                                    <p:inputText id="txtNumeroCuentaContrato" binding="#{funcionarioContratoVista.txtNumeroCuentaContrato}" size="30" />
                                                 </div>
                                             </p:column>                                               
 
@@ -166,14 +166,32 @@
                                                     </p:selectOneMenu>
                                                 </div>
                                             </p:column>
-
+                                            
                                             <p:column>
                                                 <h:outputText value="Codigo Banco:"/> 
                                             </p:column>
 
                                             <p:column>
+                                                <p:inputText id="txtCodigoBancoContrato" binding="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="10"/><p:commandButton id="btnCodigoBanco" value="..." type="button" />
+                                                <p:overlayPanel id="tablaBanco" for="btnCodigoBanco" hideEffect="fade" showEffect="blind">
+                                                    <p:dataTable  var="banco" value="#{funcionarioContratoVista.listaBanco}" 
+                                                                  rows="5" paginator="true"  selection="#{funcionarioContratoVista.selectedBanco}" 
+                                                                  selectionMode="single" emptyMessage="No hay datos" rowKey="#{banco.codigobanco}">
+                                                        <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionarBanco}" update=":formulario"/>
+                                                        <p:column headerText="Codigo Banco" filterBy="#{banco.codigobanco}" filterMatchMode="contains">
+                                                            <h:outputText value="#{banco.codigobanco}" />
+                                                        </p:column>
+
+                                                        <p:column headerText="Nombre Banco" filterBy="#{banco.nombrebanco}" filterMatchMode="contains">
+                                                            <h:outputText value="#{banco.nombrebanco}" />
+                                                        </p:column>
+                                                    </p:dataTable>
+                                                </p:overlayPanel>                                                
+                                            </p:column>
+
+                                            <p:column>
                                                 <div align="left">
-                                                    <p:inputText id="txtCodigoBancoContrato" value="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="30" />
+                                                    <p:inputText id="txtCodigoBancoContrato" binding="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="30" />
                                                 </div>
                                             </p:column>
 

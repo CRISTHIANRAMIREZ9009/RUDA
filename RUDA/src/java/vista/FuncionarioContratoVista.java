@@ -22,12 +22,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import logica.BancoLogicaLocal;
 import logica.ContratoLogicaLocal;
 import modelo.Banco;
 import modelo.Contrato;
 import modelo.Coordinador;
 import modelo.Lineacentro;
 import modelo.Personal;
+import org.primefaces.component.calendar.Calendar;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -40,10 +42,10 @@ import persistencia.BancoFacadeLocal;
 public class FuncionarioContratoVista {
 
     private InputText txtNumeroContrato;
-    private InputText txtFechaInicioContrato;
-    private InputText txtFechaFinContrato;
+    private Calendar txtFechaInicioContrato;
+    private Calendar txtFechaFinContrato;
     private InputText txtObjetoContrato;
-    private InputText txtEstadoContrato;
+    private SelectOneMenu txtEstadoContrato;
     private InputText txtValorTotalContrato;
     private InputText txtNumeroCompromisoSiContrato;
     private InputText txtFormaPagoContrato;
@@ -67,16 +69,22 @@ public class FuncionarioContratoVista {
     private InputText txtValorHoraContrato;
     private InputText txtTipoArlContrato;
     
+    private CommandButton btnCodigoBanco;
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
     private CommandButton btnReporte;
     private CommandButton btnLimpiar;
     private List<Contrato> listaContratos;
     private Contrato selectedContrato;
+    private List<Banco> listaBanco;
+    private Banco selectedBanco;
     private List<SelectItem> seleccionarBanco;
     
     @EJB
     private ContratoLogicaLocal contratoLogica;
+    
+    @EJB
+    private BancoLogicaLocal bancoLogica;
     
     @EJB
     private BancoFacadeLocal bancoDAO;
@@ -93,19 +101,19 @@ public class FuncionarioContratoVista {
         this.txtNumeroContrato = txtNumeroContrato;
     }
 
-    public InputText getTxtFechaInicioContrato() {
+    public Calendar getTxtFechaInicioContrato() {
         return txtFechaInicioContrato;
     }
 
-    public void setTxtFechaInicioContrato(InputText txtFechaInicioContrato) {
+    public void setTxtFechaInicioContrato(Calendar txtFechaInicioContrato) {
         this.txtFechaInicioContrato = txtFechaInicioContrato;
     }
 
-    public InputText getTxtFechaFinContrato() {
+    public Calendar getTxtFechaFinContrato() {
         return txtFechaFinContrato;
     }
 
-    public void setTxtFechaFinContrato(InputText txtFechaFinContrato) {
+    public void setTxtFechaFinContrato(Calendar txtFechaFinContrato) {
         this.txtFechaFinContrato = txtFechaFinContrato;
     }
     
@@ -117,11 +125,11 @@ public class FuncionarioContratoVista {
         this.txtObjetoContrato = txtObjetoContrato;
     }
     
-    public InputText getTxtEstadoContrato() {
+    public SelectOneMenu getTxtEstadoContrato() {
         return txtEstadoContrato;
     }
 
-    public void setTxtEstadoContrato(InputText txtEstadoContrato) {
+    public void setTxtEstadoContrato(SelectOneMenu txtEstadoContrato) {
         this.txtEstadoContrato = txtEstadoContrato;
     }
     
@@ -212,6 +220,14 @@ public class FuncionarioContratoVista {
     public void setBancoDAO(BancoFacadeLocal bancoDAO) {
         this.bancoDAO = bancoDAO;
     }
+
+    public CommandButton getBtnCodigoBanco() {
+        return btnCodigoBanco;
+    }
+
+    public void setBtnCodigoBanco(CommandButton btnCodigoBanco) {
+        this.btnCodigoBanco = btnCodigoBanco;
+    }
     
     public CommandButton getBtnLimpiar() {
         return btnLimpiar;
@@ -228,6 +244,14 @@ public class FuncionarioContratoVista {
 
     public Contrato getSelectedContrato() {
         return selectedContrato;
+    }
+
+    public Banco getSelectedBanco() {
+        return selectedBanco;
+    }
+
+    public void setSelectedBanco(Banco selectedBanco) {
+        this.selectedBanco = selectedBanco;
     }
 
     public void setSelectedContrato(Contrato selectedContrato) {
@@ -318,6 +342,14 @@ public class FuncionarioContratoVista {
         return contratoLogica;
     }
 
+    public BancoLogicaLocal getBancoLogica() {
+        return bancoLogica;
+    }
+
+    public void setBancoLogica(BancoLogicaLocal bancoLogica) {
+        this.bancoLogica = bancoLogica;
+    }
+
     public void setContratoLogica(ContratoLogicaLocal contratoLogica) {
         this.contratoLogica = contratoLogica;
     }
@@ -384,6 +416,32 @@ public class FuncionarioContratoVista {
         
     }
 
+    public List<Banco> getListaBanco() {
+        
+        if(listaBanco==null)
+        {
+            try 
+            {
+                
+                listaBanco = bancoLogica.findAll();
+                
+            } catch (Exception ex) 
+            {
+                
+                Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+        
+        return listaBanco;
+        
+    }
+
+    public void setListaBanco(List<Banco> listaBanco) {
+        this.listaBanco = listaBanco;
+    }
+
     public List<SelectItem> getSeleccionarBanco() {
         List<Banco> listaBancos = bancoDAO.findAll();
         seleccionarBanco = new ArrayList<>();
@@ -439,19 +497,28 @@ public class FuncionarioContratoVista {
     
     public void seleccionar(SelectEvent event){
         Contrato contratoSeleccionado = (Contrato) event.getObject();
-        txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato()+"");
+        txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato());
         txtFechaInicioContrato.setValue(contratoSeleccionado.getFechainiciocontrato());
         txtFechaFinContrato.setValue(contratoSeleccionado.getFechafincontrato());
         txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());
         txtEstadoContrato.setValue(contratoSeleccionado.getEstadocontrato());
-        txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato()+"");        
+        txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato());        
         txtNumeroCompromisoSiContrato.setValue(contratoSeleccionado.getNumerocompromisosiifcontrato());
         txtFormaPagoContrato.setValue(contratoSeleccionado.getFormapagocontrato());
         txtNumeroCuentaContrato.setValue(contratoSeleccionado.getNumerocuentacontrato());
-        
+        txtTipoCuentaContrato.setValue(contratoSeleccionado.getTipocuentacontrato());
+        txtCodigoBancoContrato.setValue(contratoSeleccionado.getCodigobancocontrato().getCodigobanco());
+        txtDocumentoCoordinadorContrato.setValue(contratoSeleccionado.getDocumentocoordinadorcontrato().getDocumentocoordinador());
+        txtDocumentoPersonalContrato.setValue(contratoSeleccionado.getDocumentopersonalcontrato().getDocumentopersonal());
+        cmbLineaContrato.setValue(contratoSeleccionado.getCodigolineacontrato().getCodigolinea());
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
         btnLimpiar.setDisabled(true);
+    }
+    
+    public void seleccionarBanco(SelectEvent event){
+        Banco BancoSeleccionado = (Banco) event.getObject();
+        txtCodigoBancoContrato.setValue(BancoSeleccionado.getCodigobanco());
     }
     
     public void modificar(){
