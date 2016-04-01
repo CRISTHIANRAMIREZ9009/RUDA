@@ -36,6 +36,8 @@ import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import persistencia.BancoFacadeLocal;
+import persistencia.CoordinadorFacadeLocal;
+import persistencia.PersonalFacadeLocal;
 
 @ManagedBean (name = "funcionarioContratoVista")
 @RequestScoped
@@ -78,10 +80,20 @@ public class FuncionarioContratoVista {
     private Contrato selectedContrato;
     private List<Banco> listaBanco;
     private Banco selectedBanco;
+    private List<Coordinador> listaCoordinador;
+    private Coordinador selectedCoordinador;
+    private List<Personal> listaPersonal;
+    private Personal selectedPersonal;
     private List<SelectItem> seleccionarBanco;
     
     @EJB
     private ContratoLogicaLocal contratoLogica;
+    
+    @EJB
+    private CoordinadorFacadeLocal coordinadorDAO;
+    
+    @EJB
+    private PersonalFacadeLocal personalDAO;
     
     @EJB
     private BancoLogicaLocal bancoLogica;
@@ -248,6 +260,74 @@ public class FuncionarioContratoVista {
 
     public Banco getSelectedBanco() {
         return selectedBanco;
+    }
+
+    public List<Coordinador> getListaCoordinador() {
+        
+        if(listaCoordinador==null)
+        {
+            try 
+            {
+                
+                listaCoordinador = coordinadorDAO.findAll();
+                
+            } catch (Exception ex) 
+            {
+                
+                Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+        
+        return listaCoordinador;
+        
+    }
+
+    public List<Personal> getListaPersonal() {
+        
+        if(listaPersonal==null)
+        {
+            try 
+            {
+                
+                listaPersonal = personalDAO.findAll();
+                
+            } catch (Exception ex) 
+            {
+                
+                Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+        
+        return listaPersonal;        
+        
+    }
+
+    public void setListaPersonal(List<Personal> listaPersonal) {
+        this.listaPersonal = listaPersonal;
+    }
+
+    public Personal getSelectedPersonal() {
+        return selectedPersonal;
+    }
+
+    public void setSelectedPersonal(Personal selectedPersonal) {
+        this.selectedPersonal = selectedPersonal;
+    }
+
+    public void setListaCoordinador(List<Coordinador> listaCoordinador) {
+        this.listaCoordinador = listaCoordinador;
+    }
+
+    public Coordinador getSelectedCoordinador() {
+        return selectedCoordinador;
+    }
+
+    public void setSelectedCoordinador(Coordinador selectedCoordinador) {
+        this.selectedCoordinador = selectedCoordinador;
     }
 
     public void setSelectedBanco(Banco selectedBanco) {
@@ -517,6 +597,7 @@ public class FuncionarioContratoVista {
     }
     
     public void seleccionarBanco(SelectEvent event){
+        
         Banco BancoSeleccionado = (Banco) event.getObject();
         txtCodigoBancoContrato.setValue(BancoSeleccionado.getCodigobanco());
     }
@@ -605,10 +686,19 @@ public class FuncionarioContratoVista {
                 String url = scheme + "://" + serverName + ":" + port + contextPath;
                 System.out.println("Entro aqui");
                 contratoLogica.generarReporteContrato(url);
-
-            } catch (Exception ex) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
-            }
+                
+        }
+        catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
+        }
+        
+    }
+    
+    public void seleccionarPersonal(SelectEvent event)
+    {
+        
+        Personal PersonalSeleccionado = (Personal) event.getObject();
+        txtDocumentoPersonalContrato.setValue(PersonalSeleccionado.getDocumentopersonal());
         
     }
     

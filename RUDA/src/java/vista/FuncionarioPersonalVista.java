@@ -38,7 +38,7 @@ public class FuncionarioPersonalVista {
     private InputText txtCorreoPersonal;
     private InputText txtTelefonoPersonal;
     private InputText txtClavePersonal;
-    private Calendar txtFechaNacimientoPersonal;
+    private Date txtFechaNacimientoPersonal;
     private InputText txtLugarNacimientoPersonal;
     private InputText txtFotoPersonal;
     private CommandButton btnRegistrar;
@@ -110,11 +110,11 @@ public class FuncionarioPersonalVista {
         this.txtClavePersonal = txtClavePersonal;
     }
 
-    public Calendar getTxtFechaNacimientoPersonal() {
+    public Date getTxtFechaNacimientoPersonal() {
         return txtFechaNacimientoPersonal;
     }
 
-    public void setTxtFechaNacimientoPersonal(Calendar txtFechaNacimientoPersonal) {
+    public void setTxtFechaNacimientoPersonal(Date txtFechaNacimientoPersonal) {
         this.txtFechaNacimientoPersonal = txtFechaNacimientoPersonal;
     }
 
@@ -221,9 +221,9 @@ public class FuncionarioPersonalVista {
             nuevaPersonal.setCorreopersonal(txtCorreoPersonal.getValue().toString());
             nuevaPersonal.setTelefonopersonal(txtTelefonoPersonal.getValue().toString()); 
             nuevaPersonal.setClavepersonal(txtDocumentoPersonal.getValue().toString());
-            String fecha = txtFechaNacimientoPersonal.getValue().toString();
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            nuevaPersonal.setFechanacimientopersonal(formato.parse(fecha)); 
+//            String fecha = txtFechaNacimientoPersonal.getValue().toString();
+//            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            nuevaPersonal.setFechanacimientopersonal(txtFechaNacimientoPersonal); 
             nuevaPersonal.setLugarnacimientopersonal(txtLugarNacimientoPersonal.getValue().toString());
             nuevaPersonal.setFotopersonal(txtNombrePersonal.getValue().toString() + txtApellidoPersonal.getValue().toString());
             personalLogica.create(nuevaPersonal);
@@ -245,7 +245,7 @@ public class FuncionarioPersonalVista {
         txtCorreoPersonal.setValue(personalSeleccionado.getCorreopersonal());
         txtTelefonoPersonal.setValue(personalSeleccionado.getTelefonopersonal());
         txtClavePersonal.setValue(personalSeleccionado.getDocumentopersonal()+"");        
-        txtFechaNacimientoPersonal.setValue(personalSeleccionado.getFechanacimientopersonal());
+//        txtFechaNacimientoPersonal = personalSeleccionado.getFechanacimientopersonal();
         txtLugarNacimientoPersonal.setValue(personalSeleccionado.getLugarnacimientopersonal());
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
@@ -270,7 +270,7 @@ public class FuncionarioPersonalVista {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El personal se modifico correctamente¡"));
             listaPersonal = null;
         } catch (NumberFormatException ex) {
-            String fecha = txtFechaNacimientoPersonal.getValue().toString();
+            String fecha = txtFechaNacimientoPersonal.toString();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"+fecha));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
@@ -285,7 +285,7 @@ public class FuncionarioPersonalVista {
         txtCorreoPersonal.setValue("");
         txtTelefonoPersonal.setValue("");
         txtClavePersonal.setValue("");
-        txtFechaNacimientoPersonal.clearInitialState();
+        txtFechaNacimientoPersonal.setDate(0);
         txtLugarNacimientoPersonal.setValue("");
         btnRegistrar.setDisabled(false);
         btnModificar.setDisabled(true);

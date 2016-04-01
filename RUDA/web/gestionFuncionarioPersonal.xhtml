@@ -117,7 +117,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:inputText id="txtClavePersonal" binding="#{funcionarioPersonalVista.txtClavePersonal}" disabled="true" size="30"/>
+                                                    <p:inputText id="txtClavePersonal" binding="#{funcionarioPersonalVista.txtClavePersonal}" size="30"/>
                                                 </div>                                      
                                             </p:column>
                                             
@@ -127,7 +127,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:calendar id="txtFechaNacimientoPersonal" binding="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                    <p:calendar id="txtFechaNacimientoPersonal" value="#{funcionarioPersonalVista.txtFechaNacimientoPersonal}" pattern="yyyy-MM-dd" mask="true" showOn="button"/>
                                                 </div>                                      
                                             </p:column>
                                             
