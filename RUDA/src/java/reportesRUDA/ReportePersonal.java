@@ -3,7 +3,6 @@ package reportesRUDA;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -33,13 +32,14 @@ public class ReportePersonal extends HttpServlet{
 
     public void ejecutarReporte(HttpServletRequest request, HttpServletResponse response, String tipo) throws JRException {
         Connection conn = null;
+        System.out.println("LLama al Servlet");
         try {
             
             //Se consulta la ruta del reporte
             String rutaReportes = this.getServletContext().getRealPath("/reportes");
             String rutaReporte = "/reportePersonal.jasper";            
             String rutaCompleta = rutaReportes + rutaReporte;
-
+            System.out.println("Ruta completa "+rutaCompleta);
             List<File> parentFolders = new ArrayList();
             parentFolders.add(new File(rutaReportes));
             
@@ -57,7 +57,7 @@ public class ReportePersonal extends HttpServlet{
             
             //Se abre la cx
             Context initContext = new InitialContext();            
-            DataSource ds = (DataSource)initContext.lookup("jdbc/gepad");
+            DataSource ds = (DataSource)initContext.lookup("gepad");
             conn = ds.getConnection();
             //System.out.println("Conexion: "+conn.getCatalog());
             //Se llena el reporte

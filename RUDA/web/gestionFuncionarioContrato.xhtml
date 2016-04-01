@@ -75,12 +75,8 @@
                                                 <div align="left">
                                                     <p:calendar id="txtFechaFinContrato" binding="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
                                                 </div>
-                                            </p:column>                                              
-
-                                        </p:row>
-
-                                        <p:row>
-
+                                            </p:column>
+                                            
                                             <p:column>
                                                 <h:outputText value="Objeto:"/> 
                                             </p:column>
@@ -90,6 +86,10 @@
                                                     <p:inputText id="txtObjetoContrato" binding="#{funcionarioContratoVista.txtObjetoContrato}" size="30" />
                                                 </div>
                                             </p:column>
+
+                                        </p:row>
+
+                                        <p:row>                                            
 
                                             <p:column>
                                                 <h:outputText value="Estado:"/> 
@@ -138,8 +138,12 @@
                                                         <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
                                                     </p:selectOneMenu>
                                                 </div>
-                                            </p:column>
+                                            </p:column>                                                                                          
 
+                                        </p:row>
+
+                                        <p:row>
+                                            
                                             <p:column>
                                                 <h:outputText value="Numero Cuenta:"/> 
                                             </p:column>
@@ -148,11 +152,7 @@
                                                 <div align="left">
                                                     <p:inputText id="txtNumeroCuentaContrato" binding="#{funcionarioContratoVista.txtNumeroCuentaContrato}" size="30" />
                                                 </div>
-                                            </p:column>                                               
-
-                                        </p:row>
-
-                                        <p:row>
+                                            </p:column> 
 
                                             <p:column>
                                                 <h:outputText value="Tipo Cuenta:"/> 
@@ -172,18 +172,18 @@
                                             </p:column>
                                             
                                             <p:column>
-                                                <p:inputText id="txtDocumentoCoordinadorContrato" binding="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="10"/><p:commandButton id="btnBanco" value="..." type="button" />
+                                                <p:inputText id="txtCodigoBancoContrato" binding="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="10"/><p:commandButton id="btnBanco" value="..." type="button" />
                                                 <p:overlayPanel id="tablaBanco" for="btnBanco" hideEffect="fade" showEffect="blind">
-                                                    <p:dataTable  var="coordinador" value="#{funcionarioContratoVista.listaCoordinador}" 
-                                                                  rows="5" paginator="true"  selection="#{funcionarioContratoVista.selectedCoordinador}" 
-                                                                  selectionMode="single" emptyMessage="No hay datos" rowKey="#{coordinador.documentocoordinador}">
+                                                    <p:dataTable  var="banco" value="#{funcionarioContratoVista.listaBanco}" 
+                                                                  rows="5" paginator="true"  selection="#{funcionarioContratoVista.selectedBanco}" 
+                                                                  selectionMode="single" emptyMessage="No hay datos" rowKey="#{banco.codigobanco}">
                                                         <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionarBanco}" update=":formulario"/>
-                                                        <p:column headerText="Documento Coordinador" filterBy="#{coordinador.documentocoordinador}" filterMatchMode="contains">
-                                                            <h:outputText value="#{coordinador.documentocoordinador}" />
+                                                        <p:column headerText="Codigo Banco" filterBy="#{banco.codigobanco}" filterMatchMode="contains">
+                                                            <h:outputText value="#{banco.codigobanco}" />
                                                         </p:column>
 
-                                                        <p:column headerText="Nombre Coordinador">
-                                                            <h:outputText value="#{coordinador.personal.nombrepersonal}" />
+                                                        <p:column headerText="Nombre Banco">
+                                                            <h:outputText value="#{banco.nombrebanco}" />
                                                         </p:column>
                                                     </p:dataTable>
                                                 </p:overlayPanel>                                                
@@ -209,7 +209,11 @@
                                                         </p:column>
                                                     </p:dataTable>
                                                 </p:overlayPanel>                                                
-                                            </p:column>
+                                            </p:column>                                           
+
+                                        </p:row>
+
+                                        <p:row>
                                             
                                             <p:column>
                                                 <h:outputText value="Documento Personal:"/> 
@@ -231,13 +235,7 @@
                                                         </p:column>
                                                     </p:dataTable>
                                                 </p:overlayPanel>                                                
-                                            </p:column>
-
-                                            <p:column>
-                                                <div align="left">
-                                                    <p:inputText id="txtCodigoBancoContrato" binding="#{funcionarioContratoVista.txtCodigoBancoContrato}" size="30" />
-                                                </div>
-                                            </p:column>
+                                            </p:column>                                            
 
                                             <p:column>
                                                 <h:outputText value="Clase Persona:"/> 
@@ -252,10 +250,6 @@
                                                     </p:selectOneMenu>
                                                 </div>
                                             </p:column>
-
-                                        </p:row>
-
-                                        <p:row>
 
                                             <p:column>
                                                 <h:outputText value="¿Sus ingresos superaron en el 2016  los $39.591.000?"/> 
@@ -281,8 +275,12 @@
                                                         <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
                                                     </p:selectOneMenu>
                                                 </div>
-                                            </p:column>
+                                            </p:column>                                            
 
+                                        </p:row>
+
+                                        <p:row>
+                                            
                                             <p:column>
                                                 <h:outputText value="¿Presta servicios excluidos de IVA?"/> 
                                             </p:column>
@@ -295,10 +293,6 @@
                                                     </p:selectOneMenu>
                                                 </div>
                                             </p:column>
-
-                                        </p:row>
-
-                                        <p:row>
 
                                             <p:column>
                                                 <h:outputText value="¿Es declarante de Renta?"/> 

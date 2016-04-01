@@ -42,14 +42,6 @@
         <url-pattern>/faces/gestionFuncionarioContrato.xhtml</url-pattern>
     </filter-mapping>
     <servlet>
-        <servlet-name>ReporteContrato</servlet-name>
-        <servlet-class>reportesRUDA.ReporteContrato</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ReporteContrato</servlet-name>
-        <url-pattern>/ReporteContrato.do</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>ReportePersonal</servlet-name>
         <servlet-class>reportesRUDA.ReportePersonal</servlet-class>
     </servlet>
