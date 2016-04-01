@@ -34,7 +34,6 @@
                                 <p:menuitem value="Cambiar clave" url="faces/CambiarPasswordInstructor.xhtml" />
                                 <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
                             </p:submenu>
-
                         </p:menu>
                     </h:form>
                 </p:layoutUnit>
@@ -97,7 +96,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel for="txtRegimenIvaContrato" value="Tipo Regimen de Iva:" />
-                        <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:125px">
+                        <p:selectOneMenu id="txtRegimenIvaContrato" value="#{selectOneMenuView.txtRegimenIvaContrato}" style="width:125px"disabled="true">
                             <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
                             <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
                         </p:selectOneMenu>
@@ -136,7 +135,7 @@
 
                         <h:outputText value="Valor Total Contrato:"/>
 
-                        <p:inputText id="txtValorTotalContrato" binding="#{instructorVista.txtValorTotalContrato}" />
+                        <p:inputText id="txtValorTotalContrato" binding="#{instructorVista.txtValorTotalContrato}" disabled="true"/>
 
                         <p:outputLabel for="txtNumeroCompromisoSiifContrato" value="Numero Compromiso Siif Contrato:"/>
                         <p:calendar id="txtNumeroCompromisoSiifContrato" value="#{instructorVista.txtNumeroCompromisoSiifContrato}" pattern="yyyy-MM-dd" mask="true" />
@@ -149,7 +148,7 @@
 
 
                         <h:outputText value="Tipo ARL Contrato:"/>
-                        <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" />
+                        <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}"disabled="true" />
 
                         <p:commandButton value="Modificar" binding="#{instructorVista.btnModificar}" disabled="true"/>
                         
@@ -171,7 +170,9 @@
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="5,10,15">
                         <p:column headerText="Número Contrato">
-                            <h:outputText value="#{instructor.numeroinstructor}" />
+                            <h:outputText value="#{instructorVista.btnModificar}"/>
+                            <p:commandButton value="Generar Reporte" binding="#{instructorVista.btnReporte}" action="#{instructorVista.generarReporte}" update="formulario"/>
+                            <p:commandButton value="Limpiar" binding="#{instructorVista.btnLimpiar}" action="#{instructorVista.limpiar}" update="formulario"/>
                         </p:column>
 
                     </p:dataTable>

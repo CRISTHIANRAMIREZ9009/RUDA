@@ -408,5 +408,13 @@ public class Contrato implements Serializable {
     public String toString() {
         return "modelo.Contrato[ numerocontrato=" + numerocontrato + " ]";
     }
+
+    public Object getCorreoContratista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getTelefonoContratista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

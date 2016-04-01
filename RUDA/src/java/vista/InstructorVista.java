@@ -1,13 +1,22 @@
 package vista;
 
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.xml.registry.infomodel.AuditableEvent;
 import logica.ContratoLogicaLocal;
 import modelo.Contrato;
+import modelo.Instructor;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.event.SelectEvent;
 
 
 @ManagedBean (name = "instructorVista")
@@ -43,14 +52,17 @@ public class InstructorVista {
     private InputText txtNumeroCompromisoSiifContrato;
     private InputText txtFormaPagoContrato;
     private InputText txtTipoARLContrato;
-     private CommandButton btnRegistrar;
+    
+     private CommandButton btnReporte;
     private CommandButton btnModificar;
     private CommandButton btnLimpiar;
+    private CommandButton btnRegistrar;
     private List<Contrato> listaContratos;
     private Contrato selectedContrato;
     
     @EJB
     private ContratoLogicaLocal contratoLogica;
+    private Object txtClaveContratista;
     public InstructorVista() {
     }
 
@@ -93,6 +105,7 @@ public class InstructorVista {
     public void setTxtApellidoContratista(InputText txtApellidoContratista) {
         this.txtApellidoContratista = txtApellidoContratista;
     }
+    
 
     public InputText getTxtDocumentoContratista() {
         return txtDocumentoContratista;
@@ -278,13 +291,7 @@ public class InstructorVista {
         this.txtTipoARLContrato = txtTipoARLContrato;
     }
 
-    public CommandButton getBtnRegistrar() {
-        return btnRegistrar;
-    }
-
-    public void setBtnRegistrar(CommandButton btnRegistrar) {
-        this.btnRegistrar = btnRegistrar;
-    }
+    
 
     public CommandButton getBtnModificar() {
         return btnModificar;
@@ -292,6 +299,13 @@ public class InstructorVista {
 
     public void setBtnModificar(CommandButton btnModificar) {
         this.btnModificar = btnModificar;
+    }
+      public CommandButton getBtnReporte() {
+        return btnReporte;
+    }
+
+    public void setBtnReporte(CommandButton btnReporte) {
+        this.btnReporte = btnReporte;
     }
 
     public CommandButton getBtnLimpiar() {
@@ -303,7 +317,24 @@ public class InstructorVista {
     }
 
     public List<Contrato> getListaContratos() {
+        if(listaContratos==null)
+        {
+            try 
+            {
+                
+                listaContratos = contratoLogica.findAll();
+                
+            } catch (Exception ex) 
+            {
+                
+                Logger.getLogger(InstructorVista.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+        
         return listaContratos;
+        
     }
 
     public void setListaContratos(List<Contrato> listaContratos) {
@@ -325,6 +356,76 @@ public class InstructorVista {
     public void setContratoLogica(ContratoLogicaLocal contratoLogica) {
         this.contratoLogica = contratoLogica;
     }
-
+    
+      public void limpiar() {
+        txtClasePersona.setValue("");
+        txtEmbargoContrato.setValue("");
+        txtDeclaranteContrato.setValue("");
+        txtNumeroCompromisoSiifContrato.setValue("");
+        txtExcluidoIvaContrato.setValue("");
+        txtEmbargoContrato.setValue("");
+        txtDependientesContratp.setValue("");
+        txtFormaPagoContrato.setValue("");
+        txtTipoARLContrato.setValue("");
+        txtTipoCuentaContrato.setValue("");
+        txtValorEmbargoContrato.setValue("");
+        btnModificar.setDisabled(true);
+        btnRegistrar.setDisabled(true);
+        
+    }
+    public void accion_seleccionar(SelectEvent event){
+        Contrato instructorSeleccionado=(Contrato)event.getObject();
+        txtClasePersona.setValue(instructorSeleccionado.getClasepersonacontrato().toString());
+        txtEmbargoContrato.setValue(instructorSeleccionado.getEmbargocontrato().toString());
+        txtDeclaranteContrato.setValue(instructorSeleccionado.getDeclarantecontrato().toString());
+        txtNumeroCompromisoSiifContrato.setValue(instructorSeleccionado.getNumerocompromisosiifcontrato().toString());
+        txtExcluidoIvaContrato.setValue(instructorSeleccionado.getExcluidoivacontrato().toString());
+        txtEmbargoContrato.setValue(instructorSeleccionado.getEmbargocontrato().toString());
+        txtDependientesContratp.setValue(instructorSeleccionado.getDependientescontratp().toString());
+        txtFormaPagoContrato.setValue(instructorSeleccionado.getFormapagocontrato().toString());
+        txtTipoARLContrato.setValue(instructorSeleccionado.getTipoarlcontrato().toString());
+        txtTipoCuentaContrato.setValue(instructorSeleccionado.getTipocuentacontrato().toString());
+        txtValorEmbargoContrato.setValue(instructorSeleccionado.getValorembargocontrato().toString());
+               
+        
+        btnRegistrar.setDisabled(true);
+        btnModificar.setDisabled(false);
+        btnLimpiar.setDisabled(true);
+    
+    }
+public void modificar(){
+    try {
+        Contrato nuevocontrato=new Contrato();
+        
+        nuevocontrato.setTipocuentacontrato(txtTipoCuentaContrato.getValue().toString());
+        nuevocontrato.setIngresossuperiorescontrato(txtIngresosSuperioresContrato.getValue().toString());
+        nuevocontrato.setExcluidoivacontrato(txtExcluidoIvaContrato.getValue().toString());
+        nuevocontrato.setDeclarantecontrato(txtDeclaranteContrato.getValue().toString());
+        nuevocontrato.setPensionadocontrato(txtPensionadoContrato.getValue().toString());
+        nuevocontrato.setDependientescontratp(txtDependientesContratp.getValue().toString());
+        nuevocontrato.setEmbargocontrato(txtEmbargoContrato.getValue().toString());
+        nuevocontrato.setNumerocontrato(Integer.parseInt(txtNumeroContrato.getValue().toString()));
+        String fechaI ="1990-02-20";
+        SimpleDateFormat formato=new SimpleDateFormat("yyyy-MM-dd");
+        nuevocontrato.setFechainiciocontrato(formato.parse(fechaI));
+        String fechaf ="1990-02-20";
+        SimpleDateFormat formato1=new SimpleDateFormat("yyyy-MM-dd");
+        nuevocontrato.setFechafincontrato(formato1.parse(fechaf));
+        String fechaD ="1990-02-20";
+        SimpleDateFormat formato2=new SimpleDateFormat("yyyy-MM-dd");
+        
+        
+        nuevocontrato.setNumerocompromisosiifcontrato(Integer.parseInt(txtNumeroCompromisoSiifContrato.getValue().toString()));
+        
+        }catch (NumberFormatException ex) {
+            String fechaI=txtFechaInicioContrato.toString();
+             String fechaF=txtFechaFinContrato.toString();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
+        }
+    
+    
+}
     
 }
