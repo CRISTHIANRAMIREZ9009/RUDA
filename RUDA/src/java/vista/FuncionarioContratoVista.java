@@ -44,8 +44,8 @@ import persistencia.PersonalFacadeLocal;
 public class FuncionarioContratoVista {
 
     private InputText txtNumeroContrato;
-    private Calendar txtFechaInicioContrato;
-    private Calendar txtFechaFinContrato;
+    private Date txtFechaInicioContrato;
+    private Date txtFechaFinContrato;
     private InputText txtObjetoContrato;
     private SelectOneMenu txtEstadoContrato;
     private InputText txtValorTotalContrato;
@@ -113,19 +113,19 @@ public class FuncionarioContratoVista {
         this.txtNumeroContrato = txtNumeroContrato;
     }
 
-    public Calendar getTxtFechaInicioContrato() {
+    public Date getTxtFechaInicioContrato() {
         return txtFechaInicioContrato;
     }
 
-    public void setTxtFechaInicioContrato(Calendar txtFechaInicioContrato) {
+    public void setTxtFechaInicioContrato(Date txtFechaInicioContrato) {
         this.txtFechaInicioContrato = txtFechaInicioContrato;
     }
 
-    public Calendar getTxtFechaFinContrato() {
+    public Date getTxtFechaFinContrato() {
         return txtFechaFinContrato;
     }
 
-    public void setTxtFechaFinContrato(Calendar txtFechaFinContrato) {
+    public void setTxtFechaFinContrato(Date txtFechaFinContrato) {
         this.txtFechaFinContrato = txtFechaFinContrato;
     }
     
@@ -540,12 +540,8 @@ public class FuncionarioContratoVista {
         try {
             Contrato nuevaContrato = new Contrato();
             nuevaContrato.setNumerocontrato(Integer.parseInt(txtNumeroContrato.getValue().toString()));
-            String fecha = txtFechaInicioContrato.getValue().toString();
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            nuevaContrato.setFechainiciocontrato(formato.parse(fecha));
-            String fecha2 = txtFechaFinContrato.getValue().toString();
-            SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
-            nuevaContrato.setFechafincontrato(formato2.parse(fecha2));
+            nuevaContrato.setFechainiciocontrato(txtFechaInicioContrato);
+            nuevaContrato.setFechafincontrato(txtFechaFinContrato);
             nuevaContrato.setObjetocontrato(txtObjetoContrato.getValue().toString());
             nuevaContrato.setEstadocontrato(txtEstadoContrato.getValue().toString());
             nuevaContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(txtValorTotalContrato.getValue().toString())));
@@ -578,8 +574,8 @@ public class FuncionarioContratoVista {
     public void seleccionar(SelectEvent event){
         Contrato contratoSeleccionado = (Contrato) event.getObject();
         txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato());
-        txtFechaInicioContrato.setValue(contratoSeleccionado.getFechainiciocontrato());
-        txtFechaFinContrato.setValue(contratoSeleccionado.getFechafincontrato());
+        txtFechaInicioContrato = contratoSeleccionado.getFechainiciocontrato();
+        txtFechaFinContrato = contratoSeleccionado.getFechafincontrato();
         txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());
         txtEstadoContrato.setValue(contratoSeleccionado.getEstadocontrato());
         txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato());        
@@ -622,8 +618,8 @@ public class FuncionarioContratoVista {
     
     public void limpiar() {
         txtNumeroContrato.setValue("");
-        txtFechaInicioContrato.setValue("");
-        txtFechaFinContrato.setValue("");
+        txtFechaInicioContrato.setDate(0);
+        txtFechaFinContrato.setDate(0);
         txtObjetoContrato.setValue("");
         txtEstadoContrato.setValue("");
         txtValorTotalContrato.setValue("");

@@ -11,12 +11,41 @@
                 <title>FUNCIONARIO (CONTRATO)</title>
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <link rel="StyleSheet" href="css/style.css" type="text/css"></link>
-                <link rel="shortcut icon" href="images/iconoRUDA.ico"/>
+                <link rel="shortcut icon" href="images/iconoRUDA.ico"/>                 
             </f:facet>
-            
+            <script>
+                
+                PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre', ''],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día'
+                };
+
+            </script>
         </h:head>
 
-        <h:body>
+        <h:body>          
             
             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
                 <h:graphicImage url="images/LogoRUDA.png" width="60%" height="90%" alt="LogoRUDA"  />
@@ -58,22 +87,22 @@
                                             </p:column>
 
                                             <p:column>
-                                                <h:outputText value="Fecha Inicio:"/> 
+                                                <h:outputText value="Fecha Inicio (Año-Mes-Dia)"/> 
                                             </p:column>
 
                                             <p:column>
-                                                <div align="left">
-                                                    <p:calendar id="txtFechaInicioContrato" binding="#{funcionarioContratoVista.txtFechaInicioContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                <div align="left">                                                    
+                                                    <p:calendar id="txtFechaInicioContrato" value="#{funcionarioContratoVista.txtFechaInicioContrato}" locale="es" yearRange="1900:2200" navigator="true" pattern="yyyy-MMM-dd" mask="true" showOn="button" />
                                                 </div>
                                             </p:column>
 
                                             <p:column>
-                                                <h:outputText value="Fecha Fin:"/> 
+                                                <h:outputText value="Fecha Fin (Año-Mes-Dia)"/> 
                                             </p:column>
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:calendar id="txtFechaFinContrato" binding="#{funcionarioContratoVista.txtFechaFinContrato}" pattern="yyyy-MM-dd" mask="true" showOn="button" />
+                                                    <p:calendar id="txtFechaFinContrato" value="#{funcionarioContratoVista.txtFechaFinContrato}" locale="es" navigator="true" pattern="yyyy-MMM-dd" mask="true" showOn="button" />
                                                 </div>
                                             </p:column>
                                             
