@@ -2,6 +2,7 @@
 package logica;
 
 import java.io.File;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.ejb.EJB;
@@ -185,8 +186,7 @@ public class PersonalLogica implements PersonalLogicaLocal {
             nuevoPersonal.setCorreopersonal(hoja.getCell(4, fila).getContents());
             nuevoPersonal.setTelefonopersonal(hoja.getCell(5, fila).getContents());
             nuevoPersonal.setClavepersonal(hoja.getCell(0, fila).getContents());
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy/MM/dd");
-            nuevoPersonal.setFechanacimientopersonal(formatoFecha.parse(hoja.getCell(7, fila).getContents()));
+            nuevoPersonal.setFechanacimientopersonal(Date.valueOf(hoja.getCell(7, fila).getContents()));
             nuevoPersonal.setLugarnacimientopersonal(hoja.getCell(8, fila).getContents());
             nuevoPersonal.setFotopersonal(hoja.getCell(9, fila).getContents());
 

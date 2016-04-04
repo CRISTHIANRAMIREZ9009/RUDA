@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,17 +17,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import logica.BancoLogicaLocal;
 import logica.ContratoLogicaLocal;
+import logica.LineaCentroLogicaLocal;
 import modelo.Banco;
 import modelo.Contrato;
 import modelo.Coordinador;
 import modelo.Lineacentro;
 import modelo.Personal;
-import org.primefaces.component.calendar.Calendar;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -37,6 +34,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import persistencia.BancoFacadeLocal;
 import persistencia.CoordinadorFacadeLocal;
+import persistencia.LineacentroFacadeLocal;
 import persistencia.PersonalFacadeLocal;
 
 @ManagedBean (name = "funcionarioContratoVista")
@@ -47,29 +45,29 @@ public class FuncionarioContratoVista {
     private Date txtFechaInicioContrato;
     private Date txtFechaFinContrato;
     private InputText txtObjetoContrato;
-    private SelectOneMenu txtEstadoContrato;
+    private SelectOneMenu cmbEstadoContrato;
+    private SelectOneMenu cmbFormaPagoContrato;
+    private SelectOneMenu cmbTipoCuentaContrato;
+    private SelectOneMenu cmbClasePersonaContrato;
+    private SelectOneMenu cmbIngresosSuperioresContrato;
+    private SelectOneMenu cmbRegimenIvaContrato;
+    private SelectOneMenu cmbExcluidoIvaContrato;
+    private SelectOneMenu cmbDependientesContratp;
+    private SelectOneMenu cmbPensionadoContrato;
+    private SelectOneMenu cmbEmbargoContrato;
+    private SelectOneMenu cmbTipoArlContrato;
+    private SelectOneMenu cmbDeclaranteContrato;
     private InputText txtValorTotalContrato;
     private InputText txtNumeroCompromisoSiContrato;
-    private InputText txtFormaPagoContrato;
     private InputText txtNumeroCuentaContrato;
-    private InputText txtTipoCuentaContrato;
     private InputText txtCodigoBancoContrato;
     private InputText txtDocumentoCoordinadorContrato;
     private InputText txtDocumentoPersonalContrato;
-    private SelectOneMenu cmbLineaContrato;
+    private InputText txtCodigoLineaContrato;
     private Lineacentro selectedCodigoLineaCentro;
-    private InputText txtClasePersonaContrato;
-    private InputText txtIngresosSuperioresContrato;
-    private InputText txtRegimenIvaContrato;
-    private InputText txtExcluidoIvaContrato;
-    private InputText txtDeclaranteContrato;
-    private InputText txtPensionadoContrato;
-    private InputText txtDependientesContratp;
-    private InputText txtEmbargoContrato;
     private InputText txtValorEmbargoContrato;
     private InputText txtValorMensualContrato;
     private InputText txtValorHoraContrato;
-    private InputText txtTipoArlContrato;
     
     private CommandButton btnCodigoBanco;
     private CommandButton btnRegistrar;
@@ -84,7 +82,8 @@ public class FuncionarioContratoVista {
     private Coordinador selectedCoordinador;
     private List<Personal> listaPersonal;
     private Personal selectedPersonal;
-    private List<SelectItem> seleccionarBanco;
+    private List<Lineacentro> listaLineaCentro;
+    private Lineacentro selectedLineaCentro;
     
     @EJB
     private ContratoLogicaLocal contratoLogica;
@@ -100,6 +99,12 @@ public class FuncionarioContratoVista {
     
     @EJB
     private BancoFacadeLocal bancoDAO;
+    
+    @EJB
+    private LineaCentroLogicaLocal lineacentroLogica;
+    
+    @EJB
+    private LineacentroFacadeLocal lineaCentroDAO;
     
     public FuncionarioContratoVista() {
         
@@ -135,16 +140,112 @@ public class FuncionarioContratoVista {
 
     public void setTxtObjetoContrato(InputText txtObjetoContrato) {
         this.txtObjetoContrato = txtObjetoContrato;
-    }
-    
-    public SelectOneMenu getTxtEstadoContrato() {
-        return txtEstadoContrato;
+    }   
+
+    public SelectOneMenu getCmbEstadoContrato() {
+        return cmbEstadoContrato;
     }
 
-    public void setTxtEstadoContrato(SelectOneMenu txtEstadoContrato) {
-        this.txtEstadoContrato = txtEstadoContrato;
+    public void setCmbEstadoContrato(SelectOneMenu cmbEstadoContrato) {
+        this.cmbEstadoContrato = cmbEstadoContrato;
     }
-    
+
+    public SelectOneMenu getCmbFormaPagoContrato() {
+        return cmbFormaPagoContrato;
+    }
+
+    public void setCmbFormaPagoContrato(SelectOneMenu cmbFormaPagoContrato) {
+        this.cmbFormaPagoContrato = cmbFormaPagoContrato;
+    }
+
+    public SelectOneMenu getCmbTipoCuentaContrato() {
+        return cmbTipoCuentaContrato;
+    }
+
+    public void setCmbTipoCuentaContrato(SelectOneMenu cmbTipoCuentaContrato) {
+        this.cmbTipoCuentaContrato = cmbTipoCuentaContrato;
+    }
+
+    public SelectOneMenu getCmbClasePersonaContrato() {
+        return cmbClasePersonaContrato;
+    }
+
+    public void setCmbClasePersonaContrato(SelectOneMenu cmbClasePersonaContrato) {
+        this.cmbClasePersonaContrato = cmbClasePersonaContrato;
+    }
+
+    public SelectOneMenu getCmbIngresosSuperioresContrato() {
+        return cmbIngresosSuperioresContrato;
+    }
+
+    public void setCmbIngresosSuperioresContrato(SelectOneMenu cmbIngresosSuperioresContrato) {
+        this.cmbIngresosSuperioresContrato = cmbIngresosSuperioresContrato;
+    }
+
+    public SelectOneMenu getCmbRegimenIvaContrato() {
+        return cmbRegimenIvaContrato;
+    }
+
+    public void setCmbRegimenIvaContrato(SelectOneMenu cmbRegimenIvaContrato) {
+        this.cmbRegimenIvaContrato = cmbRegimenIvaContrato;
+    }
+
+    public SelectOneMenu getCmbExcluidoIvaContrato() {
+        return cmbExcluidoIvaContrato;
+    }
+
+    public void setCmbExcluidoIvaContrato(SelectOneMenu cmbExcluidoIvaContrato) {
+        this.cmbExcluidoIvaContrato = cmbExcluidoIvaContrato;
+    }
+
+    public SelectOneMenu getCmbDependientesContratp() {
+        return cmbDependientesContratp;
+    }
+
+    public void setCmbDependientesContratp(SelectOneMenu cmbDependientesContratp) {
+        this.cmbDependientesContratp = cmbDependientesContratp;
+    }
+
+    public SelectOneMenu getCmbPensionadoContrato() {
+        return cmbPensionadoContrato;
+    }
+
+    public void setCmbPensionadoContrato(SelectOneMenu cmbPensionadoContrato) {
+        this.cmbPensionadoContrato = cmbPensionadoContrato;
+    }
+
+    public SelectOneMenu getCmbEmbargoContrato() {
+        return cmbEmbargoContrato;
+    }
+
+    public void setCmbEmbargoContrato(SelectOneMenu cmbEmbargoContrato) {
+        this.cmbEmbargoContrato = cmbEmbargoContrato;
+    }
+
+    public SelectOneMenu getCmbTipoArlContrato() {
+        return cmbTipoArlContrato;
+    }
+
+    public void setCmbTipoArlContrato(SelectOneMenu cmbTipoArlContrato) {
+        this.cmbTipoArlContrato = cmbTipoArlContrato;
+    }
+
+    public SelectOneMenu getCmbDeclaranteContrato() {
+        return cmbDeclaranteContrato;
+    }
+
+    public void setCmbDeclaranteContrato(SelectOneMenu cmbDeclaranteContrato) {
+        this.cmbDeclaranteContrato = cmbDeclaranteContrato;
+    }
+
+    public InputText getTxtNumeroCuentaContrato() {
+        return txtNumeroCuentaContrato;
+    }
+
+    public void setTxtNumeroCuentaContrato(InputText txtNumeroCuentaContrato) {
+        this.txtNumeroCuentaContrato = txtNumeroCuentaContrato;
+    }
+        
     public InputText getTxtValorTotalContrato() {
         return txtValorTotalContrato;
     }
@@ -152,55 +253,7 @@ public class FuncionarioContratoVista {
     public void setTxtValorTotalContrato(InputText txtValorTotalContrato) {
         this.txtValorTotalContrato = txtValorTotalContrato;
     }
-
-    public InputText getTxtIngresosSuperioresContrato() {
-        return txtIngresosSuperioresContrato;
-    }
-
-    public void setTxtIngresosSuperioresContrato(InputText txtIngresosSuperioresContrato) {
-        this.txtIngresosSuperioresContrato = txtIngresosSuperioresContrato;
-    }
-
-    public InputText getTxtRegimenIvaContrato() {
-        return txtRegimenIvaContrato;
-    }
-
-    public void setTxtRegimenIvaContrato(InputText txtRegimenIvaContrato) {
-        this.txtRegimenIvaContrato = txtRegimenIvaContrato;
-    }
-
-    public InputText getTxtExcluidoIvaContrato() {
-        return txtExcluidoIvaContrato;
-    }
-
-    public void setTxtExcluidoIvaContrato(InputText txtExcluidoIvaContrato) {
-        this.txtExcluidoIvaContrato = txtExcluidoIvaContrato;
-    }
-
-    public InputText getTxtDeclaranteContrato() {
-        return txtDeclaranteContrato;
-    }
-
-    public void setTxtDeclaranteContrato(InputText txtDeclaranteContrato) {
-        this.txtDeclaranteContrato = txtDeclaranteContrato;
-    }
-
-    public InputText getTxtPensionadoContrato() {
-        return txtPensionadoContrato;
-    }
-
-    public void setTxtPensionadoContrato(InputText txtPensionadoContrato) {
-        this.txtPensionadoContrato = txtPensionadoContrato;
-    }
-
-    public InputText getTxtDependientesContratp() {
-        return txtDependientesContratp;
-    }
-
-    public void setTxtDependientesContratp(InputText txtDependientesContratp) {
-        this.txtDependientesContratp = txtDependientesContratp;
-    }
-
+   
     public CommandButton getBtnRegistrar() {
         return btnRegistrar;
     }
@@ -305,174 +358,6 @@ public class FuncionarioContratoVista {
         return listaPersonal;        
         
     }
-
-    public void setListaPersonal(List<Personal> listaPersonal) {
-        this.listaPersonal = listaPersonal;
-    }
-
-    public Personal getSelectedPersonal() {
-        return selectedPersonal;
-    }
-
-    public void setSelectedPersonal(Personal selectedPersonal) {
-        this.selectedPersonal = selectedPersonal;
-    }
-
-    public void setListaCoordinador(List<Coordinador> listaCoordinador) {
-        this.listaCoordinador = listaCoordinador;
-    }
-
-    public Coordinador getSelectedCoordinador() {
-        return selectedCoordinador;
-    }
-
-    public void setSelectedCoordinador(Coordinador selectedCoordinador) {
-        this.selectedCoordinador = selectedCoordinador;
-    }
-
-    public void setSelectedBanco(Banco selectedBanco) {
-        this.selectedBanco = selectedBanco;
-    }
-
-    public void setSelectedContrato(Contrato selectedContrato) {
-        this.selectedContrato = selectedContrato;
-    }
-
-    public InputText getTxtNumeroCompromisoSiContrato() {
-        return txtNumeroCompromisoSiContrato;
-    }
-
-    public void setTxtNumeroCompromisoSiContrato(InputText txtNumeroCompromisoSiContrato) {
-        this.txtNumeroCompromisoSiContrato = txtNumeroCompromisoSiContrato;
-    }
-
-    public InputText getTxtFormaPagoContrato() {
-        return txtFormaPagoContrato;
-    }
-
-    public void setTxtFormaPagoContrato(InputText txtFormaPagoContrato) {
-        this.txtFormaPagoContrato = txtFormaPagoContrato;
-    }
-
-    public InputText getTxtNumeroCuentaContrato() {
-        return txtNumeroCuentaContrato;
-    }
-
-    public void setTxtNumeroCuentaContrato(InputText txtNumeroCuentaContrato) {
-        this.txtNumeroCuentaContrato = txtNumeroCuentaContrato;
-    }
-
-    public InputText getTxtTipoCuentaContrato() {
-        return txtTipoCuentaContrato;
-    }
-
-    public void setTxtTipoCuentaContrato(InputText txtTipoCuentaContrato) {
-        this.txtTipoCuentaContrato = txtTipoCuentaContrato;
-    }
-
-    public InputText getTxtCodigoBancoContrato() {
-        return txtCodigoBancoContrato;
-    }
-
-    public void setTxtCodigoBancoContrato(InputText txtCodigoBancoContrato) {
-        this.txtCodigoBancoContrato = txtCodigoBancoContrato;
-    }
-
-    public InputText getTxtDocumentoCoordinadorContrato() {
-        return txtDocumentoCoordinadorContrato;
-    }
-
-    public void setTxtDocumentoCoordinadorContrato(InputText txtDocumentoCoordinadorContrato) {
-        this.txtDocumentoCoordinadorContrato = txtDocumentoCoordinadorContrato;
-    }
-
-    public InputText getTxtDocumentoPersonalContrato() {
-        return txtDocumentoPersonalContrato;
-    }
-
-    public void setTxtDocumentoPersonalContrato(InputText txtDocumentoPersonalContrato) {
-        this.txtDocumentoPersonalContrato = txtDocumentoPersonalContrato;
-    }
-
-    public SelectOneMenu getCmbLineaContrato() {
-        return cmbLineaContrato;
-    }
-
-    public void setCmbLineaContrato(SelectOneMenu cmbLineaContrato) {
-        this.cmbLineaContrato = cmbLineaContrato;
-    }
-
-    public Lineacentro getSelectedCodigoLineaCentro() {
-        return selectedCodigoLineaCentro;
-    }
-
-    public void setSelectedCodigoLineaCentro(Lineacentro selectedCodigoLineaCentro) {
-        this.selectedCodigoLineaCentro = selectedCodigoLineaCentro;
-    }
-
-    public InputText getTxtClasePersonaContrato() {
-        return txtClasePersonaContrato;
-    }
-
-    public void setTxtClasePersonaContrato(InputText txtClasePersonaContrato) {
-        this.txtClasePersonaContrato = txtClasePersonaContrato;
-    }
-
-    public ContratoLogicaLocal getContratoLogica() {
-        return contratoLogica;
-    }
-
-    public BancoLogicaLocal getBancoLogica() {
-        return bancoLogica;
-    }
-
-    public void setBancoLogica(BancoLogicaLocal bancoLogica) {
-        this.bancoLogica = bancoLogica;
-    }
-
-    public void setContratoLogica(ContratoLogicaLocal contratoLogica) {
-        this.contratoLogica = contratoLogica;
-    }
-
-    public InputText getTxtEmbargoContrato() {
-        return txtEmbargoContrato;
-    }
-
-    public void setTxtEmbargoContrato(InputText txtEmbargoContrato) {
-        this.txtEmbargoContrato = txtEmbargoContrato;
-    }
-
-    public InputText getTxtValorEmbargoContrato() {
-        return txtValorEmbargoContrato;
-    }
-
-    public void setTxtValorEmbargoContrato(InputText txtValorEmbargoContrato) {
-        this.txtValorEmbargoContrato = txtValorEmbargoContrato;
-    }
-
-    public InputText getTxtValorMensualContrato() {
-        return txtValorMensualContrato;
-    }
-
-    public void setTxtValorMensualContrato(InputText txtValorMensualContrato) {
-        this.txtValorMensualContrato = txtValorMensualContrato;
-    }
-
-    public InputText getTxtValorHoraContrato() {
-        return txtValorHoraContrato;
-    }
-
-    public void setTxtValorHoraContrato(InputText txtValorHoraContrato) {
-        this.txtValorHoraContrato = txtValorHoraContrato;
-    }
-
-    public InputText getTxtTipoArlContrato() {
-        return txtTipoArlContrato;
-    }
-
-    public void setTxtTipoArlContrato(InputText txtTipoArlContrato) {
-        this.txtTipoArlContrato = txtTipoArlContrato;
-    }
     
     public List<Contrato> getListaContratos() {
         
@@ -518,21 +403,161 @@ public class FuncionarioContratoVista {
         
     }
 
+    public List<Lineacentro> getListaLineaCentro() {
+        
+        if(listaLineaCentro==null)
+        {
+            try 
+            {
+                
+                listaLineaCentro = lineaCentroDAO.findAll();
+                
+            } catch (Exception ex) 
+            {
+                
+                Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+        
+        return listaLineaCentro;
+    }
+
+    public void setListaLineaCentro(List<Lineacentro> listaLineaCentro) {
+        this.listaLineaCentro = listaLineaCentro;
+    }
+
+    public Lineacentro getSelectedLineaCentro() {
+        return selectedLineaCentro;
+    }
+
+    public void setSelectedLineaCentro(Lineacentro selectedLineaCentro) {
+        this.selectedLineaCentro = selectedLineaCentro;
+    }
+
     public void setListaBanco(List<Banco> listaBanco) {
         this.listaBanco = listaBanco;
     }
 
-    public List<SelectItem> getSeleccionarBanco() {
-        List<Banco> listaBancos = bancoDAO.findAll();
-        seleccionarBanco = new ArrayList<>();
-        for (int i = 0; i < listaBancos.size(); i++) {
-            seleccionarBanco.add(new SelectItem(listaBancos.get(i).getCodigobanco(), listaBancos.get(i).getNombrebanco()));
-        }
-        return seleccionarBanco;
+    public void setListaPersonal(List<Personal> listaPersonal) {
+        this.listaPersonal = listaPersonal;
     }
 
-    public void setSeleccionarBanco(List<SelectItem> seleccionarBanco) {
-        this.seleccionarBanco = seleccionarBanco;
+    public Personal getSelectedPersonal() {
+        return selectedPersonal;
+    }
+
+    public void setSelectedPersonal(Personal selectedPersonal) {
+        this.selectedPersonal = selectedPersonal;
+    }
+
+    public void setListaCoordinador(List<Coordinador> listaCoordinador) {
+        this.listaCoordinador = listaCoordinador;
+    }
+
+    public Coordinador getSelectedCoordinador() {
+        return selectedCoordinador;
+    }
+
+    public void setSelectedCoordinador(Coordinador selectedCoordinador) {
+        this.selectedCoordinador = selectedCoordinador;
+    }
+
+    public void setSelectedBanco(Banco selectedBanco) {
+        this.selectedBanco = selectedBanco;
+    }
+
+    public void setSelectedContrato(Contrato selectedContrato) {
+        this.selectedContrato = selectedContrato;
+    }
+
+    public InputText getTxtNumeroCompromisoSiContrato() {
+        return txtNumeroCompromisoSiContrato;
+    }
+
+    public void setTxtNumeroCompromisoSiContrato(InputText txtNumeroCompromisoSiContrato) {
+        this.txtNumeroCompromisoSiContrato = txtNumeroCompromisoSiContrato;
+    }
+    
+    public InputText getTxtCodigoBancoContrato() {
+        return txtCodigoBancoContrato;
+    }
+
+    public void setTxtCodigoBancoContrato(InputText txtCodigoBancoContrato) {
+        this.txtCodigoBancoContrato = txtCodigoBancoContrato;
+    }
+
+    public InputText getTxtDocumentoCoordinadorContrato() {
+        return txtDocumentoCoordinadorContrato;
+    }
+
+    public void setTxtDocumentoCoordinadorContrato(InputText txtDocumentoCoordinadorContrato) {
+        this.txtDocumentoCoordinadorContrato = txtDocumentoCoordinadorContrato;
+    }
+
+    public InputText getTxtDocumentoPersonalContrato() {
+        return txtDocumentoPersonalContrato;
+    }
+
+    public void setTxtDocumentoPersonalContrato(InputText txtDocumentoPersonalContrato) {
+        this.txtDocumentoPersonalContrato = txtDocumentoPersonalContrato;
+    }
+
+    public InputText getTxtCodigoLineaContrato() {
+        return txtCodigoLineaContrato;
+    }
+
+    public void setTxtCodigoLineaContrato(InputText txtCodigoLineaContrato) {
+        this.txtCodigoLineaContrato = txtCodigoLineaContrato;
+    }
+
+    public Lineacentro getSelectedCodigoLineaCentro() {
+        return selectedCodigoLineaCentro;
+    }
+
+    public void setSelectedCodigoLineaCentro(Lineacentro selectedCodigoLineaCentro) {
+        this.selectedCodigoLineaCentro = selectedCodigoLineaCentro;
+    }
+
+    public ContratoLogicaLocal getContratoLogica() {
+        return contratoLogica;
+    }
+
+    public BancoLogicaLocal getBancoLogica() {
+        return bancoLogica;
+    }
+
+    public void setBancoLogica(BancoLogicaLocal bancoLogica) {
+        this.bancoLogica = bancoLogica;
+    }
+
+    public void setContratoLogica(ContratoLogicaLocal contratoLogica) {
+        this.contratoLogica = contratoLogica;
+    }
+    
+    public InputText getTxtValorEmbargoContrato() {
+        return txtValorEmbargoContrato;
+    }
+
+    public void setTxtValorEmbargoContrato(InputText txtValorEmbargoContrato) {
+        this.txtValorEmbargoContrato = txtValorEmbargoContrato;
+    }
+
+    public InputText getTxtValorMensualContrato() {
+        return txtValorMensualContrato;
+    }
+
+    public void setTxtValorMensualContrato(InputText txtValorMensualContrato) {
+        this.txtValorMensualContrato = txtValorMensualContrato;
+    }
+
+    public InputText getTxtValorHoraContrato() {
+        return txtValorHoraContrato;
+    }
+
+    public void setTxtValorHoraContrato(InputText txtValorHoraContrato) {
+        this.txtValorHoraContrato = txtValorHoraContrato;
     }
     
     public void accion_registrar() {
@@ -543,12 +568,12 @@ public class FuncionarioContratoVista {
             nuevaContrato.setFechainiciocontrato(txtFechaInicioContrato);
             nuevaContrato.setFechafincontrato(txtFechaFinContrato);
             nuevaContrato.setObjetocontrato(txtObjetoContrato.getValue().toString());
-            nuevaContrato.setEstadocontrato(txtEstadoContrato.getValue().toString());
+            nuevaContrato.setEstadocontrato(cmbEstadoContrato.getValue().toString());
             nuevaContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(txtValorTotalContrato.getValue().toString())));
             nuevaContrato.setNumerocompromisosiifcontrato(Integer.parseInt(txtNumeroCompromisoSiContrato.getValue().toString()));
-            nuevaContrato.setFormapagocontrato(txtFormaPagoContrato.getValue().toString()); 
+            nuevaContrato.setFormapagocontrato(cmbFormaPagoContrato.getValue().toString()); 
             nuevaContrato.setNumerocuentacontrato(BigInteger.valueOf(Long.parseLong(txtNumeroCuentaContrato.getValue().toString())));            
-            nuevaContrato.setTipocuentacontrato(txtTipoCuentaContrato.getValue().toString());
+            nuevaContrato.setTipocuentacontrato(cmbTipoCuentaContrato.getValue().toString());
             Banco nuevoBanco = new Banco();
             nuevoBanco.setCodigobanco(Integer.parseInt(txtCodigoBancoContrato.getValue().toString()));
             nuevaContrato.setCodigobancocontrato(nuevoBanco);
@@ -559,8 +584,20 @@ public class FuncionarioContratoVista {
             nuevoPersonal.setDocumentopersonal(Long.parseLong(txtDocumentoPersonalContrato.getValue().toString()));
             nuevaContrato.setDocumentopersonalcontrato(nuevoPersonal);
             Lineacentro nuevoLineacentro = new Lineacentro();
-            nuevoLineacentro.setCodigolinea(Integer.parseInt(cmbLineaContrato.getValue().toString()));
+            nuevoLineacentro.setCodigolinea(Integer.parseInt(txtCodigoLineaContrato.getValue().toString()));
             nuevaContrato.setCodigolineacontrato(nuevoLineacentro);
+            nuevaContrato.setClasepersonacontrato(cmbClasePersonaContrato.getValue().toString());
+            nuevaContrato.setIngresossuperiorescontrato(cmbIngresosSuperioresContrato.getValue().toString());
+            nuevaContrato.setRegimenivacontrato(cmbRegimenIvaContrato.getValue().toString());
+            nuevaContrato.setExcluidoivacontrato(cmbExcluidoIvaContrato.getValue().toString());
+            nuevaContrato.setDeclarantecontrato(cmbDeclaranteContrato.getValue().toString());
+            nuevaContrato.setPensionadocontrato(cmbPensionadoContrato.getValue().toString());
+            nuevaContrato.setDependientescontratp(cmbDependientesContratp.getValue().toString());
+            nuevaContrato.setEmbargocontrato(cmbEmbargoContrato.getValue().toString());
+            nuevaContrato.setValorembargocontrato(Integer.parseInt(txtValorEmbargoContrato.getValue().toString()));
+            nuevaContrato.setValormensualcontrato(BigInteger.valueOf(Long.parseLong(txtValorMensualContrato.getValue().toString())));
+            nuevaContrato.setValorhoracontrato(Integer.parseInt(txtValorHoraContrato.getValue().toString()));
+            nuevaContrato.setTipoarlcontrato(Integer.parseInt(cmbTipoArlContrato.getValue().toString()));
             contratoLogica.create(nuevaContrato);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mensaje", "!El contrato se  registro correctamente¡"));
             listaContratos = null;
@@ -571,31 +608,62 @@ public class FuncionarioContratoVista {
         }
     }
     
-    public void seleccionar(SelectEvent event){
-        Contrato contratoSeleccionado = (Contrato) event.getObject();
+    public void seleccionar(SelectEvent ex){
+        Contrato contratoSeleccionado = selectedContrato;
         txtNumeroContrato.setValue(contratoSeleccionado.getNumerocuentacontrato());
         txtFechaInicioContrato = contratoSeleccionado.getFechainiciocontrato();
         txtFechaFinContrato = contratoSeleccionado.getFechafincontrato();
         txtObjetoContrato.setValue(contratoSeleccionado.getObjetocontrato());
-        txtEstadoContrato.setValue(contratoSeleccionado.getEstadocontrato());
+        cmbEstadoContrato.setValue(contratoSeleccionado.getEstadocontrato());
+        cmbEstadoContrato.setLabel(contratoSeleccionado.getEstadocontrato());
         txtValorTotalContrato.setValue(contratoSeleccionado.getValortotalcontrato());        
         txtNumeroCompromisoSiContrato.setValue(contratoSeleccionado.getNumerocompromisosiifcontrato());
-        txtFormaPagoContrato.setValue(contratoSeleccionado.getFormapagocontrato());
+        cmbFormaPagoContrato.setValue(contratoSeleccionado.getFormapagocontrato());
+        cmbFormaPagoContrato.setLabel(contratoSeleccionado.getFormapagocontrato());
         txtNumeroCuentaContrato.setValue(contratoSeleccionado.getNumerocuentacontrato());
-        txtTipoCuentaContrato.setValue(contratoSeleccionado.getTipocuentacontrato());
+        cmbTipoCuentaContrato.setValue(contratoSeleccionado.getTipocuentacontrato());
+        cmbTipoCuentaContrato.setLabel(contratoSeleccionado.getTipocuentacontrato());
         txtCodigoBancoContrato.setValue(contratoSeleccionado.getCodigobancocontrato().getCodigobanco());
         txtDocumentoCoordinadorContrato.setValue(contratoSeleccionado.getDocumentocoordinadorcontrato().getDocumentocoordinador());
         txtDocumentoPersonalContrato.setValue(contratoSeleccionado.getDocumentopersonalcontrato().getDocumentopersonal());
-        cmbLineaContrato.setValue(contratoSeleccionado.getCodigolineacontrato().getCodigolinea());
         btnModificar.setDisabled(false);
         btnRegistrar.setDisabled(true);
         btnLimpiar.setDisabled(true);
     }
     
-    public void seleccionarBanco(SelectEvent event){
+    public void seleccionarBanco(SelectEvent ex){
         
-        Banco BancoSeleccionado = (Banco) event.getObject();
+        Banco BancoSeleccionado = selectedBanco;
         txtCodigoBancoContrato.setValue(BancoSeleccionado.getCodigobanco());
+        listaBanco = null;
+        
+    }
+    
+    public void seleccionarPersonal(SelectEvent ex)
+    {
+        
+        Personal PersonalSeleccionado = selectedPersonal;
+        txtDocumentoPersonalContrato.setValue(PersonalSeleccionado.getDocumentopersonal());
+        listaPersonal = null;
+        
+    }
+    
+    public void seleccionarLineaCentro(SelectEvent ex)
+    {
+        
+        Lineacentro LineaCentroSeleccionado = selectedLineaCentro;
+        txtCodigoLineaContrato.setValue(LineaCentroSeleccionado.getCodigolinea());
+        listaLineaCentro = null;
+        
+    }
+    
+    public void seleccionarCoordinador(SelectEvent ex)
+    {
+        
+        Coordinador coordinadorSeleccionado = selectedCoordinador;
+        txtDocumentoCoordinadorContrato.setValue(coordinadorSeleccionado.getDocumentocoordinador());
+        listaCoordinador = null;
+        
     }
     
     public void modificar(){
@@ -621,10 +689,12 @@ public class FuncionarioContratoVista {
         txtFechaInicioContrato.setDate(0);
         txtFechaFinContrato.setDate(0);
         txtObjetoContrato.setValue("");
-        txtEstadoContrato.setValue("");
+        cmbEstadoContrato.setValue("ACTIVO");
+        cmbEstadoContrato.setLabel("ACTIVO");
         txtValorTotalContrato.setValue("");
         txtNumeroCompromisoSiContrato.setValue("");
-        txtFormaPagoContrato.setValue("");
+        cmbFormaPagoContrato.setValue("MES");
+        cmbFormaPagoContrato.setLabel("MES");
         txtNumeroCuentaContrato.setValue("");
         btnRegistrar.setDisabled(true);
         btnModificar.setDisabled(true);
@@ -688,15 +758,7 @@ public class FuncionarioContratoVista {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", ex.getMessage()));
         }
         
-    }
-    
-    public void seleccionarPersonal(SelectEvent event)
-    {
-        
-        Personal PersonalSeleccionado = (Personal) event.getObject();
-        txtDocumentoPersonalContrato.setValue(PersonalSeleccionado.getDocumentopersonal());
-        
-    }
-    
+    }   
+     
 }
     

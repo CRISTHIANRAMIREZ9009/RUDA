@@ -200,10 +200,10 @@
                                          </p:dialog>     
                                          
                                     </h:form>
-                                    <h:form id="forma" enctype="multipart/form-data">
+                                    <h:form id="forma">
                                         <p:growl id="growl" showDetail="true" sticky="true"/>
                                         <p:panel id="panelUpload" header="Cargar Personal desde archivo:">
-                                            <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioContratoVista.cargarContrato}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                            <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
                                             <p:messages id="mensajeArchivo" showDetail="true" /> 
                                         </p:panel>
                                         <br />                    
