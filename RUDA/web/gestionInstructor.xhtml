@@ -137,7 +137,7 @@
 
                         <p:inputText id="txtValorTotalContrato" binding="#{instructorVista.txtValorTotalContrato}" disabled="true"/>
 
-                        <p:outputLabel for="txtNumeroCompromisoSiifContrato" value="Numero Compromiso Siif Contrato:"/>
+                        <p:outputLabel for="txtNumeroCompromisoSiifContrato" value="Numero Compromiso Contrato:"/>
                         <p:calendar id="txtNumeroCompromisoSiifContrato" value="#{instructorVista.txtNumeroCompromisoSiifContrato}" pattern="yyyy-MM-dd" mask="true" />
 
                         <p:outputLabel for="txtFormaPagoContrato" value="Forma de Pago Contrato:" />
@@ -148,35 +148,107 @@
 
 
                         <h:outputText value="Tipo ARL Contrato:"/>
-                        <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}"disabled="true" />
+                        <p:inputText id="txtTipoARLContrato" binding="#{instructorVista.txtTipoARLContrato}" disabled="true"/>
 
                         <p:commandButton value="Modificar" binding="#{instructorVista.btnModificar}" disabled="true"/>
                         
                           <h:form id="forma">
                                 <p:growl id="growl" showDetail="true" sticky="true"/>
                                 <p:panel id="panelUpload" header="Cargar Evidencia desde archivo:">
-                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .DOC o .DOCX¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(doc)$/"/> 
+                                    <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo debe ser de Extensión .XLS¡" fileUploadListener="#{instructorVista.cargarContrato}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
                                     <p:messages id="mensajeArchivo" showDetail="true" /> 
                                 </p:panel>
                                 <br />                    
-                            </h:form>
-                       
-
-
+                            </h:form>                     
 
                     </p:panelGrid>
-                    <p:dataTable var="instructor" value="#{instructorVista.listaContratos}" rows="1"
-                                 paginator="true" 
-                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15">
-                        <p:column headerText="Número Contrato">
-                            <h:outputText value="#{instructorVista.btnModificar}"/>
+                    <p:panelGrid columns="6">
+                        
+                        <p:column>                            
                             <p:commandButton value="Generar Reporte" binding="#{instructorVista.btnReporte}" action="#{instructorVista.generarReporte}" update="formulario"/>
                             <p:commandButton value="Limpiar" binding="#{instructorVista.btnLimpiar}" action="#{instructorVista.limpiar}" update="formulario"/>
                         </p:column>
+                        
+                    </p:panelGrid>
+                    <p:dataTable var="contrato" value="#{instructorVista.listaContratos}" rows="5"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             selectionMode="single"
+                                             selection="#{instructorVista.selectedContrato}"
+                                             rowKey="#{contrato.numerocontrato}">
+                                    <p:ajax event="rowSelect" listener="#{funcionarioContratoVista.seleccionar(ex)}" update=":formulario" />
+                                    <p:column headerText="Numero:">
+                                        <h:outputText value="#{contrato.numerocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Fecha Inicio:">
+                                        <h:outputText value="#{contrato.fechainiciocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Fecha Fin:">
+                                        <h:outputText value="#{contrato.fechafincontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Obejto:">
+                                        <h:outputText value="#{contrato.objetocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Estado:">
+                                        <h:outputText value="#{contrato.estadocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Valor Total:">
+                                        <h:outputText value="#{contrato.valortotalcontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Compromiso:">
+                                        <h:outputText value="#{contrato.numerocompromisosiifcontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Forma Pago:">
+                                        <h:outputText value="#{contrato.formapagocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Cuenta:">
+                                        <h:outputText value="#{contrato.numerocuentacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Tipo Cuenta:">
+                                        <h:outputText value="#{contrato.tipocuentacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Codigo Banco:">
+                                        <h:outputText value="#{contrato.codigobancocontrato.codigobanco}" />
+                                    </p:column>
+                                    <p:column headerText="Documento Coordinador:">
+                                        <h:outputText value="#{contrato.documentocoordinadorcontrato.documentocoordinador}" />
+                                    </p:column>
+                                    <p:column headerText="Documento Personal:">
+                                        <h:outputText value="#{contrato.documentopersonalcontrato.documentopersonal}" />
+                                    </p:column>
+                                    <p:column headerText="Linea Centro:">
+                                        <h:outputText value="#{contrato.codigolineacontrato.codigolinea}" />
+                                    </p:column>
+                                    <p:column headerText="Clase Persona:">
+                                        <h:outputText value="#{contrato.clasepersonacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Ingresos Superiores:">
+                                        <h:outputText value="#{contrato.ingresossuperiorescontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Regimen Iva:">
+                                        <h:outputText value="#{contrato.regimenivacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Excluido Iva:">
+                                        <h:outputText value="#{contrato.excluidoivacontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Declarante:">
+                                        <h:outputText value="#{contrato.declarantecontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Pensionado:">
+                                        <h:outputText value="#{contrato.pensionadocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Dependiente:">
+                                        <h:outputText value="#{contrato.dependientescontratp}" />
+                                    </p:column>
+                                    <p:column headerText="Embargo:">
+                                        <h:outputText value="#{contrato.embargocontrato}" />
+                                    </p:column>
+                                    <p:column headerText="Valor Embargo:">
+                                        <h:outputText value="#{contrato.valorembargocontrato}" />
+                                    </p:column>
 
-                    </p:dataTable>
-                    <p:commandButton value="Cerrar Sesión" action="#{sesionVista.cerrarSesion_action}"/>
+                                </p:dataTable>                    
 
                     </h:form>
 

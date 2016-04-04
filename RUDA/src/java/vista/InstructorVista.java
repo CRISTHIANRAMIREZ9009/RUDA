@@ -1,5 +1,10 @@
 package vista;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -10,12 +15,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.xml.registry.infomodel.AuditableEvent;
 import logica.ContratoLogicaLocal;
 import modelo.Contrato;
 import modelo.Instructor;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 
 
@@ -423,9 +430,46 @@ public void modificar(){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Error¡", "!El numero del documento debe ser un numero y no letras¡"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "!Erro¡r", ex.getMessage()));
+        }    
+    
+    }
+
+    public void cargarContrato(FileUploadEvent event) {
+        //System.out.println("Evento File upload!!!");
+
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String rutaDestino = (String) servletContext.getRealPath("/excel");
+
+        //System.out.println("Ruta Server: " + rutaDestino);
+        try {
+            copiarArchivo(rutaDestino, event.getFile().getFileName(), event.getFile().getInputstream());
+            String resultado = contratoLogica.importarDatosContrato(rutaDestino + "\\" + event.getFile().getFileName());
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ok: ", resultado));
+           
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioPersonalVista.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
     
-    
-}
+    public void copiarArchivo(String rutaDestino, String fileName, InputStream in) {
+        try {
+            OutputStream out = new FileOutputStream(new File(rutaDestino + "\\" + fileName));
+            System.out.println("Ruta Archivo: " + rutaDestino + "\\" +fileName);
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            in.close();
+            out.flush();
+            out.close();
+            //System.out.println("New file created!");
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+        }
+    }
     
 }

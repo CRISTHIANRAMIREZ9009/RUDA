@@ -126,7 +126,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbEstadoContrato" value="#{funcionarioContratoVista.cmbEstadoContrato}" style="width:200px">
+                                                    <p:selectOneMenu id="cmbEstadoContrato" value="ACTIVO" disabled="true" binding="#{funcionarioContratoVista.cmbEstadoContrato}" style="width:200px">
                                                         <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
                                                         <f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
                                                     </p:selectOneMenu>
@@ -159,7 +159,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbFormaPagoContrato" value="#{funcionarioContratoVista.cmbFormaPagoContrato}" style="width:200px">
+                                                    <p:selectOneMenu id="cmbFormaPagoContrato" binding="#{funcionarioContratoVista.cmbFormaPagoContrato}" style="width:200px">
                                                         <f:selectItem itemLabel="MES" itemValue="MES" />
                                                         <f:selectItem itemLabel="POR HORA" itemValue="POR HORA" />
                                                     </p:selectOneMenu>
@@ -186,7 +186,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbTipoCuentaContrato" value="#{funcionarioContratoVista.cmbTipoCuentaContrato}" style="width:200px">
+                                                    <p:selectOneMenu id="cmbTipoCuentaContrato" binding="#{funcionarioContratoVista.cmbTipoCuentaContrato}" style="width:200px">
                                                         <f:selectItem itemLabel="AHORROS" itemValue="AHORROS" />
                                                         <f:selectItem itemLabel="CORRIENTE" itemValue="CORRIENTE" />
                                                     </p:selectOneMenu>
@@ -291,7 +291,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbClasePersonaContrato" value="#{funcionarioContratoVista.cmbClasePersonaContrato}" style="width:200px">
+                                                    <p:selectOneMenu id="cmbClasePersonaContrato" binding="#{funcionarioContratoVista.cmbClasePersonaContrato}" style="width:200px">
                                                         <f:selectItem itemLabel="EMPLEADO" itemValue="EMPLEADO" />
                                                         <f:selectItem itemLabel="TRABAJADOR POR CUENTA PROPIA" itemValue="TRABAJADOR POR CUENTA PROPIA" />
                                                         <f:selectItem itemLabel="DEMAS PERSONAS NATURALES" itemValue="DEMAS PERSONAS NATURALES" />
@@ -305,7 +305,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbIngresosSuperioresContrato" value="#{funcionarioContratoVista.cmbIngresosSuperioresContrato}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbIngresosSuperioresContrato" binding="#{funcionarioContratoVista.cmbIngresosSuperioresContrato}" style="width:125px">
                                                         <f:selectItem itemLabel="SI" itemValue="SI" />
                                                         <f:selectItem itemLabel="NO" itemValue="NO" />
                                                     </p:selectOneMenu>
@@ -322,7 +322,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbRegimenIvaContrato" value="#{funcionarioContratoVista.cmbRegimenIvaContrato}" style="width:200px">
+                                                    <p:selectOneMenu id="cmbRegimenIvaContrato" binding="#{funcionarioContratoVista.cmbRegimenIvaContrato}" style="width:200px">
                                                         <f:selectItem itemLabel="SIMPLIFICADO" itemValue="SIMPLIFICADO" />
                                                         <f:selectItem itemLabel="COMUN" itemValue="COMUN" />
                                                     </p:selectOneMenu>
@@ -335,7 +335,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbExcluidoIvaContrato" value="#{funcionarioContratoVista.cmbExcluidoIvaContrato}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbExcluidoIvaContrato" binding="#{funcionarioContratoVista.cmbExcluidoIvaContrato}" style="width:125px">
                                                         <f:selectItem itemLabel="SI" itemValue="SI" />
                                                         <f:selectItem itemLabel="NO" itemValue="NO" />
                                                     </p:selectOneMenu>
@@ -348,7 +348,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbDeclaranteContrato" value="#{funcionarioContratoVista.cmbDeclaranteContrato}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbDeclaranteContrato" binding="#{funcionarioContratoVista.cmbDeclaranteContrato}" style="width:125px">
                                                         <f:selectItem itemLabel="SI" itemValue="SI" />
                                                         <f:selectItem itemLabel="NO" itemValue="NO" />
                                                     </p:selectOneMenu>
@@ -361,7 +361,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbPensionadoContrato" value="#{funcionarioContratoVista.cmbPensionadoContrato}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbPensionadoContrato" binding="#{funcionarioContratoVista.cmbPensionadoContrato}" style="width:125px">
                                                         <f:selectItem itemLabel="SI" itemValue="SI" />
                                                         <f:selectItem itemLabel="NO" itemValue="NO" />
                                                     </p:selectOneMenu>
@@ -378,7 +378,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbDependientesContratp" value="#{funcionarioContratoVista.cmbDependientesContratp}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbDependientesContratp" binding="#{funcionarioContratoVista.cmbDependientesContratp}" style="width:125px">
                                                         <f:selectItem itemLabel="SI" itemValue="SI" />
                                                         <f:selectItem itemLabel="NO" itemValue="NO" />
                                                     </p:selectOneMenu>
@@ -391,7 +391,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbEmbargoContrato" value="#{funcionarioContratoVista.cmbEmbargoContrato}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbEmbargoContrato" binding="#{funcionarioContratoVista.cmbEmbargoContrato}" style="width:125px">
                                                         <f:selectItem itemLabel="SI" itemValue="SI" />
                                                         <f:selectItem itemLabel="NO" itemValue="NO" />
                                                     </p:selectOneMenu>
@@ -438,7 +438,7 @@
 
                                             <p:column>
                                                 <div align="left">
-                                                    <p:selectOneMenu id="cmbTipoArlContrato" value="#{funcionarioContratoVista.cmbTipoArlContrato}" style="width:125px">
+                                                    <p:selectOneMenu id="cmbTipoArlContrato" binding="#{funcionarioContratoVista.cmbTipoArlContrato}" style="width:125px">
                                                         <f:selectItem itemLabel="1" itemValue="1" />
                                                         <f:selectItem itemLabel="2" itemValue="2" />
                                                         <f:selectItem itemLabel="3" itemValue="3" />
@@ -458,8 +458,8 @@
                                                     <br/> 
                                                     <p:commandButton value="Registrar" binding="#{funcionarioContratoVista.btnRegistrar}" action="#{funcionarioContratoVista.accion_registrar}" update="formulario"/>
                                                     <p:commandButton value="Modificar" binding="#{funcionarioContratoVista.btnModificar}" disabled="true"/>
-                                                    <p:commandButton value="Generar Reporte" binding="#{funcionarioContratoVista.btnReporte}" action="#{funcionarioContratoVista.generarReporte}" update="formulario"/>
-                                                    <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" action="#{funcionarioContratoVista.limpiar}" update="formulario"/>                                                        
+                                                    <p:commandButton value="Generar Reporte" binding="#{funcionarioContratoVista.btnReporte}" action="#{funcionarioContratoVista.generarReporte()}" ajax="false"/>
+                                                    <p:commandButton value="Limpiar" binding="#{funcionarioContratoVista.btnLimpiar}" actionListener="#{funcionarioContratoVista.limpiar}" update="formulario"/>                                                        
                                                     <br/> 
 
                                                 </div>
@@ -482,11 +482,11 @@
 
                                 </h:form>                                        
 
-                                <h:form id="forma" enctype="multipart/form-data">
+                                <h:form id="forma">
                                     <br/> 
                                     <p:growl id="growl" showDetail="true" sticky="true"/>
                                     <p:panel id="panelUpload" header="Cargar Contrato desde archivo:">
-                                        <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioPersonalVista.cargarPersonal}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                        <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo deber ser de Extensión .XLS¡" fileUploadListener="#{funcionarioContratoVista.cargarContrato}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
                                         <p:messages id="mensajeArchivo" showDetail="true" /> 
                                     </p:panel>
                                     <br/>

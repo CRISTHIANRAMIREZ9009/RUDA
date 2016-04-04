@@ -667,34 +667,34 @@ public class FuncionarioContratoVista {
     }
     
     public void modificar(){
-    try {
-        Contrato objetoContrato = new Contrato();
-        objetoContrato.setNumerocontrato(Integer.parseInt(txtNumeroContrato.getValue()+""));
-        objetoContrato.setObjetocontrato(txtObjetoContrato.getValue()+"");
-        objetoContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(txtValorTotalContrato.getValue().toString())));
-        objetoContrato.setNumerocompromisosiifcontrato(Integer.parseInt(txtNumeroCompromisoSiContrato.getValue()+""));
-        objetoContrato.setValorembargocontrato(Integer.parseInt(txtValorEmbargoContrato.getValue()+""));
-        objetoContrato.setValormensualcontrato(BigInteger.valueOf(Long.parseLong(txtValorMensualContrato.getValue().toString())));
-        objetoContrato.setValorhoracontrato(Integer.parseInt(txtValorHoraContrato.getValue()+""));
-        contratoLogica.edit(objetoContrato);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificacion", "!El contrato se  modifico correctamente¡"));
-        listaContratos = null;
-    } catch (Exception ex) {
-        Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        try {
+            Contrato objetoContrato = new Contrato();
+            objetoContrato.setNumerocontrato(Integer.parseInt(txtNumeroContrato.getValue()+""));
+            objetoContrato.setObjetocontrato(txtObjetoContrato.getValue()+"");
+            objetoContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(txtValorTotalContrato.getValue().toString())));
+            objetoContrato.setNumerocompromisosiifcontrato(Integer.parseInt(txtNumeroCompromisoSiContrato.getValue()+""));
+            objetoContrato.setValorembargocontrato(Integer.parseInt(txtValorEmbargoContrato.getValue()+""));
+            objetoContrato.setValormensualcontrato(BigInteger.valueOf(Long.parseLong(txtValorMensualContrato.getValue().toString())));
+            objetoContrato.setValorhoracontrato(Integer.parseInt(txtValorHoraContrato.getValue()+""));
+            contratoLogica.edit(objetoContrato);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificacion", "!El contrato se  modifico correctamente¡"));
+            listaContratos = null;
+        } catch (Exception ex) {
+            Logger.getLogger(FuncionarioContratoVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void limpiar() {
+        cmbEstadoContrato.setValue("ACTIVO");
+        cmbEstadoContrato.setLabel("ACTIVO");
+        cmbTipoCuentaContrato.setValue("AHORROS");
+        cmbTipoCuentaContrato.setLabel("AHORROS");
         txtNumeroContrato.setValue("");
         txtFechaInicioContrato.setDate(0);
         txtFechaFinContrato.setDate(0);
-        txtObjetoContrato.setValue("");
-        cmbEstadoContrato.setValue("ACTIVO");
-        cmbEstadoContrato.setLabel("ACTIVO");
+        txtObjetoContrato.setValue("");       
         txtValorTotalContrato.setValue("");
-        txtNumeroCompromisoSiContrato.setValue("");
-        cmbFormaPagoContrato.setValue("MES");
-        cmbFormaPagoContrato.setLabel("MES");
+        txtNumeroCompromisoSiContrato.setValue("");        
         txtNumeroCuentaContrato.setValue("");
         btnRegistrar.setDisabled(true);
         btnModificar.setDisabled(true);
@@ -738,7 +738,7 @@ public class FuncionarioContratoVista {
         }
     }
     
-    public void generarReporte (){
+    public void generarReporte(){
         
         try {
 

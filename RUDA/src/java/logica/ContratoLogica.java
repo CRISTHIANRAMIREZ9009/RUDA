@@ -3,6 +3,7 @@ package logica;
 
 import java.io.File;
 import java.math.BigInteger;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.ejb.EJB;
@@ -177,22 +178,21 @@ public class ContratoLogica implements ContratoLogicaLocal {
         Workbook archivoExcel = Workbook.getWorkbook(new File(archivo));
         Sheet hoja = archivoExcel.getSheet(0);
         int numFilas = hoja.getRows();
-        Banco objetoBanco = new Banco();
-        Coordinador objetoCoordinador = new Coordinador();
-        Personal objetoPersonal = new Personal();
-        Lineacentro objetoLinea = new Lineacentro();
-
+        
         contratoInsertado = 0;
         contratoExistente = 0;
 
-        for (int fila = 1; fila < numFilas; fila++) { // Recorre cada 
+        for (int fila = 1; fila < numFilas; fila++) {
+            
             Contrato nuevoContrato = new Contrato();
+            Banco objetoBanco = new Banco();
+            Coordinador objetoCoordinador = new Coordinador();
+            Personal objetoPersonal = new Personal();
+            Lineacentro objetoLinea = new Lineacentro();
 
             nuevoContrato.setNumerocontrato(Integer.parseInt(hoja.getCell(0, fila).getContents()));
-            SimpleDateFormat formatoFechaInicio = new SimpleDateFormat("yyyy/MM/dd");
-            nuevoContrato.setFechainiciocontrato(formatoFechaInicio.parse(hoja.getCell(1, fila).getContents()));
-            SimpleDateFormat formatoFechaFin = new SimpleDateFormat("yyyy/MM/dd");
-            nuevoContrato.setFechafincontrato(formatoFechaFin.parse(hoja.getCell(2, fila).getContents()));
+            nuevoContrato.setFechainiciocontrato(Date.valueOf(hoja.getCell(1, fila).getContents()));
+            nuevoContrato.setFechafincontrato(Date.valueOf(hoja.getCell(2, fila).getContents()));
             nuevoContrato.setObjetocontrato(hoja.getCell(3, fila).getContents());
             nuevoContrato.setEstadocontrato(hoja.getCell(4, fila).getContents());
             nuevoContrato.setValortotalcontrato(BigInteger.valueOf(Long.parseLong(hoja.getCell(5, fila).getContents())));
@@ -200,7 +200,26 @@ public class ContratoLogica implements ContratoLogicaLocal {
             nuevoContrato.setFormapagocontrato(hoja.getCell(7, fila).getContents());
             nuevoContrato.setNumerocuentacontrato(BigInteger.valueOf(Long.parseLong(hoja.getCell(8, fila).getContents())));
             nuevoContrato.setTipocuentacontrato(hoja.getCell(9, fila).getContents());
-            nuevoContrato.setClasepersonacontrato(hoja.getCell(10, fila).getContents());
+            objetoBanco.setCodigobanco(Integer.parseInt(hoja.getCell(10, fila).getContents()));
+            nuevoContrato.setCodigobancocontrato(objetoBanco);
+            objetoCoordinador.setDocumentocoordinador(Long.parseLong(hoja.getCell(11, fila).getContents()));
+            nuevoContrato.setDocumentocoordinadorcontrato(objetoCoordinador);
+            objetoPersonal.setDocumentopersonal(Long.parseLong(hoja.getCell(12, fila).getContents()));
+            nuevoContrato.setDocumentopersonalcontrato(objetoPersonal);
+            objetoLinea.setCodigolinea(Integer.parseInt(hoja.getCell(13, fila).getContents()));
+            nuevoContrato.setCodigolineacontrato(objetoLinea);
+            nuevoContrato.setClasepersonacontrato(hoja.getCell(14, fila).getContents());
+            nuevoContrato.setIngresossuperiorescontrato(hoja.getCell(15, fila).getContents());
+            nuevoContrato.setRegimenivacontrato(hoja.getCell(16, fila).getContents());
+            nuevoContrato.setExcluidoivacontrato(hoja.getCell(17, fila).getContents());
+            nuevoContrato.setDeclarantecontrato(hoja.getCell(18, fila).getContents());
+            nuevoContrato.setPensionadocontrato(hoja.getCell(19, fila).getContents());
+            nuevoContrato.setDependientescontratp(hoja.getCell(20, fila).getContents());
+            nuevoContrato.setEmbargocontrato(hoja.getCell(21, fila).getContents());
+            nuevoContrato.setValorembargocontrato(Integer.parseInt(hoja.getCell(22, fila).getContents()));
+            nuevoContrato.setValormensualcontrato(BigInteger.valueOf(Long.parseLong(hoja.getCell(23, fila).getContents())));
+            nuevoContrato.setValorhoracontrato(Integer.parseInt(hoja.getCell(24, fila).getContents()));
+            nuevoContrato.setTipoarlcontrato(Integer.parseInt(hoja.getCell(25, fila).getContents()));
 
             Contrato contrato = contratoDAO.find(nuevoContrato.getNumerocontrato());
             if (contrato == null) {

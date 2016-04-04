@@ -179,7 +179,7 @@
                                                 <div align="center">                                           
                                                     <p:commandButton value="Registrar" binding="#{funcionarioPersonalVista.btnRegistrar}" action="#{funcionarioPersonalVista.accion_registrar}" update="formulario"/>
                                                     <p:commandButton value="Modificar" binding="#{funcionarioPersonalVista.btnModificar}" action="#{funcionarioPersonalVista.modificar}" update="formulario" disabled="true"/>
-                                                    <p:commandButton value="Generar Reporte" binding="#{funcionarioPersonalVista.btnReporte}" action="#{funcionarioPersonalVista.generarReporte}" update="formulario"/>
+                                                    <p:commandButton value="Generar Reporte" binding="#{funcionarioPersonalVista.btnReporte}" actionListener="#{funcionarioPersonalVista.generarReporte()}" ajax="false"/>
                                                     <p:commandButton value="Limpiar" binding="#{funcionarioPersonalVista.btnLimpiar}" action="#{funcionarioPersonalVista.limpiar}" update="formulario"/>
                                                 </div>
                                             </p:column>
