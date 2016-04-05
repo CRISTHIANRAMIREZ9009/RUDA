@@ -99,7 +99,7 @@ public class SesionVista {
         
         try {
             
-            urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionInstructor.xhtml"));
+            urlInstructor = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionContratista.xhtml"));
             urlFuncionario = extContext.encodeActionURL(context.getApplication().getViewHandler().getActionURL(context, "/gestionFuncionarioContrato.xhtml"));
             Long documento = Long.parseLong(txtUsuario.getValue().toString());
             String clave = txtClave.getValue().toString();

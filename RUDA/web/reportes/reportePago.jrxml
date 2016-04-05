@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="2004" pageHeight="1418" orientation="Landscape" columnWidth="1964" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7952596-242a-48e0-865d-8842bed7d90a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from pago]]>
+	</queryString>
+	<field name="codigopago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeropago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechainiciopago" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechafinpago" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saldoanteriorpago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saldonuevopago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numerocontratopago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numerohoraspago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroplanillapago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ibcpago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aportessaludpago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aportepensionpago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aportesolidariopago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aportearl" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ahorrovoluntariopago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dependientespago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saludprepagadapago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="interesviviendapago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="62db127e-1308-4584-b0c1-cbda96b40354"/>
+				<text><![CDATA[codigopago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="1a5d7190-ed16-4f70-8b1d-14c5af6566be"/>
+				<text><![CDATA[numeropago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="d0b24ad5-501d-45f8-9bd7-9faf23e9134b"/>
+				<text><![CDATA[fechainiciopago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="cfbcfdc2-1a00-4f1b-a3e2-95e404d615ef"/>
+				<text><![CDATA[fechafinpago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="4b4ec650-2591-4f79-af77-56b410e4759b"/>
+				<text><![CDATA[saldoanteriorpago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="20" uuid="16ad8cdf-6c0d-4e0a-bf2a-8f80ddaa8235"/>
+				<text><![CDATA[saldonuevopago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="20" uuid="f8c925c4-53cd-4a31-a287-d50699475797"/>
+				<text><![CDATA[numerocontratopago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="100" height="20" uuid="b30257f2-58b4-4670-bc46-07563f0b8e0c"/>
+				<text><![CDATA[numerohoraspago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="800" y="0" width="100" height="20" uuid="505ad2a6-3011-45d9-b0cd-616aed042419"/>
+				<text><![CDATA[numeroplanillapago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="0" width="100" height="20" uuid="869acb0b-7bbd-4bcc-8a10-a26bac211a89"/>
+				<text><![CDATA[ibcpago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1000" y="0" width="100" height="20" uuid="66faa403-986f-46c5-a4b9-6ebc8ff91f63"/>
+				<text><![CDATA[aportessaludpago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1100" y="0" width="100" height="20" uuid="d14fff3e-46f3-4068-89ed-c89744615156"/>
+				<text><![CDATA[aportepensionpago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1200" y="0" width="100" height="20" uuid="f35a7216-8af5-433a-99aa-e1839f35d4ce"/>
+				<text><![CDATA[aportesolidariopago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1300" y="0" width="100" height="20" uuid="3b26b5cf-bf8f-4bcb-877d-e5616c3ff82a"/>
+				<text><![CDATA[aportearl]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1400" y="0" width="100" height="20" uuid="006528ea-75cd-459d-a147-d7a9b6e79c44"/>
+				<text><![CDATA[ahorrovoluntariopago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1500" y="0" width="100" height="20" uuid="0f34f8a5-d60b-41d3-a99d-9f814eaf5c20"/>
+				<text><![CDATA[dependientespago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1600" y="0" width="100" height="20" uuid="30c15dee-4e2d-442c-a26f-91bbcda16ca5"/>
+				<text><![CDATA[saludprepagadapago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1700" y="0" width="100" height="20" uuid="1fe78245-cfec-49aa-a0ff-786e92685e23"/>
+				<text><![CDATA[interesviviendapago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8f3b9a91-645e-40ef-8b0d-e5b94d8f2624"/>
+				<textFieldExpression><![CDATA[$F{codigopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="bd8dddd4-36c6-4fca-a9ef-13cec635dada"/>
+				<textFieldExpression><![CDATA[$F{numeropago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="c30ae2a9-1230-4f64-9336-a2045a1c2ef0"/>
+				<textFieldExpression><![CDATA[$F{fechainiciopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="79d706f8-46b9-45a8-8370-8e6cc8b8f941"/>
+				<textFieldExpression><![CDATA[$F{fechafinpago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="1f238d88-9d14-43d5-bc8f-74bb37bfe264"/>
+				<textFieldExpression><![CDATA[$F{saldoanteriorpago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="20" uuid="8f64aed7-4927-4935-b364-e38a559ae6c9"/>
+				<textFieldExpression><![CDATA[$F{saldonuevopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="20" uuid="edc2ea26-d8d9-4c8d-b4bd-2c35ed2d9e56"/>
+				<textFieldExpression><![CDATA[$F{numerocontratopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="100" height="20" uuid="fba5101c-f965-4fc3-93e3-958926e403b8"/>
+				<textFieldExpression><![CDATA[$F{numerohoraspago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="100" height="20" uuid="8beba9a5-bd22-4f37-a025-902b12e4c6fc"/>
+				<textFieldExpression><![CDATA[$F{numeroplanillapago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="900" y="0" width="100" height="20" uuid="77fff829-5a5a-42e9-9fd6-e1fa8f9f00c1"/>
+				<textFieldExpression><![CDATA[$F{ibcpago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1000" y="0" width="100" height="20" uuid="75f9ed4d-7d7c-4fde-abab-05fc48438b68"/>
+				<textFieldExpression><![CDATA[$F{aportessaludpago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1100" y="0" width="100" height="20" uuid="aa2c810d-3ccc-46a8-b520-f6f5c92cbc15"/>
+				<textFieldExpression><![CDATA[$F{aportepensionpago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1200" y="0" width="100" height="20" uuid="6139b2a3-3fbf-4309-a1ea-b51f8a9fc410"/>
+				<textFieldExpression><![CDATA[$F{aportesolidariopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1300" y="0" width="100" height="20" uuid="d636a215-1bc4-4dc0-872b-cdbfd53142be"/>
+				<textFieldExpression><![CDATA[$F{aportearl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1400" y="0" width="100" height="20" uuid="3e426c5b-7426-4c80-bec7-ccc9231fc5b8"/>
+				<textFieldExpression><![CDATA[$F{ahorrovoluntariopago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1500" y="0" width="100" height="20" uuid="e159470c-d32c-4b35-af9c-735560ff7b7b"/>
+				<textFieldExpression><![CDATA[$F{dependientespago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1600" y="0" width="100" height="20" uuid="7a2696be-6635-4c0d-9022-6dcead573f6b"/>
+				<textFieldExpression><![CDATA[$F{saludprepagadapago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1700" y="0" width="100" height="20" uuid="58a60673-5752-40a2-9b64-557dc444a187"/>
+				<textFieldExpression><![CDATA[$F{interesviviendapago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <title>CONTRATISTA</title>
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <link rel="StyleSheet" href="css/style.css" type="text/css"></link>
+                <link rel="shortcut icon" href="images/iconoRUDA.ico"/>                
+            </f:facet>
+            <script>
+                
+                PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre', ''],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día'
+                };
+
+            </script>
+        </h:head>
+
+        <h:body>            
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <h:graphicImage url="images/LogoRUDA.png" width="60%" height="90%" alt="LogoRUDA"  />
+            </p:layoutUnit>
+            <p:panel>                
+                <p:panelGrid style="width: 100%;"> 
+                    <p:row>
+                        <p:column style="vertical-align: top; width: 10%;">
+                            <h:form>
+                                <p:menu>
+                                    <p:submenu label="Menú">                              
+                                        <p:menuitem value="Cerrar Sesión" actionListener="#{sesionVista.cerrarSesion_action}" />
+                                    </p:submenu>                    
+                                </p:menu>
+                            </h:form>
+                        </p:column>
+                        <p:column>                           
+                            <p:panel id="panelContratista" header="CONTRATISTA">                                    
+                                <h:form id="formulario" acceptcharset="UTF-8"> 
+                                    <p:messages id="mensajes" showDetail="true" />
+                                    <p:panelGrid>
+                                        <p:row>                                            
+                                            <p:column>
+                                                <h:outputText value="Codigo Pago:"/> 
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtCodigopago" binding="#{ContratistaVista.txtCodigopago}" size="30" />
+                                                </div>
+                                            </p:column>                                            
+                                            <p:column>
+                                                <h:outputText value="Numero Pago :"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNumeroPago" binding="#{ContratistaVista.txtNumeroPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>                                            
+                                            <p:column>
+                                                <h:outputText value="Fecha Inicio Pago (Año-Mes-Dia)"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:calendar id="txtFechaInicioPago" value="#{ContratistaVista.txtFechaInicioPago}" locale="es" yearRange="1900:2200" navigator="true" pattern="yyyy-MMM-dd" mask="true" showOn="button" />
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Fecha Fin Pago (Año-Mes-Dia)"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:calendar id="txtFechaFinPago" value="#{ContratistaVista.txtFechaFinPago}" locale="es" yearRange="1900:2200" navigator="true" pattern="yyyy-MMM-dd" mask="true" showOn="button" />
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row>  
+                                        <p:row>                                                                                        
+                                            <p:column>
+                                                <h:outputText value="Saldo Anterior Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">                                                    
+                                                    <p:inputText id="txtSaldoAnteriorPago" binding="#{ContratistaVista.txtSaldoAnteriorPago}"  size="30"/>                                                    
+                                                </div>                                      
+                                            </p:column>                                            
+                                            <p:column>
+                                                <h:outputText value="Saldo Nuevo Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtSaldoNuevoPago" binding="#{ContratistaVista.txtSaldoNuevoPago}"  size="30"/>                                                  
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Numero Contrato Pago:"/>
+                                            </p:column>
+                                            <p:column>                                                
+                                                <p:inputText id="txtNumeroContratoPago" binding="#{ContratistaVista.txtNumeroContratoPago}" size="10"/>
+                                                <p:overlayPanel id="tablaContrato" for="txtNumeroContratoPago" hideEffect="blind" showEffect="blind" style="width: 300px">
+                                                    <p:dataTable  var="contrato" value="#{ContratistaVista.listaContrato}" 
+                                                                  rows="5" paginator="true"  selection="#{ContratistaVista.selectedContrato}" 
+                                                                  selectionMode="single" emptyMessage="No hay datos" rowKey="#{contrato.numerocontrato}">
+                                                        <p:ajax event="rowSelect" listener="#{ContratistaVista.accion_seleccionar_contrato(ex)}" update=":formulario:txtNumeroContratoPago,:formulario:tablaContrato"/>
+                                                        <p:column headerText="Codigo Banco" filterBy="#{contrato.numerocontrato}" filterMatchMode="contains">
+                                                            <h:outputText value="#{contrato.numerocontrato}" />
+                                                        </p:column>
+                                                    </p:dataTable>
+                                                </p:overlayPanel>                                                                                      
+                                            </p:column>                                            
+                                            <p:column>
+                                                <h:outputText value="Numero Horas Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNumeroHorasPago" binding="#{ContratistaVista.txtNumeroHorasPago}" size="30" />
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>                                         
+                                            <p:column>
+                                                <h:outputText value="Dias Liquidar Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtDiasLiquidacionPago" binding="#{ContratistaVista.txtDiasLiquidacionPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Numero Planilla Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtNumeroPlanillaPago" binding="#{ContratistaVista.txtNumeroPlanillaPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="IBC Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtIbcPago" binding="#{ContratistaVista.txtIbcPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Aportes Salud Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtAportesSaludPago" binding="#{ContratistaVista.txtAportesSaludPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>                                         
+                                            <p:column>
+                                                <h:outputText value="Aporte Pension Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtAportePensionadoPago" binding="#{ContratistaVista.txtAportePensionadoPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Aporte Solidario Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtAporteSolidarioPago" binding="#{ContratistaVista.txtAporteSolidarioPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Aporte ARL:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtAporteArl" binding="#{ContratistaVista.txtAporteArl}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Ahorro Voluntario Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtAhorroVoluntarioPago" binding="#{ContratistaVista.txtAhorroVoluntarioPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>                                         
+                                            <p:column>
+                                                <h:outputText value="Dependientes Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtDependientesPago" binding="#{ContratistaVista.txtDependientesPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Salud Prepagada Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtSaludPrepagadaPago" binding="#{ContratistaVista.txtSaludPrepagadaPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Interes Vivienda Pago:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <div align="left">
+                                                    <p:inputText id="txtInteresViviendaPago" binding="#{ContratistaVista.txtInteresViviendaPago}" size="30"/>
+                                                </div>                                      
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>
+                                            <p:column colspan="6">
+                                                <div align="center">                                           
+                                                    <p:commandButton value="Registrar" binding="#{ContratistaVista.btnRegistrar}" action="#{ContratistaVista.accion_registrar}" update="formulario"/>
+                                                    <p:commandButton value="Modificar" binding="#{ContratistaVista.btnModificar}" action="#{ContratistaVista.modificar}" update="formulario" disabled="true"/>
+                                                    <p:commandButton value="Eliminar" binding="#{ContratistaVista.btnEliminar}" action="#{ContratistaVista.eliminar}" update="formulario"/>                                                
+                                                    <p:commandButton value="Generar Reporte" binding="#{ContratistaVista.btnReporte}" actionListener="#{ContratistaVista.generarReporte}" ajax="false"/>
+                                                    <p:commandButton value="Limpiar" binding="#{ContratistaVista.btnLimpiar}" action="#{ContratistaVista.limpiar}" update="formulario"/>
+                                                </div>
+                                            </p:column>
+                                        </p:row>
+                                    </p:panelGrid>
+                                </h:form>
+                                <h:form id="forma">
+                                    <p:growl id="growl" showDetail="true" sticky="true"/>
+                                    <p:panel id="panelUpload" header="Cargar Pago:">
+                                        <p:fileUpload label="Seleccionar" invalidFileMessage="!El Archivo debe ser de Extensión .XLS¡" fileUploadListener="#{ContratistaVista.cargarPago}" mode="advanced"  update="mensajeArchivo" auto="false" allowTypes="/(\.|\/)(xls)$/"/> 
+                                        <p:messages id="mensajeArchivo" showDetail="true" /> 
+                                    </p:panel>
+                                    <br />                    
+                                </h:form>                                    
+                                <p:dataTable var="pago" value="#{ContratistaVista.listaPago}" rows="5"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             selectionMode="single"
+                                             selection="#{ContratistaVista.selectedPago}"
+                                             rowKey="#{pago.codigopago}">
+                                    <p:ajax event="rowSelect" listener="#{ContratistaVista.accion_seleccionar}" update=":formulario" />
+                                    <p:column headerText="Codigo Pago:">
+                                        <h:outputText value="#{pago.codigopago}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Pago:">
+                                        <h:outputText value="#{pago.numeropago}" />
+                                    </p:column>
+                                    <p:column headerText="Fecha Inicio Pago:">
+                                        <h:outputText value="#{pago.fechainiciopago}" />
+                                    </p:column> 
+                                    <p:column headerText="Fecha Fin Pago:">
+                                        <h:outputText value="#{pago.fechafinpago}" />
+                                    </p:column>
+                                    <p:column headerText="Saldo Anterior Pago:">
+                                        <h:outputText value="#{pago.saldoanteriorpago}" />
+                                    </p:column>
+                                    <p:column headerText="Saldo Nuevo Pago:">
+                                        <h:outputText value="#{pago.saldonuevopago}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Contrato Pago:">
+                                        <h:outputText value="#{pago.numerocontratopago.numerocontrato}" />
+                                    </p:column> 
+                                    <p:column headerText="Numero Horas Pago:">
+                                        <h:outputText value="#{pago.numerohoraspago}" />
+                                    </p:column>
+                                    <p:column headerText="Dias Liquidar Pago:">
+                                        <h:outputText value="#{pago.diasliquidarpago}" />
+                                    </p:column>
+                                    <p:column headerText="Numero Planilla Pago:">
+                                        <h:outputText value="#{pago.numeroplanillapago}" />
+                                    </p:column>
+                                    <p:column headerText="IBC Pago:">
+                                        <h:outputText value="#{pago.ibcpago}" />
+                                    </p:column>
+                                    <p:column headerText="Aportes Salud Pago:">
+                                        <h:outputText value="#{pago.aportessaludpago}" />
+                                    </p:column> 
+                                    <p:column headerText="Aportes Pension Pago:">
+                                        <h:outputText value="#{pago.aportepensionpago}" />
+                                    </p:column>
+                                    <p:column headerText="Aporte Solidario Pago:">
+                                        <h:outputText value="#{pago.aportesolidariopago}" />
+                                    </p:column>
+                                    <p:column headerText="Aporte ARL:">
+                                        <h:outputText value="#{pago.aportearl}" />
+                                    </p:column>
+                                    <p:column headerText="Ahorro Voluntario Pago:">
+                                        <h:outputText value="#{pago.ahorrovoluntariopago}" />
+                                    </p:column> 
+                                    <p:column headerText="Dependientes Pago:">
+                                        <h:outputText value="#{pago.dependientespago}" />
+                                    </p:column>
+                                    <p:column headerText="Salud Prepagada Pago:">
+                                        <h:outputText value="#{pago.saludprepagadapago}" />
+                                    </p:column>
+                                    <p:column headerText="Interes Vivienda Pago:">
+                                        <h:outputText value="#{pago.interesviviendapago}" />
+                                    </p:column>
+                                </p:dataTable>
+
+                            </p:panel>       
+
+                        </p:column>
+
+                    </p:row>
+
+                </p:panelGrid>
+
+            </p:panel>
+
+            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                SENA CLEM - REGISTRO UNICO DE DESARROLLO ADMINISTRATIVO
+            </p:layoutUnit>
+
+        </h:body>
+
+    </f:view>
+</html>
+

@@ -49,4 +49,12 @@
         <servlet-name>ReportePersonal</servlet-name>
         <url-pattern>/ReportePersonal.do</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>ReportePago</servlet-name>
+        <servlet-class>reportesRUDA.ReportePago</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportePago</servlet-name>
+        <url-pattern>/ReportePago.do</url-pattern>
+    </servlet-mapping>
 </web-app>
